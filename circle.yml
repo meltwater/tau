@@ -1,0 +1,46 @@
+---
+version: 2
+jobs:
+  build:
+    working_directory: ~/build
+    docker:
+      - image: node:boron
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-cache
+      - restore_cache:
+          key: module-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Set yarn cache
+          command: yarn config set cache-folder $HOME/.yarn-cache
+      - run:
+          name: Add npm authentication token
+          command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+      - run:
+          name: Install dependencies
+          command: yarn
+      - save_cache:
+          key: yarn-cache
+          paths:
+            - $HOME/.yarn-cache
+      - save_cache:
+          key: module-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Build package
+          command: yarn run package
+      - deploy:
+          name: Publish package
+          command: |
+            apt-get update
+            apt-get install -y jq
+            pkg_name=$(jq -r '.name' package.json)
+            pkg_version=$(jq -r '.version' package.json)
+            if [[ "$(git log -1 --pretty='%s')" == "${pkg_version}" ]]; then
+              if [[ -z "$(npm view ${pkg_name}@${pkg_version})" ]]; then
+                pkg_files=(*.tgz)
+                npm publish $(echo $pkg_files)
+              fi
+            fi

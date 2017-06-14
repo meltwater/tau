@@ -1,0 +1,111 @@
+{
+  "name": "@meltwater/makenew-node-lib",
+  "version": "0.0.0",
+  "description": "npm package skeleton for Meltwater Node.js libraries.",
+  "main": "./dist/index.js",
+  "module": "./index.js",
+  "keywords": [
+    "meltwater",
+    "node"
+  ],
+  "homepage": "https://github.com/meltwater/makenew-node-lib",
+  "bugs": "https://github.com/meltwater/makenew-node-lib/issues",
+  "repository": "meltwater/makenew-node-lib",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "author": {
+    "name": "Evan Sosenko",
+    "email": "evan.sosenko@meltwater.com"
+  },
+  "files": [
+    "yarn.lock",
+    "index.js",
+    "lib",
+    "coverage",
+    "dist",
+    "docs"
+  ],
+  "scripts": {
+    "test": "nyc ava",
+    "pretest": "gulp lint",
+    "clean": "del dist",
+    "build": "npm-run-all --parallel build:*",
+    "prebuild": "yarn run clean",
+    "build:index": "babel --source-maps --out-dir ./dist ./index.js",
+    "build:lib": "babel --source-maps --out-dir ./dist/lib ./lib",
+    "dist": "yarn run build",
+    "predist": "yarn test",
+    "package": "npm pack",
+    "prepackage": "yarn run dist",
+    "preversion": "yarn run dist",
+    "postversion": "git push && git push --tags",
+    "format": "standard --fix",
+    "report": "nyc report",
+    "watch": "gulp watch",
+    "watch:test": "ava --watch"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "stage-3"
+    ]
+  },
+  "ava": {
+    "files": [
+      "**/*.spec.js",
+      "!dist/**/*"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": {
+      "babelrc": true,
+      "sourceMaps": "inline"
+    }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 90,
+    "exclude": [
+      "**/index.js",
+      "dist/**/*.js",
+      "**/*.spec.js"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ]
+  },
+  "engines": {
+    "node": ">=6.9.5"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.4",
+    "babel-preset-stage-3": "^6.17.0",
+    "del-cli": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.2",
+    "gulp-jsonlint": "^1.1.2",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-standard": "^10.0.0",
+    "gulp-watch": "^4.3.10",
+    "gulplog": "^1.0.0",
+    "npm-run-all": "^4.0.0",
+    "nyc": "^11.0.2",
+    "standard": "^10.0.2"
+  }
+}
