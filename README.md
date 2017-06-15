@@ -20,6 +20,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 - Automatically lint on changes with [gulp].
 - Futuristic unit testing with [AVA].
 - Code coverage reporting with [Istanbul] and [nyc].
+- Continuous testing and automated package publishing with [CircleCI].
 - [Keep a CHANGELOG].
 - Consistent coding with [EditorConfig].
 - [Tern] code-analysis support.
@@ -69,7 +70,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    remove the git remote, remove upstream tags,
    and stage changes for commit.
 
-4. Create a new CircleCI project.
+4. Create a new [CircleCI] project.
    Add `NPM_TOKEN` as an environment variable.
    Create a project API token with status scope
    and update the token in the README build badge.

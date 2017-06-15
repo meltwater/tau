@@ -56,7 +56,7 @@ makenew () {
   read -p '> Author email (linus@example.com): ' mk_email
   read -p '> GitHub repository name (my-package): ' mk_repo
 
-  sed_delete README.md '9,119d'
+  sed_delete README.md '9,120d'
   sed_insert README.md '9i' "${mk_description}"
 
   find_replace "s/\"version\": \".*\"/\"version\": \"0.0.0\"/g"
