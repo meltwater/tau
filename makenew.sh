@@ -54,7 +54,7 @@ makenew () {
   read -p '> Short package description (Foos and bars.): ' mk_description
   read -p '> Author name (Linus Torvalds): ' mk_author
   read -p '> Author email (linus@example.com): ' mk_email
-  read -p '> GitHub repository name (my-package): ' mk_repo
+  read -p '> GitHub repository name (my-repo): ' mk_repo
 
   sed_delete README.md '9,120d'
   sed_insert README.md '9i' "${mk_description}"
