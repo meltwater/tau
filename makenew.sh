@@ -67,6 +67,7 @@ makenew () {
   find_replace "s/evan.sosenko@meltwater\.com/${mk_email}/g"
   find_replace "s/@meltwater\/makenew-node-lib/@meltwater\/${mk_slug}/g"
   find_replace "s/meltwater\/makenew-node-lib/meltwater\/${mk_repo}/g"
+  find_replace "s/makenew-node-lib/${mk_repo}/g"
   find_replace "s/makenew--node--lib/$(echo ${mk_slug} | sed 's/-/--/g')/g"
 
   echo
