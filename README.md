@@ -300,6 +300,24 @@ An HTML version will be saved in `coverage`.
 [AVA]: https://github.com/avajs/ava
 [Istanbul]: https://istanbul.js.org/
 
+## Contributing
+
+The author and active contributors may be found in `package.json`,
+
+```
+$ jq .author < package.json
+$ jq .contributors < package.json
+```
+
+To submit a patch:
+
+1. Request repository access by submitting a new issue.
+2. Create your feature branch (`git checkout -b my-new-feature`).
+3. Make changes and write tests.
+4. Commit your changes (`git commit -am 'Add some feature'`).
+5. Push to the branch (`git push origin my-new-feature`).
+6. Create a new Pull Request.
+
 ## License
 
 This npm package is Copyright (c) 2016-2017 Meltwater Group.
