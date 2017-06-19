@@ -61,7 +61,18 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    $ git reset --hard <version-tag>
    ```
 
-3. Run
+3. Create a new [CircleCI] project.
+   Add `NPM_TOKEN` as an environment variable.
+   Create a project API token with status scope
+   to use for the README build badge.
+
+4. Optionally setup [Codecov].
+   Navigate to the settings page for the Codecov project,
+   use the Upload Token to add `CODECOV_TOKEN`
+   as an environment variable to the CircleCI project,
+   and note the Graphing Token to use for the README badge.
+
+5. Run
 
    ```
    $ ./makenew.sh
@@ -71,17 +82,6 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    This will replace the boilerplate, delete itself,
    remove the git remote, remove upstream tags,
    and stage changes for commit.
-
-4. Create a new [CircleCI] project.
-   Add `NPM_TOKEN` as an environment variable.
-   Create a project API token with status scope
-   and update the token in the README build badge.
-
-5. Optionally setup [Codecov].
-   Navigate to the setting page for the Codecov project,
-   use the Upload Token to add `CODECOV_TOKEN`
-   as an environment variable to the CircleCI project,
-   and update the README badge with the Graphing Token.
 
 6. Add and commit the changes and push to GitHub with
 

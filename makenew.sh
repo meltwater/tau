@@ -55,6 +55,8 @@ makenew () {
   read -p '> Author name (Linus Torvalds): ' mk_author
   read -p '> Author email (linus@example.com): ' mk_email
   read -p '> GitHub repository name (my-repo): ' mk_repo
+  read -p '> CircleCI status token: ' mk_circleci
+  read -p '> Codecov status token: ' mk_codecov
 
   sed_delete README.md '10,131d'
   sed_insert README.md '10i' "${mk_description}"
@@ -69,6 +71,8 @@ makenew () {
   find_replace "s/meltwater\/makenew-node-lib/meltwater\/${mk_repo}/g"
   find_replace "s/makenew-node-lib/${mk_repo}/g"
   find_replace "s/makenew--node--lib/$(echo ${mk_slug} | sed 's/-/--/g')/g"
+  find_replace "s/30395fe910ca2b9f7553c6311e85bd8ebe1ee059/${mk_circleci}/g"
+  find_replace "s/eHEIOjPT5u/${mk_codecov}/g"
 
   echo
   echo 'Replacing boilerplate.'
