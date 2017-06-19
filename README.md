@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/badge/npm-%40meltwater%2Fmakenew--node--lib-blue.svg)](https://www.npmjs.com/package/@meltwater/makenew-node-lib)
 [![github](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/meltwater/makenew-node-lib)
+[![Codecov](https://img.shields.io/codecov/c/token/eHEIOjPT5u/github/meltwater/makenew-node-lib.svg)](https://codecov.io/gh/meltwater/makenew-node-lib)
 [![CircleCI](https://circleci.com/gh/meltwater/makenew-node-lib.svg?style=shield&circle-token=30395fe910ca2b9f7553c6311e85bd8ebe1ee059)](https://circleci.com/gh/meltwater/makenew-node-lib)
 
 ## Description
@@ -19,7 +20,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 - Linting with the [JavaScript Standard Style] and [JSON Lint].
 - Automatically lint on changes with [gulp].
 - Futuristic unit testing with [AVA].
-- Code coverage reporting with [Istanbul] and [nyc].
+- Code coverage reporting with [Istanbul], [nyc], and [Codecov].
 - Continuous testing and automated package publishing with [CircleCI].
 - [Keep a CHANGELOG].
 - Consistent coding with [EditorConfig].
@@ -28,6 +29,8 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 
 [AVA]: https://github.com/avajs/ava
 [Babel]: https://babeljs.io/
+[CircleCI]: https://circleci.com/
+[Codecov]: https://codecov.io/
 [EditorConfig]: http://editorconfig.org/
 [gulp]: http://gulpjs.com/
 [Keep a CHANGELOG]: http://keepachangelog.com/
@@ -39,7 +42,6 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 [nyc]: https://github.com/istanbuljs/nyc
 [Shields.io]: http://shields.io/
 [Tern]: https://ternjs.net/
-[CircleCI]: https://circleci.com/
 [yarn]: https://yarnpkg.com/
 
 ### Bootstrapping a New Project
@@ -75,7 +77,13 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    Create a project API token with status scope
    and update the token in the README build badge.
 
-5. Add and commit the changes and push to GitHub with
+5. Optionally setup [Codecov].
+   Navigate to the setting page for the Codecov project,
+   use the Upload Token to add `CODECOV_TOKEN`
+   as an environment variable to the CircleCI project,
+   and update the README badge with the Graphing Token.
+
+6. Add and commit the changes and push to GitHub with
 
    ```
    $ git add .
@@ -84,7 +92,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    $ git push -u origin master
    ```
 
-6. Ensure the CircleCI build passes,
+7. Ensure the CircleCI build passes,
    then publish the initial version of the package with
 
    ```
@@ -92,6 +100,9 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    $ yarn
    $ npm version patch
    ```
+
+8. Update the branch protection options for `master`
+   to require all status checks to pass.
 
 ### Updating
 

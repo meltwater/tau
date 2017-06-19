@@ -31,6 +31,13 @@ jobs:
       - run:
           name: Build package
           command: yarn run package
+      - run:
+          name: Codecov
+          command: |
+            if [[ -n "${CODECOV_TOKEN}" ]]; then
+              yarn global add codecov
+              codecov
+            fi
       - deploy:
           name: Publish package
           command: |
