@@ -41,7 +41,7 @@ jobs:
       - deploy:
           name: Publish package
           command: |
-            if [[ "${CIRCLE_BRANCH}" == 'master' ]]; then
+            if [[ "${CIRCLE_BRANCH}" == 'master' || "${CIRCLE_BRANCH}" =~ ^v[0-9] ]]; then
               apt-get update
               apt-get install -y jq
               pkg_name=$(jq -r '.name' package.json)
