@@ -210,6 +210,20 @@ View them with
 $ yarn run
 ```
 
+#### Examples
+
+Run provided examples with, e.g.,
+
+```
+$ yarn run example -- is-true | yarn run bunyan
+```
+
+or more compactly with, e.g.,
+
+```
+$ yarn example is-true | yarn bunyan
+```
+
 #### Production Build
 
 Lint, test, and transpile the production build to `dist` with

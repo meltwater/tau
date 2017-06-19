@@ -20,6 +20,7 @@
     "yarn.lock",
     "index.js",
     "lib",
+    "examples",
     "coverage",
     "dist",
     "docs"
@@ -38,6 +39,7 @@
     "prepackage": "yarn run dist",
     "preversion": "yarn run dist",
     "postversion": "git push && git push --tags",
+    "example": "babel-node examples",
     "format": "standard --fix",
     "report": "nyc report",
     "watch": "gulp watch",
@@ -78,6 +80,7 @@
     "exclude": [
       "**/index.js",
       "dist/**/*.js",
+      "examples/**/*.js",
       "**/*.spec.js"
     ],
     "reporter": [
@@ -89,12 +92,16 @@
   "engines": {
     "node": ">=6.9.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@meltwater/mlabs-logger": "^1.0.0"
+  },
   "devDependencies": {
     "ava": "^0.19.1",
     "babel-cli": "^6.18.0",
     "babel-preset-env": "^1.1.4",
     "babel-preset-stage-3": "^6.17.0",
+    "bunyan": "^1.8.10",
+    "camelcase": "^4.1.0",
     "del-cli": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
