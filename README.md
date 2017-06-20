@@ -211,6 +211,13 @@ $ yarn
 [Node.js]: https://nodejs.org/
 [nvm]: https://github.com/creationix/nvm
 
+#### CircleCI
+
+The following environment variables must be set on CircleCI:
+
+- `NPM_TOKEN`: npm token for installing and publishing private packages.
+- `CODECOV_TOKEN`: Codecov token for uploading coverage reports (optional).
+
 ### Tasks
 
 Primary development tasks are defined under `scripts` in `package.json`
