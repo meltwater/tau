@@ -242,6 +242,12 @@ or more compactly with, e.g.,
 $ yarn example is-true | yarn bunyan
 ```
 
+##### Requirements
+
+All examples use the following environment variables:
+
+  - `LOG_LEVEL` (optional)
+
 #### Production Build
 
 Lint, test, and transpile the production build to `dist` with
