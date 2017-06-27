@@ -25,7 +25,7 @@ jobs:
           paths:
             - $HOME/.yarn-cache
       - save_cache:
-          key: module-cache-{{ checksum "package.json" }}
+          key: module-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
       - run:
