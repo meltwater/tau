@@ -1,3 +1,5 @@
+import 'source-map-support/register'
+
 import camelcase from 'camelcase'
 import createLogger from '@meltwater/mlabs-logger'
 

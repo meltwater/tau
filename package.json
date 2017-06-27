@@ -109,6 +109,7 @@
     "gulplog": "^1.0.0",
     "npm-run-all": "^4.0.0",
     "nyc": "^11.0.2",
+    "source-map-support": "^0.4.15",
     "standard": "^10.0.2"
   }
 }
