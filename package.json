@@ -89,7 +89,7 @@
     "node": ">=6.9.5"
   },
   "dependencies": {
-    "@meltwater/mlabs-logger": "^1.0.0",
+    "@meltwater/mlabs-logger": "^2.0.0",
     "camelcase": "^4.1.0"
   },
   "devDependencies": {
