@@ -8,6 +8,9 @@
 # Build directories
 dist
 
+# Environment versions file
+.versions
+
 # Logs
 logs
 *.log

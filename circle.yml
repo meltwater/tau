@@ -7,10 +7,15 @@ jobs:
       - image: node:boron
     steps:
       - checkout
+      - run:
+         name: Save build versions
+         command: |
+           echo "node: ${NODE_VERSION}" >> .versions
+           echo "yarn: ${YARN_VERSION}" >> .versions
       - restore_cache:
           key: yarn-cache
       - restore_cache:
-          key: module-cache-{{ checksum "yarn.lock" }}
+          key: module-cache-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
       - run:
           name: Set yarn cache
           command: yarn config set cache-folder $HOME/.yarn-cache
@@ -22,12 +27,10 @@ jobs:
           command: yarn
       - save_cache:
           key: yarn-cache
-          paths:
-            - $HOME/.yarn-cache
+          paths: $HOME/.yarn-cache
       - save_cache:
-          key: module-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ./node_modules
+          key: module-cache-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
+          paths: node_modules
       - run:
           name: Build package
           command: yarn run package
