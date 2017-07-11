@@ -1,10 +1,9 @@
 ---
 version: 2
-jobs:
-  build:
+
+references:
+  build: &build
     working_directory: ~/build
-    docker:
-      - image: node:boron
     steps:
       - checkout
       - run:
@@ -37,14 +36,16 @@ jobs:
       - run:
           name: Codecov
           command: |
-            if [[ -n "${CODECOV_TOKEN}" ]]; then
+            if [[ "${COVERAGE}" == 'true' && -n "${CODECOV_TOKEN}" ]]; then
               yarn global add codecov
               codecov
             fi
       - deploy:
           name: Publish package
           command: |
-            if [[ "${CIRCLE_BRANCH}" == 'master' || "${CIRCLE_BRANCH}" =~ ^v[0-9] ]]; then
+            if [[ "${PUBLISH}" == 'true' && \
+              ("${CIRCLE_BRANCH}" == 'master' || "${CIRCLE_BRANCH}" =~ ^v[0-9]) \
+            ]]; then
               apt-get update
               apt-get install -y jq
               pkg_name=$(jq -r '.name' package.json)
@@ -56,3 +57,32 @@ jobs:
                 fi
               fi
             fi
+
+jobs:
+  node-8:
+    environment:
+      COVERAGE: 'true'
+    docker:
+      - image: node:8
+    <<: *build
+  node-7:
+    docker:
+      - image: node:7
+    <<: *build
+  node-boron:
+    environment:
+      PUBLISH: 'true'
+    docker:
+      - image: node:boron
+    <<: *build
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - node-8
+      - node-7
+      - node-boron:
+          requires:
+            - node-8
+            - node-7
