@@ -58,8 +58,8 @@ makenew () {
   read -p '> CircleCI status token: ' mk_circleci
   read -p '> Codecov status token: ' mk_codecov
 
-  sed_delete README.md '10,131d'
-  sed_insert README.md '10i' "${mk_description}"
+  sed_delete README.md '11,132d'
+  sed_insert README.md '11i' "${mk_description}"
 
   find_replace "s/\"version\": \".*\"/\"version\": \"0.0.0\"/g"
   find_replace "s/0\.0\.0\.\.\./0.0.1.../g"
