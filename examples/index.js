@@ -11,6 +11,8 @@ const examples = {
   isTrue
 }
 
+const getOptions = env => ({})
+
 const createExample = (name, {
   log = createLogger({name}),
   ...options
@@ -39,7 +41,7 @@ if (require.main === module) {
   const example = process.argv.slice(2)[0]
   const args = process.argv.slice(3)
   const log = createLogger({name, example, level: process.env.LOG_LEVEL})
-  const options = {}
+  const options = getOptions(process.env)
   createExample(example, {...options, log})(...args).catch(() => {
     log.fatal('Example: Fatal')
     process.exit(1)
