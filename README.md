@@ -233,6 +233,14 @@ $ yarn run
 
 #### Examples
 
+##### Requirements
+
+All examples use the following environment variables:
+
+  - `LOG_LEVEL` (optional)
+
+##### Running Locally
+
 Run provided examples with, e.g.,
 
 ```
@@ -251,11 +259,27 @@ Pass arguments to examples with
 $ yarn example is-true false | yarn bunyan
 ```
 
-##### Requirements
+##### Importing
 
-All examples use the following environment variables:
+All examples are included with this package,
+create and run one with
 
-  - `LOG_LEVEL` (optional)
+```js
+import { createExample } from '@meltwater/makenew-node-lib'
+
+// createExample(exampleName, options)(...args)
+createExample('is-true')().catch(err => { console.error(err) })
+```
+
+or import them directly with
+
+```js
+import { examples } from '@meltwater/makenew-node-lib'
+
+const isTrue = examples.isTrue()
+
+isTrue().then(data => { console.log(data) }).catch(err => { console.error(err) })
+```
 
 #### Production Build
 

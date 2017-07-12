@@ -7,7 +7,7 @@ import createLogger from '@meltwater/mlabs-logger'
 
 import isTrue from './is-true'
 
-const examples = {
+export const examples = {
   isTrue
 }
 
