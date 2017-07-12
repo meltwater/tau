@@ -25,7 +25,6 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 - Continuous testing and automated package publishing with [CircleCI].
 - [Keep a CHANGELOG].
 - Consistent coding with [EditorConfig].
-- [Tern] code-analysis support.
 - Badges from [Shields.io].
 
 [AVA]: https://github.com/avajs/ava
@@ -42,7 +41,6 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 [npm]: https://www.npmjs.com/
 [nyc]: https://github.com/istanbuljs/nyc
 [Shields.io]: http://shields.io/
-[Tern]: https://ternjs.net/
 [yarn]: https://yarnpkg.com/
 
 ### Bootstrapping a New Project

@@ -11,6 +11,10 @@ dist
 # Environment versions file
 .versions
 
+# Tern
+.tern-project
+.tern-port
+
 # Logs
 logs
 *.log
