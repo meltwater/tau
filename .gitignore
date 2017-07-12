@@ -8,6 +8,9 @@
 # Build directories
 dist
 
+# Local config
+examples/local.json
+
 # Environment versions file
 .versions
 

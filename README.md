@@ -231,9 +231,17 @@ $ yarn run
 
 #### Examples
 
-##### Requirements
+##### Configuration
 
-All examples use the following environment variables:
+Set required and optional configuration options in `examples/local.json`, e.g.,
+
+```json
+{
+  "logLevel": "debug"
+}
+```
+
+or override any options with the corresponding environment variable:
 
   - `LOG_LEVEL` (optional)
 
