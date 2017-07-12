@@ -245,6 +245,12 @@ or more compactly with, e.g.,
 $ yarn example is-true | yarn bunyan
 ```
 
+Pass arguments to examples with
+
+```
+$ yarn example is-true false | yarn bunyan
+```
+
 ##### Requirements
 
 All examples use the following environment variables:

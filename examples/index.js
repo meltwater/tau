@@ -11,10 +11,10 @@ const examples = {
   isTrue
 }
 
-const runExample = async (name, {
+const createExample = (name, {
   log = createLogger({name}),
   ...options
-} = {}) => {
+} = {}) => async (...args) => {
   try {
     if (!name) throw new Error('Must specify example name as first argument.')
 
@@ -25,7 +25,7 @@ const runExample = async (name, {
     }
 
     log.info('Example: Start')
-    const data = await example({...options, log})()
+    const data = await example({...options, log})(...args)
     log.info({data}, 'Example: Success')
     return data
   } catch (err) {
@@ -37,12 +37,13 @@ const runExample = async (name, {
 if (require.main === module) {
   const { name } = JSON.parse(fs.readFileSync('package.json'))
   const example = process.argv.slice(2)[0]
+  const args = process.argv.slice(3)
   const log = createLogger({name, example, level: process.env.LOG_LEVEL})
   const options = {}
-  runExample(example, {...options, log}).catch(() => {
+  createExample(example, {...options, log})(...args).catch(() => {
     log.fatal('Example: Fatal')
     process.exit(1)
   })
 }
 
-export default runExample
+export default createExample
