@@ -265,6 +265,12 @@ Pass arguments to examples with
 $ yarn example is-true false | yarn bunyan
 ```
 
+In bash or zsh, you may define a convenience function with
+
+```
+$ function yrx () { yarn run example $@ | yarn run bunyan; }
+```
+
 ##### Importing
 
 All examples are included with this package,
