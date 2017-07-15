@@ -23,7 +23,7 @@ references:
           command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
       - run:
           name: Install dependencies
-          command: yarn
+          command: yarn install --pure-lockfile
       - save_cache:
           key: yarn-cache
           paths: $HOME/.yarn-cache
