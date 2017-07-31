@@ -12,9 +12,14 @@ export const examples = {
   isTrue
 }
 
-const envOptions = env => Object.assign.apply({}, [{}, ...[
+export const envVars = [
   'LOG_LEVEL'
-].filter(k => env[k] !== undefined).map(k => ({[camelcase(k)]: env[k]}))])
+]
+
+const envOptions = env => Object.assign.apply({}, [{},
+  ...envVars.filter(k => env[k] !== undefined)
+    .map(k => ({[camelcase(k)]: env[k]}))]
+)
 
 const localOptions = local => (
   fs.existsSync(local)

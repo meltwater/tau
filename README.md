@@ -245,7 +245,7 @@ or override any options with the corresponding environment variable:
 
   - `LOG_LEVEL` (optional)
 
-##### Running Locally
+##### Running locally
 
 Run provided examples with, e.g.,
 
@@ -324,6 +324,48 @@ const isTrue = examples.isTrue()
 
 isTrue().then(data => { console.log(data) }).catch(err => { console.error(err) })
 ```
+
+##### Writing examples
+
+1. Create a new file in `examples`.
+   All exported functions can take options and arguments with defaults, e.g.,
+
+   ```js
+   /* examples/query-api.js */
+   import request from 'request-promise'
+
+   export default ({
+     log,
+     fooApi = 'https://example.com'
+   }) => async (query = 'foo', page = 1) => {
+     const qs = {page: parseInt(page)}
+     log.debug({query, qs})
+     return request(`${fooApi}/query`, {qs})
+   }
+   ```
+
+2. Import and add the example to `examples/index.js`, e.g.,
+
+   ```js
+   /* examples/index.js */
+   import queryApi from './query-api'
+
+   export const examples = {
+     queryApi,
+     // ...
+   }
+   ```
+
+3. Add any new options to this README and in `examples/index.js`, e.g.,
+
+   ```js
+   /* examples/index.js */
+   export const envVars = [
+     'LOG_LEVEL',
+     'FOO_API',
+     // ...
+   ]
+   ```
 
 #### Production Build
 
