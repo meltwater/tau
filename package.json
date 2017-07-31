@@ -41,6 +41,7 @@
     "preversion": "yarn run dist",
     "postversion": "git push && git push --tags",
     "example": "babel-node examples",
+    "example:inspect": "babel-node --inspect examples",
     "format": "standard --fix",
     "report": "nyc report",
     "watch": "gulp watch",

@@ -1,3 +1,6 @@
 import { isTrue } from '../lib'
 
-export default options => async (x = true) => isTrue(x)
+export default ({log}) => async (check = true) => {
+  log.debug({check}, 'Input: Check')
+  return isTrue(check)
+}

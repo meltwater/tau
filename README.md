@@ -271,6 +271,31 @@ In bash or zsh, you may define a convenience function with
 $ function yrx () { yarn run example $@ | yarn run bunyan; }
 ```
 
+###### Debugging
+
+Debug examples with, e.g.,
+
+```
+$ yarn run example:inspect -- is-true | yarn run bunyan
+```
+
+In bash or zsh, you may define a convenience function with
+
+```
+$ function yrxi () { yarn run example:inspect $@ | yarn run bunyan; }
+```
+
+For examples which run a single process and then exit,
+create a breakpoint by adding the statement `debugger`
+to the top of the example function, e.g.,
+
+```js
+export default ({log}) => async () => {
+  debugger
+  // ...
+}
+```
+
 ##### Importing
 
 All examples are included with this package,
