@@ -298,8 +298,15 @@ export default ({log}) => async () => {
 
 ##### Importing
 
-All examples are included with this package,
-create and run one with
+_Imported examples are not supported as a stable API._
+
+All examples are included with this package.
+
+_Some examples may use devDependencies
+which need to be installed as dependencies
+by any package which imports them._
+
+Create and run an example with
 
 ```js
 import { createExample } from '@meltwater/makenew-node-lib'
