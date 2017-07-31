@@ -428,6 +428,15 @@ Generate a coverage report with
 $ yarn run report
 ```
 
+##### Debugging tests
+
+Create a breakpoint by adding the statement `debugger` to the test
+and start a debug session with, e.g.,
+
+```
+$ yarn run ava:inspect lib/true.spec.js
+```
+
 An HTML version will be saved in `coverage`.
 
 [AVA]: https://github.com/avajs/ava
