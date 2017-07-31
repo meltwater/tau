@@ -44,6 +44,7 @@
     "example:inspect": "babel-node --inspect examples",
     "format": "standard --fix",
     "report": "nyc report",
+    "ava:inspect": "node --inspect node_modules/ava/profile",
     "watch": "gulp watch",
     "watch:test": "ava --watch"
   },
