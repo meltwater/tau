@@ -318,9 +318,10 @@ createExample('is-true')().catch(err => { console.error(err) })
 or import them directly with
 
 ```js
+import createLogger from '@meltwater/mlabs-logger'
 import { examples } from '@meltwater/makenew-node-lib'
 
-const isTrue = examples.isTrue()
+const isTrue = examples.isTrue({log: createLogger()})
 
 isTrue().then(data => { console.log(data) }).catch(err => { console.error(err) })
 ```
