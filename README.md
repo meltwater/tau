@@ -299,9 +299,9 @@ export default ({log}) => async () => {
 
 ##### Importing
 
-_Imported examples are not supported as a stable API._
+All examples are included with this package as importable modules.
 
-All examples are included with this package.
+_Imported examples are not supported as a stable API._
 
 _Some examples may use devDependencies
 which need to be installed as dependencies
