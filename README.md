@@ -141,7 +141,7 @@ $ yarn add @meltwater/makenew-node-lib
 
 ## Usage
 
-**See the complete [API documentation](./docs).**
+**See the complete [API documentation](./docs) and [working examples](./examples).**
 
 This package provides an async function which checks if its argument is true.
 
