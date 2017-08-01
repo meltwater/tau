@@ -18,6 +18,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 - [Node.js]'s [npm] package structure.
 - Fast, reliable, and secure dependency management with [yarn].
 - Next generation JavaScript with [Babel].
+- Write working examples with configurable options and arguments.
 - Linting with the [JavaScript Standard Style] and [JSON Lint].
 - Automatically lint on changes with [gulp].
 - Futuristic unit testing with [AVA].
