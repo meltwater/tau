@@ -46,9 +46,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 
 ### Bootstrapping a New Project
 
-1. Create an empty (non-initialized) repository on GitHub.
-
-2. Clone the master branch of this repository with
+1. Clone the master branch of this repository with
 
    ```
    $ git clone --single-branch git@github.com:meltwater/makenew-node-lib.git <new-node-lib>
@@ -60,6 +58,8 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    ```
    $ git reset --hard <version-tag>
    ```
+
+2. Create an empty (non-initialized) repository on GitHub.
 
 3. Create a new [CircleCI] project.
    Add `NPM_TOKEN` as an environment variable.
