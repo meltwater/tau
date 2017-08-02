@@ -93,8 +93,7 @@
   },
   "dependencies": {
     "@meltwater/mlabs-logger": "^2.0.0",
-    "camelcase": "^4.1.0",
-    "param-case": "^2.1.1"
+    "change-case": "^3.0.1"
   },
   "devDependencies": {
     "ava": "^0.21.0",

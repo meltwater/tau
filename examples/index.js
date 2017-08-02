@@ -3,8 +3,7 @@ import 'source-map-support/register'
 import fs from 'fs'
 import path from 'path'
 
-import camelcase from 'camelcase'
-import paramcase from 'param-case'
+import { camelCase, paramCase } from 'change-case'
 import createLogger from '@meltwater/mlabs-logger'
 
 import isTrue from './is-true'
@@ -19,7 +18,7 @@ export const envVars = [
 
 const envOptions = env => Object.assign.apply({}, [{},
   ...envVars.filter(k => env[k] !== undefined)
-    .map(k => ({[camelcase(k)]: env[k]}))]
+    .map(k => ({[camelCase(k)]: env[k]}))]
 )
 
 const localOptions = local => (
@@ -35,7 +34,7 @@ const createExample = (name, {
   try {
     if (!name) throw new Error('Must specify example name as first argument.')
 
-    const example = examples[camelcase(name)]
+    const example = examples[camelCase(name)]
 
     if (typeof example !== 'function') {
       throw new Error(`Example ${name} not found.`)
@@ -64,7 +63,7 @@ if (require.main === module) {
     console.log()
     console.log('Runnable examples:')
     Object.keys(examples).sort().forEach(e => {
-      console.log('  ', paramcase(e))
+      console.log('  ', paramCase(e))
     })
     console.log()
     process.exit(0)
