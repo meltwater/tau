@@ -243,7 +243,7 @@ Set required and optional configuration options in `examples/local.json`, e.g.,
 }
 ```
 
-or override any options with the corresponding environment variable:
+Override any option with the corresponding environment variable:
 
   - `LOG_LEVEL` (optional)
 
@@ -270,7 +270,7 @@ $ yarn example is-true | yarn bunyan
 Pass arguments to examples with
 
 ```
-$ yarn example is-true false | yarn bunyan
+$ yarn run example is-true false | yarn bunyan
 ```
 
 Automatically watch and rerun an example on changes with, e.g.,
@@ -279,24 +279,12 @@ Automatically watch and rerun an example on changes with, e.g.,
 $ yarn run example:watch -- is-true | yarn run bunyan
 ```
 
-In bash or zsh, you may define a convenience function with
-
-```
-$ function yrx () { yarn run example $@ | yarn run bunyan; }
-```
-
 ###### Debugging
 
 Debug examples with, e.g.,
 
 ```
 $ yarn run example:inspect -- is-true | yarn run bunyan
-```
-
-In bash or zsh, you may define a convenience function with
-
-```
-$ function yrxi () { yarn run example:inspect $@ | yarn run bunyan; }
 ```
 
 For examples which run a single process and then exit,
@@ -308,6 +296,16 @@ export default ({log}) => async () => {
   debugger
   // ...
 }
+```
+
+###### Shell function aliases
+
+In bash or zsh, you may define convenience functions for the above with
+
+```bash
+function yrx () { yarn run example $@ | yarn run bunyan; }
+function yrxw () { yarn run example:watch $@ | yarn run bunyan; }
+function yrxi () { yarn run example:inspect $@ | yarn run bunyan; }
 ```
 
 ##### Importing
