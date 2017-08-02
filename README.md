@@ -248,6 +248,12 @@ or override any options with the corresponding environment variable:
 
 ##### Running locally
 
+List all runnable examples with
+
+```
+$ yarn run example
+```
+
 Run provided examples with, e.g.,
 
 ```

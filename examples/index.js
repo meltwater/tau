@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 
 import camelcase from 'camelcase'
+import paramcase from 'param-case'
 import createLogger from '@meltwater/mlabs-logger'
 
 import isTrue from './is-true'
@@ -58,6 +59,17 @@ if (require.main === module) {
   const options = {...localOptions(local), ...envOptions(process.env)}
   const level = options.logLevel || 'info'
   const log = createLogger({name, example, level})
+
+  if (!example) {
+    console.log()
+    console.log('Runnable examples:')
+    Object.keys(examples).sort().forEach(e => {
+      console.log('  ', paramcase(e))
+    })
+    console.log()
+    process.exit(0)
+  }
+
   createExample(example, {...options, log})(...args).catch(() => {
     log.fatal('Example: Fatal')
     process.exit(1)
