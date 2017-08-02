@@ -220,6 +220,8 @@ The following environment variables must be set on CircleCI:
 - `NPM_TOKEN`: npm token for installing and publishing private packages.
 - `CODECOV_TOKEN`: Codecov token for uploading coverage reports (optional).
 
+These may be set manually or by running the script `./circleci/envvars.sh`.
+
 ### Tasks
 
 Primary development tasks are defined under `scripts` in `package.json`
