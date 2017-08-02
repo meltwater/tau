@@ -78,7 +78,6 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    $ ./makenew.sh
    ```
 
-   and follow the prompts.
    This will replace the boilerplate, delete itself,
    remove the git remote, remove upstream tags,
    and stage changes for commit.
