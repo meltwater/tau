@@ -272,6 +272,12 @@ Pass arguments to examples with
 $ yarn example is-true false | yarn bunyan
 ```
 
+Automatically watch and rerun an example on changes with, e.g.,
+
+```
+$ yarn run example:watch -- is-true | yarn run bunyan
+```
+
 In bash or zsh, you may define a convenience function with
 
 ```
