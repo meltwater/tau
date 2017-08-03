@@ -18,6 +18,9 @@ examples/local.json
 .tern-project
 .tern-port
 
+# npm config
+.npmrc
+
 # Logs
 logs
 *.log
