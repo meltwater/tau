@@ -65,6 +65,12 @@ export default ({log}) => async () => {
 }
 ```
 
+Automatically watch and rerun an debugging example on changes with, e.g.,
+
+```
+$ yarn run example:inspect:watch -- is-true | yarn run bunyan
+```
+
 ### Shell function aliases
 
 In bash or zsh, you may define convenience functions for the above with
@@ -73,6 +79,7 @@ In bash or zsh, you may define convenience functions for the above with
 function yrx () { yarn run example $@ | yarn run bunyan; }
 function yrxw () { yarn run example:watch $@ | yarn run bunyan; }
 function yrxi () { yarn run example:inspect $@ | yarn run bunyan; }
+function yrxiw () { yarn run example:inspect:watch $@ | yarn run bunyan; }
 ```
 
 ## Importing

@@ -44,6 +44,7 @@
     "example": "babel-node examples",
     "example:watch": "babel-watch --watch examples/local.json examples",
     "example:inspect": "babel-node --inspect examples",
+    "example:inspect:watch": "nodemon ./node_modules/.bin/babel-node --inspect examples",
     "ava:inspect": "node --inspect node_modules/ava/profile",
     "ava:inspect:watch": "nodemon --inspect node_modules/ava/profile",
     "watch": "gulp watch",
