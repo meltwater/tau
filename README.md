@@ -188,7 +188,8 @@ $ git clone git@github.com:meltwater/makenew-node-lib.git
 
 ### Requirements
 
-You will need [Node.js] with [Yarn].
+You will need [Node.js] with [Yarn]
+and a [Node.js debugging] client.
 
 Be sure that all commands run under the correct Node version, e.g.,
 if using [nvm], install the correct version with
@@ -210,6 +211,8 @@ $ yarn
 ```
 
 [Node.js]: https://nodejs.org/
+[Node.js debugging]: https://nodejs.org/en/docs/guides/debugging-getting-started/
+
 [nvm]: https://github.com/creationix/nvm
 
 #### CircleCI
