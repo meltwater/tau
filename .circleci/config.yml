@@ -8,7 +8,7 @@ references:
       - run:
           name: Install CA certificates
           command: |
-            if [[ -f /bin/apk ]]; then
+            if [[ -f /sbin/apk ]]; then
               echo "alpine: $(cat /etc/alpine-release)" >> .versions
               apk add --no-cache ca-certificates
             fi
