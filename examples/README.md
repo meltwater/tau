@@ -65,7 +65,7 @@ export default ({log}) => async () => {
 }
 ```
 
-Automatically watch and rerun an debugging example on changes with, e.g.,
+Automatically watch and rerun a debuggable example on changes with, e.g.,
 
 ```
 $ yarn run example:inspect:watch -- is-true | yarn run bunyan
@@ -127,7 +127,7 @@ isTrue().then(data => { console.log(data) }).catch(err => { console.error(err) }
    }) => async (query = 'foo', page = 1) => {
      const qs = {page: parseInt(page)}
      log.debug({query, qs})
-     return request(`${fooApi}/query`, {qs})
+     return request(`${fooApi}/search/${query}`, {qs})
    }
    ```
 
