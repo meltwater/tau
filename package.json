@@ -44,11 +44,12 @@
     "example": "babel-node examples",
     "example:watch": "babel-watch --watch examples/local.json examples",
     "example:inspect": "babel-node --inspect examples",
-    "format": "standard --fix",
-    "report": "nyc report",
     "ava:inspect": "node --inspect node_modules/ava/profile",
+    "ava:inspect:watch": "nodemon --inspect node_modules/ava/profile",
     "watch": "gulp watch",
-    "watch:test": "ava --watch"
+    "watch:test": "ava --watch",
+    "format": "standard --fix",
+    "report": "nyc report"
   },
   "babel": {
     "presets": [
@@ -112,6 +113,7 @@
     "gulp-standard": "^10.0.0",
     "gulp-watch": "^4.3.10",
     "gulplog": "^1.0.0",
+    "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.0",
     "nyc": "^11.0.2",
     "source-map-support": "^0.4.15",

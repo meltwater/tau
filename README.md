@@ -21,7 +21,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 - Write debuggable examples with configurable options and arguments.
 - Linting with the [JavaScript Standard Style] and [JSON Lint].
 - Automatically lint on changes with [gulp].
-- Futuristic unit testing with [AVA].
+- Futuristic debuggable unit testing with [AVA].
 - Code coverage reporting with [Istanbul], [nyc], and [Codecov].
 - Continuous testing and automated package publishing with [CircleCI].
 - [Keep a CHANGELOG].
@@ -296,7 +296,7 @@ $ yarn run format
 
 Unit testing is handled by [AVA]
 and coverage is reported by [Istanbul] and uploaded to [Codecov].
-Watch and run tests on change with
+Watch and run tests on changes with
 
 ```
 $ yarn run watch:test
@@ -308,7 +308,7 @@ Generate a coverage report with
 $ yarn run report
 ```
 
-[Codecov]: https://codecov.io/
+An HTML version will be saved in `coverage`.
 
 ##### Debugging tests
 
@@ -319,9 +319,14 @@ and start a debug session with, e.g.,
 $ yarn run ava:inspect lib/true.spec.js
 ```
 
-An HTML version will be saved in `coverage`.
+Watch and restart the debugging session on changes with
+
+```
+$ yarn run ava:inspect:watch lib/true.spec.js
+```
 
 [AVA]: https://github.com/avajs/ava
+[Codecov]: https://codecov.io/
 [Istanbul]: https://istanbul.js.org/
 
 ## Contributing
