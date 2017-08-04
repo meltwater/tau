@@ -1,6 +1,8 @@
 # Examples
 
-## Configuration
+## Running Examples Locally
+
+### Local configuration
 
 Set required and optional configuration options in `examples/local.json`, e.g.,
 
@@ -14,7 +16,7 @@ Override any option with the corresponding environment variable:
 
   - `LOG_LEVEL` (optional)
 
-## Running locally
+### Running examples with arguments
 
 List all runnable examples with
 
@@ -46,7 +48,7 @@ Automatically watch and rerun an example on changes with, e.g.,
 $ yarn run example:watch is-true | yarn run bunyan
 ```
 
-### Debugging
+#### Debugging examples
 
 Debug examples with, e.g.,
 
@@ -71,7 +73,7 @@ Automatically watch and rerun a debuggable example on changes with, e.g.,
 $ yarn run example:inspect:watch is-true | yarn run bunyan
 ```
 
-### Shell function aliases
+### Shell function aliases for running examples
 
 In bash or zsh, you may define convenience functions for the above with
 
@@ -82,7 +84,7 @@ function yrxi () { yarn run example:inspect $@ | yarn run bunyan; }
 function yrxiw () { yarn run example:inspect:watch $@ | yarn run bunyan; }
 ```
 
-## Importing
+## Importing Examples as Modules
 
 All examples are included with this package as importable modules.
 
@@ -112,7 +114,7 @@ const isTrue = examples.isTrue({log: createLogger()})
 isTrue().then(data => { console.log(data) }).catch(err => { console.error(err) })
 ```
 
-## Writing examples
+## Writing New Examples
 
 1. Create a new file in `examples`.
    All exported functions can take options and arguments with defaults, e.g.,

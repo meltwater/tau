@@ -44,7 +44,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 [Shields.io]: http://shields.io/
 [Yarn]: https://yarnpkg.com/
 
-### Bootstrapping a New Project
+### Bootstrapping a new project
 
 1. Clone the master branch of this repository with
 
@@ -103,7 +103,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 8. Update the branch protection options for `master`
    to require all status checks to pass.
 
-### Updating
+### Updating from this skeleton
 
 If you want to pull in future updates from this skeleton,
 you can fetch and merge in changes from this repository.
@@ -121,7 +121,7 @@ $ git fetch --no-tags upstream
 $ git merge upstream/master
 ```
 
-#### Changelog
+#### Changelog for this skeleton
 
 Note that `CHANGELOG.md` is just a template for this skeleton.
 The actual changes for this project are documented in the commit history
@@ -175,7 +175,7 @@ $ yarn run watch:test
 
 ## Development and Testing
 
-### Source Code
+### Source code
 
 The [makenew-node-lib source] is hosted on GitHub.
 Clone the project with
@@ -228,7 +228,7 @@ These may be set manually or by running the script `./circleci/envvars.sh`.
 
 [CircleCI]: https://circleci.com/
 
-### Tasks
+### Development tasks
 
 Primary development tasks are defined under `scripts` in `package.json`
 and available via `yarn run`.
@@ -238,7 +238,7 @@ View them with
 $ yarn run
 ```
 
-#### Production Build
+#### Production build
 
 Lint, test, and transpile the production build to `dist` with
 
