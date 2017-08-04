@@ -5,11 +5,17 @@ references:
   build: &build
     working_directory: ~/build
     steps:
+      run:
+        name: Install CA certificates
+        command: |
+          if [[ -f /bin/apk ]]; then
+            echo "alpine: $(cat /etc/alpine-release)" >> .versions
+            apk add --no-cache ca-certificates
+          fi
       - checkout
       - run:
          name: Save build versions
          command: |
-           echo "kernel: $(uname -r)" >> .versions
            echo "node: ${NODE_VERSION}" >> .versions
            echo "yarn: ${YARN_VERSION}" >> .versions
       - restore_cache:
