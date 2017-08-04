@@ -65,7 +65,19 @@ jobs:
     docker:
       - image: node:8
     <<: *build
+  node-8-alpine:
+    docker:
+      - image: node:8-alpine
+    <<: *build
   node-7:
+    docker:
+      - image: node:7
+    <<: *build
+  node-7-alpine:
+    docker:
+      - image: node:7
+    <<: *build
+  node-boron-alpine:
     docker:
       - image: node:7
     <<: *build
@@ -81,8 +93,14 @@ workflows:
   default:
     jobs:
       - node-8
+      - node-8-alpine
       - node-7
+      - node-7-alpine
+      - node-boron-alpine
       - node-boron:
           requires:
             - node-8
+            - node-8-alpine
             - node-7
+            - node-7-alpine
+            - node-boron-alpine
