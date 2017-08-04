@@ -9,6 +9,7 @@ references:
       - run:
          name: Save build versions
          command: |
+           echo "kernel: $(uname -r)" >> .versions
            echo "node: ${NODE_VERSION}" >> .versions
            echo "yarn: ${YARN_VERSION}" >> .versions
       - restore_cache:
