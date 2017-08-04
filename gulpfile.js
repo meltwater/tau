@@ -9,13 +9,13 @@ const paths = {
     '*.json',
     'data/**/*.json',
     'examples/**/*.json',
-    'fixtures/**/*.json',
-    'lib/**/*.json'
+    'fixtures/**/*.json'
   ],
   scripts: [
     '*.js',
     'examples/**/*.js',
-    'lib/**/*.js'
+    'lib/**/*.js',
+    'test/**/*.js'
   ]
 }
 
