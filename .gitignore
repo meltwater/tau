@@ -21,6 +21,9 @@ examples/local.json
 # npm config
 .npmrc
 
+# Temporary development files
+tmp
+
 # Logs
 logs
 *.log
