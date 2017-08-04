@@ -5,7 +5,7 @@ references:
   build: &build
     working_directory: ~/build
     steps:
-      run:
+      - run:
         name: Install CA certificates
         command: |
           if [[ -f /bin/apk ]]; then
