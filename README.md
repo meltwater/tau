@@ -16,7 +16,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 ### Features
 
 - [Node.js]'s [npm] package structure.
-- Fast, reliable, and secure dependency management with [yarn].
+- Fast, reliable, and secure dependency management with [Yarn].
 - Next generation JavaScript with [Babel].
 - Write working examples with configurable options and arguments.
 - Linting with the [JavaScript Standard Style] and [JSON Lint].
@@ -42,7 +42,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 [npm]: https://www.npmjs.com/
 [nyc]: https://github.com/istanbuljs/nyc
 [Shields.io]: http://shields.io/
-[yarn]: https://yarnpkg.com/
+[Yarn]: https://yarnpkg.com/
 
 ### Bootstrapping a New Project
 
@@ -131,13 +131,13 @@ and summarized under [Releases].
 
 ## Installation
 
-Add this as a dependency to your project using [yarn] with
+Add this as a dependency to your project using [Yarn] with
 
 ```
 $ yarn add @meltwater/makenew-node-lib
 ```
 
-[yarn]: https://yarnpkg.com/
+[Yarn]: https://yarnpkg.com/
 
 ## Usage
 
@@ -188,7 +188,7 @@ $ git clone git@github.com:meltwater/makenew-node-lib.git
 
 ### Requirements
 
-You will need [Node.js] with [yarn].
+You will need [Node.js] with [Yarn].
 
 Be sure that all commands run under the correct Node version, e.g.,
 if using [nvm], install the correct version with
