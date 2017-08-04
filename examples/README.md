@@ -25,7 +25,7 @@ $ yarn run example
 Run provided examples with, e.g.,
 
 ```
-$ yarn run example -- is-true | yarn run bunyan
+$ yarn run example is-true | yarn run bunyan
 ```
 
 or more compactly with, e.g.,
@@ -43,7 +43,7 @@ $ yarn run example is-true false | yarn bunyan
 Automatically watch and rerun an example on changes with, e.g.,
 
 ```
-$ yarn run example:watch -- is-true | yarn run bunyan
+$ yarn run example:watch is-true | yarn run bunyan
 ```
 
 ### Debugging
@@ -51,7 +51,7 @@ $ yarn run example:watch -- is-true | yarn run bunyan
 Debug examples with, e.g.,
 
 ```
-$ yarn run example:inspect -- is-true | yarn run bunyan
+$ yarn run example:inspect is-true | yarn run bunyan
 ```
 
 For examples which run a single process and then exit,
@@ -68,7 +68,7 @@ export default ({log}) => async () => {
 Automatically watch and rerun a debuggable example on changes with, e.g.,
 
 ```
-$ yarn run example:inspect:watch -- is-true | yarn run bunyan
+$ yarn run example:inspect:watch is-true | yarn run bunyan
 ```
 
 ### Shell function aliases
