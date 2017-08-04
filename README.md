@@ -18,7 +18,7 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 - [Node.js]'s [npm] package structure.
 - Fast, reliable, and secure dependency management with [Yarn].
 - Next generation JavaScript with [Babel].
-- Write working examples with configurable options and arguments.
+- Write debuggable examples with configurable options and arguments.
 - Linting with the [JavaScript Standard Style] and [JSON Lint].
 - Automatically lint on changes with [gulp].
 - Futuristic unit testing with [AVA].
@@ -197,7 +197,7 @@ if using [nvm], install the correct version with
 $ nvm install
 ```
 
-and set the active version for each shell session with
+Set the active version for each shell session with
 
 ```
 $ nvm use
@@ -216,12 +216,14 @@ $ yarn
 
 _CircleCI should already be configured: this section is for reference only._
 
-The following environment variables must be set on CircleCI:
+The following environment variables must be set on [CircleCI]:
 
 - `NPM_TOKEN`: npm token for installing and publishing private packages.
 - `CODECOV_TOKEN`: Codecov token for uploading coverage reports (optional).
 
 These may be set manually or by running the script `./circleci/envvars.sh`.
+
+[CircleCI]: https://circleci.com/
 
 ### Tasks
 
@@ -233,6 +235,16 @@ View them with
 $ yarn run
 ```
 
+#### Examples
+
+**See the [full documentation on using examples](./examples).**
+
+View all examples with
+
+```
+$ yarn run example
+```
+
 #### Production Build
 
 Lint, test, and transpile the production build to `dist` with
@@ -242,6 +254,8 @@ $ yarn run dist
 ```
 
 ##### Publishing a new release
+
+_Update the CHANGELOG before each new release._
 
 Release a new version using [`npm version`][npm version].
 This will run all tests, update the version number,
@@ -280,7 +294,8 @@ $ yarn run format
 
 #### Tests
 
-Unit testing is handled by [AVA] and coverage is reported by [Istanbul].
+Unit testing is handled by [AVA]
+and coverage is reported by [Istanbul] and uploaded to [Codecov].
 Watch and run tests on change with
 
 ```
@@ -292,6 +307,8 @@ Generate a coverage report with
 ```
 $ yarn run report
 ```
+
+[Codecov]: https://codecov.io/
 
 ##### Debugging tests
 
