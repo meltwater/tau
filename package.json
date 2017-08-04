@@ -37,7 +37,7 @@
     "dist": "yarn run build",
     "predist": "yarn test",
     "package": "npm pack",
-    "prepackage": "yarn run dist",
+    "prepackage": "yarn run build",
     "preversion": "yarn run dist",
     "postversion": "git push && git push --tags",
     "example": "babel-node examples",

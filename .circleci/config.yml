@@ -39,7 +39,12 @@ references:
           paths: node_modules
       - run:
           name: Build package
-          command: yarn run package
+          command: |
+            if [[ "${PUBLISH}" == 'true' ]]; then
+              yarn run package
+            else
+              yarn run dist
+            fi
       - run:
           name: Codecov
           command: |
@@ -78,6 +83,10 @@ jobs:
       - image: node:7
     <<: *build
   node-boron:
+    docker:
+      - image: node:boron
+    <<: *build
+  publish:
     environment:
       PUBLISH: 'true'
     docker:
@@ -92,11 +101,13 @@ workflows:
       - node-8-alpine
       - node-7
       - node-7-alpine
+      - node-boron
       - node-boron-alpine
-      - node-boron:
+      - publish:
           requires:
             - node-8
             - node-8-alpine
             - node-7
             - node-7-alpine
+            - node-boron
             - node-boron-alpine
