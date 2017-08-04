@@ -246,16 +246,6 @@ Lint, test, and transpile the production build to `dist` with
 $ yarn run dist
 ```
 
-#### Examples
-
-**See the [full documentation on using examples](./examples).**
-
-View all examples with
-
-```
-$ yarn run example
-```
-
 ##### Publishing a new release
 
 _Update the CHANGELOG before each new release._
@@ -266,6 +256,16 @@ create and push a tagged commit,
 and trigger CircleCI to publish the new version to npm.
 
 [npm version]: https://docs.npmjs.com/cli/version
+
+#### Examples
+
+**See the [full documentation on using examples](./examples).**
+
+View all examples with
+
+```
+$ yarn run example
+```
 
 #### Linting
 
