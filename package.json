@@ -22,7 +22,6 @@
     "lib",
     "data",
     "examples",
-    "coverage",
     "dist",
     "docs"
   ],
