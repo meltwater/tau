@@ -20,6 +20,7 @@
     "yarn.lock",
     "index.js",
     "lib",
+    "data",
     "examples",
     "coverage",
     "dist",
