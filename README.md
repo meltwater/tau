@@ -214,6 +214,8 @@ $ yarn
 
 #### CircleCI
 
+_CircleCI should already be configured: this section is for reference only._
+
 The following environment variables must be set on CircleCI:
 
 - `NPM_TOKEN`: npm token for installing and publishing private packages.
