@@ -153,7 +153,7 @@ const logTrue = async () => {
   console.log(trueValue)
 }
 
-logTrue()
+logTrue().catch(err => { console.log(err) })
 // true
 ```
 
