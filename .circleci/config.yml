@@ -5,6 +5,7 @@ references:
   build: &build
     working_directory: ~/build
     steps:
+      - checkout
       - run:
           name: Install CA certificates
           command: |
@@ -12,7 +13,6 @@ references:
               echo "alpine: $(cat /etc/alpine-release)" >> .versions
               apk add --no-cache ca-certificates
             fi
-      - checkout
       - run:
           name: Save build versions
           command: |
