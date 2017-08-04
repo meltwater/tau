@@ -238,6 +238,14 @@ View them with
 $ yarn run
 ```
 
+#### Production Build
+
+Lint, test, and transpile the production build to `dist` with
+
+```
+$ yarn run dist
+```
+
 #### Examples
 
 **See the [full documentation on using examples](./examples).**
@@ -246,14 +254,6 @@ View all examples with
 
 ```
 $ yarn run example
-```
-
-#### Production Build
-
-Lint, test, and transpile the production build to `dist` with
-
-```
-$ yarn run dist
 ```
 
 ##### Publishing a new release
@@ -297,8 +297,14 @@ $ yarn run format
 
 #### Tests
 
-Unit testing is handled by [AVA]
+Unit and integration testing is handled by [AVA]
 and coverage is reported by [Istanbul] and uploaded to [Codecov].
+
+- Test files end in `.spec.js`.
+- Unit tests are placed under `lib` alongside the tested module.
+- Integration tests are placed in `test`.
+- Static files used in tests are placed in `fixtures`.
+
 Watch and run tests on changes with
 
 ```
