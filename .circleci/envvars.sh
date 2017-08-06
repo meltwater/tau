@@ -16,7 +16,7 @@ command -v jq > /dev/null \
 command -v http > /dev/null \
   || echo 'HTTPie required: https://httpie.org/'
 
-function envvar () {
+envvar () {
   token=$1
   name=$2
   value=$3
