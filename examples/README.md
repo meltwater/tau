@@ -78,10 +78,10 @@ $ yarn run example:inspect:watch is-true | yarn run bunyan
 In bash or zsh, you may define convenience functions for the above with
 
 ```bash
-function yrx () { yarn run example $@ | yarn run bunyan; }
-function yrxw () { yarn run example:watch $@ | yarn run bunyan; }
-function yrxi () { yarn run example:inspect $@ | yarn run bunyan; }
-function yrxiw () { yarn run example:inspect:watch $@ | yarn run bunyan; }
+yrx () { yarn run example $@ | yarn run bunyan; }
+yrxw () { yarn run example:watch $@ | yarn run bunyan; }
+yrxi () { yarn run example:inspect $@ | yarn run bunyan; }
+yrxiw () { yarn run example:inspect:watch $@ | yarn run bunyan; }
 ```
 
 ## Importing Examples as Modules
