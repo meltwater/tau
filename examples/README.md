@@ -1,5 +1,7 @@
 # Examples
 
+<!--- TODO: Update all uses of is-true and isTrue with added example. -->
+
 ## Running Examples Locally
 
 ### Local configuration

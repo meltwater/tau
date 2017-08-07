@@ -14,3 +14,5 @@ test('checks if true', async t => {
   t.true(await isTrue(trueValue), 'returns true when true')
   t.false(await isTrue(falseValue), 'returns false when false')
 })
+
+/* TODO: Remove this file. */

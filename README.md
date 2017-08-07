@@ -103,6 +103,8 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
 8. Update the branch protection options for `master`
    to require all status checks to pass.
 
+9. Search for all `TODO` comments to add your first module.
+
 ### Updating from this skeleton
 
 If you want to pull in future updates from this skeleton,
@@ -140,6 +142,8 @@ $ yarn add @meltwater/makenew-node-lib
 [Yarn]: https://yarnpkg.com/
 
 ## Usage
+
+<!--- TODO: Update usage example for added module(s). -->
 
 **See the complete [API documentation](./docs) and [working examples](./examples).**
 

@@ -6,10 +6,10 @@ import path from 'path'
 import { camelCase, paramCase } from 'change-case'
 import createLogger from '@meltwater/mlabs-logger'
 
-import isTrue from './is-true'
+import isTrue from './is-true' // TODO: Replace this with added example.
 
 export const examples = {
-  isTrue
+  isTrue // TODO: Replace this with added example.
 }
 
 export const envVars = [
