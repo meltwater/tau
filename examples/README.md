@@ -102,7 +102,9 @@ Create and run an example with
 import { createExample } from '@meltwater/makenew-node-lib'
 
 // createExample(exampleName, options)(...args)
-createExample('is-true')().catch(err => { console.error(err) })
+createExample('is-true')()
+  .then(data => { console.log(data) })
+  .catch(err => { console.error(err) })
 ```
 
 or import them directly with
@@ -113,7 +115,9 @@ import { examples } from '@meltwater/makenew-node-lib'
 
 const isTrue = examples.isTrue({log: createLogger()})
 
-isTrue().then(data => { console.log(data) }).catch(err => { console.error(err) })
+isTrue()
+  .then(data => { console.log(data) })
+  .catch(err => { console.error(err) })
 ```
 
 ## Writing New Examples
