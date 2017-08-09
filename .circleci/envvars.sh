@@ -8,6 +8,7 @@ echo 'This will set all required environment variables on the CircleCI project.'
 echo
 echo 'Supply all missing values when prompted.'
 echo 'Values may also be provided via the corresponding environment variable.'
+echo 'Values left blank will not be updated.'
 echo
 
 command -v jq > /dev/null \
@@ -19,10 +20,12 @@ command -v http > /dev/null \
 envvar () {
   token=$1
   name=$2
-  value=$3
-  http -a "${token}:" \
-    "https://circleci.com/api/v1.1/project/github/${repo}/envvar" \
-    name=$name value=$value
+  value=${3:-}
+  if [[ -n $value ]]; then
+    http -a "${token}:" \
+      "https://circleci.com/api/v1.1/project/github/${repo}/envvar" \
+      name=$name value=$value
+  fi
 }
 
 main () {
