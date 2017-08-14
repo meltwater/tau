@@ -35,7 +35,7 @@ main () {
   codecov_token=${CODECOV_TOKEN:-}
 
   if [[ -z $circle_token ]]; then
-    read -p 'CircleCI API token (CIRCLE_TOKEN): ' token
+    read -p 'CircleCI API token (CIRCLE_TOKEN): ' circle_token
   fi
 
   if [[ -z $npm_token ]]; then
@@ -46,8 +46,8 @@ main () {
     read -p 'Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
 
-  envvar $token 'NPM_TOKEN' "${npm_token}"
-  envvar $token 'CODECOV_TOKEN' "${codecov_token}"
+  envvar $circle_token 'NPM_TOKEN' "${npm_token}"
+  envvar $circle_token 'CODECOV_TOKEN' "${codecov_token}"
 }
 
 main
