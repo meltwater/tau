@@ -28,6 +28,11 @@ envvar () {
   name=$2
   value=${3:-}
   if [[ -n $value ]]; then
+    if [[ -z $token ]]; then
+      echo
+      echo 'Error: missing CircleCI token.'
+      exit 2
+    fi
     http -a "${token}:" \
       "https://circleci.com/api/v1.1/project/github/${repo}/envvar" \
       name=$name value=$value
@@ -58,9 +63,9 @@ main () {
     read -p 'Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
 
-  envvar $circle_token 'NPM_TOKEN' "${npm_token}"
-  envvar $circle_token 'NPM_TEAM' "${npm_team}"
-  envvar $circle_token 'CODECOV_TOKEN' "${codecov_token}"
+  envvar "${circle_token}" 'NPM_TOKEN' "${npm_token}"
+  envvar "${circle_token}" 'NPM_TEAM' "${npm_team}"
+  envvar "${circle_token}" 'CODECOV_TOKEN' "${codecov_token}"
 }
 
 noninteractive=${NONINTERACTIVE:-false}
