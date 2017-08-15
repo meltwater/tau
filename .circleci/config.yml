@@ -89,6 +89,7 @@ jobs:
   publish:
     environment:
       PUBLISH: 'true'
+      DEFAULT_NPM_TEAM: 'meltwater:read-only'
     docker:
       - image: node:boron
     <<: *build

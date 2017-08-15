@@ -32,6 +32,7 @@ main () {
   repo=$(jq -r .repository package.json)
   circle_token=${CIRCLE_TOKEN:-}
   npm_token=${NPM_TOKEN:-}
+  npm_team=${NPM_TEAM:-}
   codecov_token=${CODECOV_TOKEN:-}
 
   if [[ -z $circle_token ]]; then
@@ -42,11 +43,16 @@ main () {
     read -p 'NPM token (NPM_TOKEN): ' npm_token
   fi
 
+  if [[ -z $npm_team ]]; then
+    read -p 'NPM team (NPM_TEAM): ' npm_team
+  fi
+
   if [[ -z $codecov_token ]]; then
     read -p 'Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
 
   envvar $circle_token 'NPM_TOKEN' "${npm_token}"
+  envvar $circle_token 'NPM_TEAM' "${npm_team}"
   envvar $circle_token 'CODECOV_TOKEN' "${codecov_token}"
 }
 
