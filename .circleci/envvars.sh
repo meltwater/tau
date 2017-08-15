@@ -3,16 +3,19 @@
 set -e
 set -u
 
-echo
-echo 'This will set all required environment variables on the CircleCI project.'
-echo 'Values may also be provided via' \
-     'the corresponding environment variable, e.g.,'
-echo
-echo '    $ NPM_TOKEN=token .circleci/envvars.sh'
-echo
-echo 'Supply values to set when prompted.' \
-     'Values left blank will not be updated.'
-echo
+help () {
+  echo
+  echo 'This will set all required environment variables on the CircleCI project.'
+  echo
+  echo 'Supply values to set when prompted.' \
+       'Values left blank will not be updated.'
+  echo
+  echo 'Values may also be provided via the corresponding environment variable' \
+       '(set NONINTERACTIVE=true to skip all prompts), e.g.,'
+  echo
+  echo '    $ NONINTERACTIVE=true NPM_TOKEN=token .circleci/envvars.sh'
+  echo
+}
 
 command -v jq > /dev/null \
   || echo 'jq required: https://stedolan.github.io/jq/'
@@ -32,25 +35,26 @@ envvar () {
 }
 
 main () {
+  noninteractive=$1
   repo=$(jq -r .repository package.json)
-  circle_token=${CIRCLE_TOKEN:-}
-  npm_token=${NPM_TOKEN:-}
-  npm_team=${NPM_TEAM:-}
-  codecov_token=${CODECOV_TOKEN:-}
 
-  if [[ -z $circle_token ]]; then
+  circle_token=${CIRCLE_TOKEN:-}
+  if [[ -z $circle_token && $noninteractive != 'true' ]]; then
     read -p 'CircleCI API token (CIRCLE_TOKEN): ' circle_token
   fi
 
-  if [[ -z $npm_token ]]; then
+  npm_token=${NPM_TOKEN:-}
+  if [[ -z $npm_token && $noninteractive != 'true' ]]; then
     read -p 'NPM token (NPM_TOKEN): ' npm_token
   fi
 
-  if [[ -z $npm_team ]]; then
+  npm_team=${NPM_TEAM:-}
+  if [[ -z $npm_team && $noninteractive != 'true' ]]; then
     read -p 'NPM team (NPM_TEAM): ' npm_team
   fi
 
-  if [[ -z $codecov_token ]]; then
+  codecov_token=${CODECOV_TOKEN:-}
+  if [[ -z $codecov_token && $noninteractive != 'true' ]]; then
     read -p 'Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
 
@@ -59,4 +63,8 @@ main () {
   envvar $circle_token 'CODECOV_TOKEN' "${codecov_token}"
 }
 
-main
+noninteractive=${NONINTERACTIVE:-false}
+if [[ $noninteractive != 'true' ]]; then
+  help
+fi
+main $noninteractive
