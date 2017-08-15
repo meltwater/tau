@@ -5,10 +5,13 @@ set -u
 
 echo
 echo 'This will set all required environment variables on the CircleCI project.'
+echo 'Values may also be provided via' \
+     'the corresponding environment variable, e.g.,'
 echo
-echo 'Supply all missing values when prompted.'
-echo 'Values may also be provided via the corresponding environment variable.'
-echo 'Values left blank will not be updated.'
+echo '    $ NPM_TOKEN=token .circleci/envvars.sh'
+echo
+echo 'Supply values to set when prompted.' \
+     'Values left blank will not be updated.'
 echo
 
 command -v jq > /dev/null \
