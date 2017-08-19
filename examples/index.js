@@ -12,9 +12,11 @@ export const examples = {
   isTrue // TODO: Replace this with added example.
 }
 
-export const envVars = [
+const envVars = [
   'LOG_LEVEL'
 ]
+
+const defaultOptions = {}
 
 const envOptions = env => Object.assign.apply({}, [{},
   ...envVars.filter(k => env[k] !== undefined)
@@ -24,7 +26,7 @@ const envOptions = env => Object.assign.apply({}, [{},
 const localOptions = local => (
   fs.existsSync(local)
     ? JSON.parse(fs.readFileSync(local))
-    : {}
+    : defaultOptions
 )
 
 const createExample = (name, {

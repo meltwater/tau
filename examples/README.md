@@ -155,7 +155,7 @@ isTrue()
 
    ```js
    /* examples/index.js */
-   export const envVars = [
+   const envVars = [
      'LOG_LEVEL',
      'FOO_API',
      // ...
