@@ -36,10 +36,9 @@ help_npm_team () {
 }
 
 help_codecov () {
-  repo=$1
   echo
   echo '> Get the Repository Upload Token at' \
-       "https://codecov.io/gh/${repo}/settings"
+       "https://codecov.io/gh/${circle_repo}/settings"
 }
 
 command -v jq > /dev/null \
@@ -49,24 +48,23 @@ command -v http > /dev/null \
   || echo 'HTTPie required: https://httpie.org/'
 
 envvar () {
-  token=$1
-  name=$2
-  value=${3:-}
+  name=$1
+  value=${2:-}
   if [[ -n $value ]]; then
-    if [[ -z $token ]]; then
+    if [[ -z $circle_token ]]; then
       echo
       echo 'Error: missing CircleCI token.'
       exit 2
     fi
-    http -a "${token}:" \
-      "https://circleci.com/api/v1.1/project/github/${repo}/envvar" \
+    http -a "${circle_token}:" \
+      "https://circleci.com/api/v1.1/project/github/${circle_repo}/envvar" \
       name=$name value=$value
   fi
 }
 
 main () {
   noninteractive=$1
-  repo=$(jq -r .repository package.json)
+  circle_repo=$(jq -r .repository package.json)
 
   circle_token=${CIRCLE_TOKEN:-}
   [[ -n "${circle_token}" || $noninteractive == 'true' ]] || help_circleci
@@ -87,14 +85,14 @@ main () {
   fi
 
   codecov_token=${CODECOV_TOKEN:-}
-  [[ -n "${codecov_token}" || $noninteractive == 'true' ]] || help_codecov $repo
+  [[ -n "${codecov_token}" || $noninteractive == 'true' ]] || help_codecov
   if [[ -z $codecov_token && $noninteractive != 'true' ]]; then
     read -p '> Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
 
-  envvar "${circle_token}" 'NPM_TOKEN' "${npm_token}"
-  envvar "${circle_token}" 'NPM_TEAM' "${npm_team}"
-  envvar "${circle_token}" 'CODECOV_TOKEN' "${codecov_token}"
+  envvar 'NPM_TOKEN' "${npm_token}"
+  envvar 'NPM_TEAM' "${npm_team}"
+  envvar 'CODECOV_TOKEN' "${codecov_token}"
 }
 
 noninteractive=${NONINTERACTIVE:-false}
