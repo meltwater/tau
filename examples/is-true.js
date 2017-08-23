@@ -2,5 +2,7 @@ import { isTrue } from '../lib'
 
 export default ({log}) => async (check = true) => {
   log.debug({check}, 'Input')
-  return isTrue(check)
+  const result = await isTrue(check)
+  if (!result) throw new Error('Check was not true.')
+  return result
 }
