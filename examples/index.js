@@ -3,7 +3,7 @@ import 'source-map-support/register'
 import fs from 'fs'
 import path from 'path'
 
-import createLogger from 'bunyan'
+import { createLogger as createBunyan, stdSerializers } from 'bunyan'
 import { camelCase, paramCase } from 'change-case'
 
 import isTrue from './is-true' // TODO: Replace this with added example.
@@ -28,6 +28,11 @@ const localOptions = local => (
     ? JSON.parse(fs.readFileSync(local))
     : defaultOptions
 )
+
+const createLogger = ({serializers, ...options}) => createBunyan({
+  serializers: {err: stdSerializers.err, ...serializers},
+  ...options
+})
 
 const createExample = (name, {
   log = createLogger({name}),
