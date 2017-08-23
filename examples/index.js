@@ -3,8 +3,8 @@ import 'source-map-support/register'
 import fs from 'fs'
 import path from 'path'
 
+import createLogger from 'bunyan'
 import { camelCase, paramCase } from 'change-case'
-import createLogger from '@meltwater/mlabs-logger'
 
 import isTrue from './is-true' // TODO: Replace this with added example.
 

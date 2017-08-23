@@ -94,7 +94,6 @@
     "node": ">=6.9.5"
   },
   "dependencies": {
-    "@meltwater/mlabs-logger": "^2.0.0",
     "change-case": "^3.0.1",
     "util.promisify": "^1.0.0"
   },

@@ -110,7 +110,7 @@ createExample('is-true')()
 or import them directly with
 
 ```js
-import createLogger from '@meltwater/mlabs-logger'
+import createLogger from 'bunyan'
 import { examples } from '@meltwater/makenew-node-lib'
 
 const isTrue = examples.isTrue({log: createLogger()})

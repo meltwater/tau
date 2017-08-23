@@ -44,15 +44,6 @@
   dependencies:
     arrify "^1.0.1"
 
-"@meltwater/mlabs-logger@^2.0.0":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@meltwater/mlabs-logger/-/mlabs-logger-2.0.7.tgz#5d5f7a50bc8fda0f43e1040b0e89b3ca636040b8"
-  dependencies:
-    bunyan "^1.8.5"
-    change-case "^3.0.1"
-    debug "^3.0.0"
-    stream-blackhole "^1.0.3"
-
 "JSV@>= 4.0.x":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/JSV/-/JSV-4.0.2.tgz#d077f6825571f82132f9dffaed587b4029feff57"
@@ -986,7 +977,7 @@ builtin-modules@^1.0.0, builtin-modules@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
 
-bunyan@^1.8.10, bunyan@^1.8.5:
+bunyan@^1.8.10:
   version "1.8.12"
   resolved "https://registry.yarnpkg.com/bunyan/-/bunyan-1.8.12.tgz#f150f0f6748abdd72aeae84f04403be2ef113797"
   optionalDependencies:
@@ -1440,12 +1431,6 @@ debug-log@^1.0.0, debug-log@^1.0.1:
 debug@^2.1.1, debug@^2.2.0, debug@^2.6.3, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
-  dependencies:
-    ms "2.0.0"
-
-debug@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.0.0.tgz#1d2feae53349047b08b264ec41906ba17a8516e4"
   dependencies:
     ms "2.0.0"
 
@@ -4880,10 +4865,6 @@ standard@^10.0.0, standard@^10.0.2:
     eslint-plugin-react "~6.10.0"
     eslint-plugin-standard "~3.0.1"
     standard-engine "~7.0.0"
-
-stream-blackhole@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/stream-blackhole/-/stream-blackhole-1.0.3.tgz#6fc2e2c2e9d9fde6be8c68d3db88de09802e4d63"
 
 stream-combiner@~0.0.4:
   version "0.0.4"
