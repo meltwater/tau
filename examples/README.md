@@ -92,7 +92,7 @@ All examples are included with this package as importable modules.
 
 _Imported examples are not supported as a stable API._
 
-_Some examples may use devDependencies
+_Some examples may use devDependencies, e.g., bunyan,
 which need to be installed as dependencies
 by any package which imports them._
 
