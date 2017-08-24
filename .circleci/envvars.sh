@@ -69,25 +69,25 @@ main () {
   repo=$(jq -r .repository package.json)
 
   circle_token=${CIRCLE_TOKEN:-}
-  [[ -n "${circle_token}" ]] || help_circleci
+  [[ -n "${circle_token}" || $noninteractive == 'true' ]] || help_circleci
   if [[ -z $circle_token && $noninteractive != 'true' ]]; then
     read -p '> CircleCI API token (CIRCLE_TOKEN): ' circle_token
   fi
 
   npm_token=${NPM_TOKEN:-}
-  [[ -n "${npm_token}" ]] || help_npm_token
+  [[ -n "${npm_token}" || $noninteractive == 'true' ]] || help_npm_token
   if [[ -z $npm_token && $noninteractive != 'true' ]]; then
     read -p '> NPM token (NPM_TOKEN): ' npm_token
   fi
 
   npm_team=${NPM_TEAM:-}
-  [[ -n "${npm_team}" ]] || help_npm_team
+  [[ -n "${npm_team}" || $noninteractive == 'true' ]] || help_npm_team
   if [[ -z $npm_team && $noninteractive != 'true' ]]; then
     read -p '> NPM team (NPM_TEAM): ' npm_team
   fi
 
   codecov_token=${CODECOV_TOKEN:-}
-  [[ -n "${codecov_token}" ]] || help_codecov $repo
+  [[ -n "${codecov_token}" || $noninteractive == 'true' ]] || help_codecov $repo
   if [[ -z $codecov_token && $noninteractive != 'true' ]]; then
     read -p '> Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
