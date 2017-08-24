@@ -130,12 +130,19 @@ and summarized under [Releases].
 
 ## Installation
 
-Add this as a dependency to your project using [Yarn] with
+Add this as a dependency to your project using [npm] with
+
+```
+$ npm install @meltwater/makenew-node-lib
+```
+
+or using [Yarn] with
 
 ```
 $ yarn add @meltwater/makenew-node-lib
 ```
 
+[npm]: https://www.npmjs.com/
 [Yarn]: https://yarnpkg.com/
 
 ## Usage
@@ -189,7 +196,7 @@ $ git clone git@github.com:meltwater/makenew-node-lib.git
 
 ### Requirements
 
-You will need [Node.js] with [Yarn]
+You will need [Node.js] with [npm], [Yarn],
 and a [Node.js debugging] client.
 
 Be sure that all commands run under the correct Node version, e.g.,
@@ -213,7 +220,7 @@ $ yarn
 
 [Node.js]: https://nodejs.org/
 [Node.js debugging]: https://nodejs.org/en/docs/guides/debugging-getting-started/
-
+[npm]: https://www.npmjs.com/
 [nvm]: https://github.com/creationix/nvm
 
 #### CircleCI
