@@ -8,7 +8,7 @@
 
 ## Description
 
-Bootstrap a new [Node.js] [npm package] in less than a minute.
+Bootstrap a new [Node.js] [npm package] in five minutes or less.
 
 [Node.js]: https://nodejs.org/
 [npm package]: https://docs.npmjs.com/how-npm-works/packages
@@ -59,20 +59,9 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    $ git reset --hard <version-tag>
    ```
 
-2. Create an empty (non-initialized) repository on GitHub.
+2. Create an empty (**non-initialized**) repository on GitHub.
 
-3. Create a new [CircleCI] project.
-   Add `NPM_TOKEN` as an environment variable.
-   Create a project API token with status scope
-   to use for the README build badge.
-
-4. Optionally setup [Codecov].
-   Navigate to the settings page for the Codecov project,
-   use the Upload Token to add `CODECOV_TOKEN`
-   as an environment variable to the CircleCI project,
-   and note the Graphing Token to use for the README badge.
-
-5. Run
+3. Run
 
    ```
    $ ./makenew.sh
@@ -82,16 +71,22 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    remove the git remote, remove upstream tags,
    and stage changes for commit.
 
-6. Add and commit the changes and push to GitHub with
+4. Create the required CircleCI environment variables with
 
    ```
-   $ git add .
+   $ .circleci/envvars.sh
+   ```
+
+5. Review, commit, and push the changes to GitHub with
+
+   ```
+   $ git diff --cached
    $ git commit -m "Replace makenew boilerplate"
    $ git remote add origin git@github.com:meltwater/<new-node-lib>.git
    $ git push -u origin master
    ```
 
-7. Ensure the CircleCI build passes,
+6. Ensure the CircleCI build passes,
    then publish the initial version of the package with
 
    ```
@@ -100,10 +95,12 @@ Bootstrap a new [Node.js] [npm package] in less than a minute.
    $ npm version patch
    ```
 
-8. Update the branch protection options for `master`
+7. Update the GitHub branch protection options for `master`
    to require all status checks to pass.
+   Disable the GitHub repository projects and wiki options (unless desired).
+   Add any required GitHub teams or collaborators to the repository.
 
-9. Search for all `TODO` comments to add your first module.
+8. Search for all `TODO` comments to add your first module.
 
 ### Updating from this skeleton
 
