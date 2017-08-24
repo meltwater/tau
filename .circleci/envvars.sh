@@ -17,14 +17,22 @@ help () {
        'update NPM_TOKEN with'
   echo
   echo '    $ NONINTERACTIVE=true NPM_TOKEN=token .circleci/envvars.sh'
-  echo
 }
 
 help_circleci () {
   echo
   echo '> Get a personal CircleCI API Token at' \
        'https://circleci.com/account/api'
+}
+
+help_npm_token () {
   echo
+  echo '> Use a valid token for the meltwater-mlabs user'
+}
+
+help_npm_team () {
+  echo
+  echo '> Use meltwater:read-only'
 }
 
 help_codecov () {
@@ -32,7 +40,6 @@ help_codecov () {
   echo
   echo '> Get the Repository Upload Token at' \
        "https://codecov.io/gh/${repo}/settings"
-  echo
 }
 
 command -v jq > /dev/null \
@@ -64,23 +71,25 @@ main () {
   circle_token=${CIRCLE_TOKEN:-}
   [[ -n "${circle_token}" ]] || help_circleci
   if [[ -z $circle_token && $noninteractive != 'true' ]]; then
-    read -p 'CircleCI API token (CIRCLE_TOKEN): ' circle_token
+    read -p '> CircleCI API token (CIRCLE_TOKEN): ' circle_token
   fi
 
   npm_token=${NPM_TOKEN:-}
+  [[ -n "${npm_token}" ]] || help_npm_token
   if [[ -z $npm_token && $noninteractive != 'true' ]]; then
-    read -p 'NPM token (NPM_TOKEN): ' npm_token
+    read -p '> NPM token (NPM_TOKEN): ' npm_token
   fi
 
   npm_team=${NPM_TEAM:-}
+  [[ -n "${npm_team}" ]] || help_npm_team
   if [[ -z $npm_team && $noninteractive != 'true' ]]; then
-    read -p 'NPM team (NPM_TEAM): ' npm_team
+    read -p '> NPM team (NPM_TEAM): ' npm_team
   fi
 
   codecov_token=${CODECOV_TOKEN:-}
   [[ -n "${codecov_token}" ]] || help_codecov $repo
   if [[ -z $codecov_token && $noninteractive != 'true' ]]; then
-    read -p 'Codecov token (CODECOV_TOKEN): ' codecov_token
+    read -p '> Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
 
   envvar "${circle_token}" 'NPM_TOKEN' "${npm_token}"
