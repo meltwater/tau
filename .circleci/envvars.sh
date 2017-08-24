@@ -10,13 +10,14 @@ help () {
   echo '# Supply values to set when prompted.'
   echo '# Values left blank will not be updated.'
   echo
-  echo 'Values may also be provided via the corresponding environment variable.'
+  echo 'Values may also be provided via' \
+       'the corresponding environment variable (prefixed with CI_).'
   echo 'Optionally, set NONINTERACTIVE=true to skip all prompts.'
   echo
   echo 'For example, assuming CIRCLE_TOKEN was set in your environment,' \
        'update NPM_TOKEN with'
   echo
-  echo '    $ NONINTERACTIVE=true NPM_TOKEN=token .circleci/envvars.sh'
+  echo '    $ NONINTERACTIVE=true CI_NPM_TOKEN=token .circleci/envvars.sh'
 }
 
 help_circleci () {
@@ -72,19 +73,19 @@ main () {
     read -p '> CircleCI API token (CIRCLE_TOKEN): ' circle_token
   fi
 
-  npm_token=${NPM_TOKEN:-}
+  npm_token=${CI_NPM_TOKEN:-}
   [[ -n "${npm_token}" || $noninteractive == 'true' ]] || help_npm_token
   if [[ -z $npm_token && $noninteractive != 'true' ]]; then
     read -p '> NPM token (NPM_TOKEN): ' npm_token
   fi
 
-  npm_team=${NPM_TEAM:-}
+  npm_team=${CI_NPM_TEAM:-}
   [[ -n "${npm_team}" || $noninteractive == 'true' ]] || help_npm_team
   if [[ -z $npm_team && $noninteractive != 'true' ]]; then
     read -p '> NPM team (NPM_TEAM): ' npm_team
   fi
 
-  codecov_token=${CODECOV_TOKEN:-}
+  codecov_token=${CI_CODECOV_TOKEN:-}
   [[ -n "${codecov_token}" || $noninteractive == 'true' ]] || help_codecov
   if [[ -z $codecov_token && $noninteractive != 'true' ]]; then
     read -p '> Codecov token (CODECOV_TOKEN): ' codecov_token
