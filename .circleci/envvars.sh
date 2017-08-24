@@ -5,15 +5,33 @@ set -u
 
 help () {
   echo
-  echo 'This will set all required environment variables on the CircleCI project.'
+  echo '# This will set all required environment variables on the CircleCI project.'
   echo
-  echo 'Supply values to set when prompted.' \
-       'Values left blank will not be updated.'
+  echo '# Supply values to set when prompted.'
+  echo '# Values left blank will not be updated.'
   echo
-  echo 'Values may also be provided via the corresponding environment variable' \
-       '(set NONINTERACTIVE=true to skip all prompts), e.g.,'
+  echo 'Values may also be provided via the corresponding environment variable.'
+  echo 'Optionally, set NONINTERACTIVE=true to skip all prompts.'
+  echo
+  echo 'For example, assuming CIRCLE_TOKEN was set in your environment,' \
+       'update NPM_TOKEN with'
   echo
   echo '    $ NONINTERACTIVE=true NPM_TOKEN=token .circleci/envvars.sh'
+  echo
+}
+
+help_circleci () {
+  echo
+  echo '> Get a personal CircleCI API Token at' \
+       'https://circleci.com/account/api'
+  echo
+}
+
+help_codecov () {
+  repo=$1
+  echo
+  echo '> Get the Repository Upload Token at' \
+       "https://codecov.io/gh/${repo}/settings"
   echo
 }
 
@@ -44,6 +62,7 @@ main () {
   repo=$(jq -r .repository package.json)
 
   circle_token=${CIRCLE_TOKEN:-}
+  [[ -n "${circle_token}" ]] || help_circleci
   if [[ -z $circle_token && $noninteractive != 'true' ]]; then
     read -p 'CircleCI API token (CIRCLE_TOKEN): ' circle_token
   fi
@@ -59,6 +78,7 @@ main () {
   fi
 
   codecov_token=${CODECOV_TOKEN:-}
+  [[ -n "${codecov_token}" ]] || help_codecov $repo
   if [[ -z $codecov_token && $noninteractive != 'true' ]]; then
     read -p 'Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
