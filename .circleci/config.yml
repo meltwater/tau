@@ -107,6 +107,9 @@ workflows:
       - node-boron
       - node-boron-alpine
       - publish:
+          filters:
+            branches:
+              only: /^(v[0-9]|master)/
           requires:
             - node-8
             - node-8-alpine
