@@ -5,14 +5,14 @@ references:
   build: &build
     working_directory: ~/build
     steps:
-      - checkout
       - run:
-          name: Install CA certificates
+          name: Install Alpine Linux build dependencies
           command: |
             if [[ -f /sbin/apk ]]; then
               echo "alpine: $(cat /etc/alpine-release)" >> .versions
-              apk add --no-cache ca-certificates
+              apk add --no-cache ca-certificates git openssh-client
             fi
+      - checkout
       - run:
           name: Save build versions
           command: |
