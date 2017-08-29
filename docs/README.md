@@ -15,7 +15,8 @@ You can import any of them like this:
 import { isTrue } from '@meltwater/makenew-node-lib'
 ```
 
-## `isTrue(check)`
+---
+### `isTrue(check)`
 
 Checks if its argument is true.
 
@@ -27,7 +28,7 @@ Checks if its argument is true.
 
 (*boolean*): If `check` is `true`.
 
-### Example
+#### Example
 
 ```js
 async () => {
