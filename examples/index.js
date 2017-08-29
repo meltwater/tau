@@ -25,7 +25,7 @@ const envOptions = env => Object.assign.apply({}, [{},
 
 const localOptions = local => (
   fs.existsSync(local)
-    ? JSON.parse(fs.readFileSync(local))
+    ? Object.assign({}, defaultOptions, JSON.parse(fs.readFileSync(local)))
     : defaultOptions
 )
 
