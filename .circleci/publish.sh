@@ -20,13 +20,11 @@ if [[ "$(git log -1 --pretty='%s')" == "${pkg_version}" ]]; then
     echo
     echo "> Already published ${pkg_name}@${pkg_version}."
     echo
-    exit
   fi
 else
   echo
   echo '> Nothing to publish: not a new version commit.'
   echo
-  exit
 fi
 
 if [[ -n "$(npm view ${pkg_name})" && -n "${NPM_TEAM:-}" ]]; then
