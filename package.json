@@ -94,6 +94,7 @@
     "node": ">=6.9.5"
   },
   "dependencies": {
+    "bunyan": "^1.8.12",
     "change-case": "^3.0.1",
     "util.promisify": "^1.0.0"
   },
@@ -103,7 +104,6 @@
     "babel-preset-env": "^1.1.4",
     "babel-preset-stage-3": "^6.17.0",
     "babel-watch": "^2.0.7",
-    "bunyan": "^1.8.10",
     "del-cli": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
