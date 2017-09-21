@@ -42,11 +42,11 @@ help_codecov () {
        "https://codecov.io/gh/${circle_repo}/settings"
 }
 
-command -v jq > /dev/null \
-  || echo 'jq required: https://stedolan.github.io/jq/'
+command -v jq >/dev/null 2>&1 || \
+  (echo 'jq required: https://stedolan.github.io/jq/' && exit 2)
 
-command -v http > /dev/null \
-  || echo 'HTTPie required: https://httpie.org/'
+command -v http >/dev/null 2>&1 || \
+  (echo 'HTTPie required: https://httpie.org/' && exit 2)
 
 envvar () {
   name=$1
