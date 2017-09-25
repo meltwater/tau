@@ -1,6 +1,6 @@
 {
   "name": "@meltwater/makenew-node-lib",
-  "version": "2.3.7",
+  "version": "2.3.8",
   "description": "npm package skeleton for Meltwater Node.js libraries.",
   "main": "./dist/index.js",
   "module": "./index.js",
