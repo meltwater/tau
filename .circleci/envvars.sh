@@ -45,9 +45,6 @@ help_codecov () {
 command -v jq >/dev/null 2>&1 || \
   (echo 'jq required: https://stedolan.github.io/jq/' && exit 2)
 
-command -v http >/dev/null 2>&1 || \
-  (echo 'HTTPie required: https://httpie.org/' && exit 2)
-
 envvar () {
   name=$1
   value=${2:-}
@@ -57,9 +54,12 @@ envvar () {
       echo 'Error: missing CircleCI token.'
       exit 2
     fi
-    http -a "${circle_token}:" \
-      "https://circleci.com/api/v1.1/project/github/${circle_repo}/envvar" \
-      name=$name value=$value
+
+    curl -X POST \
+      --header 'Content-Type: application/json' \
+      -u "${circle_token}:" \
+      -d '{"name": "'$name'", "value": "'$value'"}' \
+      "https://circleci.com/api/v1.1/project/github/${circle_repo}/envvar"
   fi
 }
 
