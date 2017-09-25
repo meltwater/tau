@@ -14,7 +14,7 @@ help () {
        'the corresponding environment variable (prefixed with CI_).'
   echo 'Optionally, set NONINTERACTIVE=true to skip all prompts.'
   echo
-  echo 'For example, assuming CIRCLE_TOKEN was set in your environment,' \
+  echo 'For example, assuming CIRCLE_TOKEN is set in your environment,' \
        'update NPM_TOKEN with'
   echo
   echo '    $ NONINTERACTIVE=true CI_NPM_TOKEN=token .circleci/envvars.sh'
