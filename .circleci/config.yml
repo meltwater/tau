@@ -24,7 +24,7 @@ references:
       - restore_cache:
           key: yarn-cache
       - restore_cache:
-          key: module-cache-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
+          key: module-cache-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
       - run:
           name: Set yarn cache
           command: yarn config set cache-folder $HOME/.yarn-cache
@@ -38,7 +38,7 @@ references:
           key: yarn-cache
           paths: $HOME/.yarn-cache
       - save_cache:
-          key: module-cache-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
+          key: module-cache-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
           paths: node_modules
       - run:
           name: Build package
