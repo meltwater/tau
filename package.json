@@ -94,8 +94,7 @@
     "node": ">=6.9.5"
   },
   "dependencies": {
-    "bunyan": "^1.8.12",
-    "change-case": "^3.0.1",
+    "@meltwater/examplr": "^1.0.0",
     "util.promisify": "^1.0.0"
   },
   "devDependencies": {

@@ -44,6 +44,13 @@
   dependencies:
     arrify "^1.0.1"
 
+"@meltwater/examplr@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@meltwater/examplr/-/examplr-1.0.0.tgz#6aadfd2233acb420cbd5583ab57372bcb96ab812"
+  dependencies:
+    bunyan "^1.8.12"
+    change-case "^3.0.1"
+
 "JSV@>= 4.0.x":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/JSV/-/JSV-4.0.2.tgz#d077f6825571f82132f9dffaed587b4029feff57"
