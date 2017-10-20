@@ -94,10 +94,10 @@
     "node": ">=6.9.5"
   },
   "dependencies": {
-    "@meltwater/examplr": "^1.0.0",
     "util.promisify": "^1.0.0"
   },
   "devDependencies": {
+    "@meltwater/examplr": "^1.0.0",
     "ava": "^0.22.0",
     "babel-cli": "^6.18.0",
     "babel-preset-env": "^1.1.4",
