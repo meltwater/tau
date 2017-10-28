@@ -21,7 +21,6 @@
     "index.js",
     "lib",
     "data",
-    "examples",
     "dist",
     "docs"
   ],
@@ -33,7 +32,6 @@
     "prebuild": "yarn run clean",
     "build:index": "babel --source-maps --out-dir ./dist ./index.js",
     "build:lib": "babel --source-maps --ignore='*.spec.js' --out-dir ./dist/lib ./lib",
-    "build:examples": "babel --source-maps --out-dir ./dist/examples ./examples",
     "dist": "yarn run build",
     "predist": "yarn test",
     "package": "npm pack",

@@ -16,16 +16,14 @@ const envVars = [
 
 const defaultOptions = {}
 
-const { createExample, runExample } = createExamples({
-  examples,
-  envVars,
-  defaultOptions
-})
-
 if (require.main === module) {
+  const { runExample } = createExamples({
+    examples,
+    envVars,
+    defaultOptions
+  })
+
   runExample({
     local: path.resolve(__dirname, 'local.json')
   })
 }
-
-export default createExample
