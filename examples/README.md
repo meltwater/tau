@@ -1,6 +1,6 @@
 # Examples
 
-<!--- TODO: Update all uses of is-true and isTrue with added example. -->
+<!--- TODO: Update all uses of is-true with added example. -->
 
 ## Running Examples Locally
 
