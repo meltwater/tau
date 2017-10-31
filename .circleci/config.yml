@@ -67,11 +67,11 @@ jobs:
     environment:
       COVERAGE: 'true'
     docker:
-      - image: node:8
+      - image: node:carbon
     <<: *build
   node-carbon-alpine:
     docker:
-      - image: node:8-alpine
+      - image: node:carbon-alpine
     <<: *build
   node-boron-alpine:
     docker:
@@ -92,8 +92,8 @@ workflows:
   version: 2
   default:
     jobs:
-      - node-8
-      - node-8-alpine
+      - node-carbon
+      - node-carbon-alpine
       - node-boron
       - node-boron-alpine
       - publish:
@@ -101,7 +101,7 @@ workflows:
             branches:
               only: /^(v[0-9]|master)/
           requires:
-            - node-8
-            - node-8-alpine
+            - node-carbon
+            - node-carbon-alpine
             - node-boron
             - node-boron-alpine
