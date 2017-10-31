@@ -11,7 +11,8 @@ export const examples = {
 }
 
 const envVars = [
-  'LOG_LEVEL'
+  'LOG_LEVEL',
+  'LOG_OUTPUT_MODE'
 ]
 
 const defaultOptions = {}

@@ -10,13 +10,15 @@ Set required and optional configuration options in `examples/local.json`, e.g.,
 
 ```json
 {
-  "logLevel": "debug"
+  "logLevel": "info",
+  "logOutputMode": "short"
 }
 ```
 
 Override any option with the corresponding environment variable:
 
 - `LOG_LEVEL` (optional)
+- `LOG_OUTPUT_MODE` (optional)
 
 ### Running examples with arguments
 
@@ -29,25 +31,19 @@ $ yarn run example
 Run provided examples with, e.g.,
 
 ```
-$ yarn run example is-true | yarn run bunyan
-```
-
-or more compactly with, e.g.,
-
-```
-$ yarn example is-true | yarn bunyan
+$ yarn run example is-true
 ```
 
 Pass arguments to examples with
 
 ```
-$ yarn run example is-true false | yarn bunyan
+$ yarn run example is-true false
 ```
 
 Automatically watch and rerun an example on changes with, e.g.,
 
 ```
-$ yarn run example:watch is-true | yarn run bunyan
+$ yarn run example:watch is-true
 ```
 
 #### Debugging examples
@@ -55,7 +51,7 @@ $ yarn run example:watch is-true | yarn run bunyan
 Debug examples with, e.g.,
 
 ```
-$ yarn run example:inspect is-true | yarn run bunyan
+$ yarn run example:inspect is-true
 ```
 
 For examples which run a single process and then exit,
@@ -72,18 +68,7 @@ export default ({log}) => async () => {
 Automatically watch and rerun a debuggable example on changes with, e.g.,
 
 ```
-$ yarn run example:inspect:watch is-true | yarn run bunyan
-```
-
-### Shell function aliases for running examples
-
-In bash or zsh, you may define convenience functions for the above with
-
-```bash
-yrx () { yarn run example $@ | yarn run bunyan; }
-yrxw () { yarn run example:watch $@ | yarn run bunyan; }
-yrxi () { yarn run example:inspect $@ | yarn run bunyan; }
-yrxiw () { yarn run example:inspect:watch $@ | yarn run bunyan; }
+$ yarn run example:inspect:watch is-true
 ```
 
 ## Writing New Examples
