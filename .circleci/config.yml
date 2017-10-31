@@ -63,23 +63,15 @@ references:
             fi
 
 jobs:
-  node-8:
+  node-carbon:
     environment:
       COVERAGE: 'true'
     docker:
       - image: node:8
     <<: *build
-  node-8-alpine:
+  node-carbon-alpine:
     docker:
       - image: node:8-alpine
-    <<: *build
-  node-7:
-    docker:
-      - image: node:7
-    <<: *build
-  node-7-alpine:
-    docker:
-      - image: node:7
     <<: *build
   node-boron-alpine:
     docker:
@@ -102,8 +94,6 @@ workflows:
     jobs:
       - node-8
       - node-8-alpine
-      - node-7
-      - node-7-alpine
       - node-boron
       - node-boron-alpine
       - publish:
@@ -113,7 +103,5 @@ workflows:
           requires:
             - node-8
             - node-8-alpine
-            - node-7
-            - node-7-alpine
             - node-boron
             - node-boron-alpine
