@@ -73,13 +73,13 @@ jobs:
     docker:
       - image: node:carbon-alpine
     <<: *build
-  node-boron-alpine:
-    docker:
-      - image: node:7
-    <<: *build
   node-boron:
     docker:
       - image: node:boron
+    <<: *build
+  node-boron-alpine:
+    docker:
+      - image: node:boron-alpine
     <<: *build
   publish:
     environment:
