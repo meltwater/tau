@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import promisify from 'util.promisify' // TODO: If unused, yarn remove util.promisify.
+import { promisify } from 'util'
 
 import test from 'ava'
 

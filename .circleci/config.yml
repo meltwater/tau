@@ -63,6 +63,14 @@ references:
             fi
 
 jobs:
+  node:
+    docker:
+      - image: node
+    <<: *build
+  node-alpine:
+    docker:
+      - image: node:alpine
+    <<: *build
   node-carbon:
     environment:
       COVERAGE: 'true'
@@ -73,35 +81,27 @@ jobs:
     docker:
       - image: node:carbon-alpine
     <<: *build
-  node-boron:
-    docker:
-      - image: node:boron
-    <<: *build
-  node-boron-alpine:
-    docker:
-      - image: node:boron-alpine
-    <<: *build
   publish:
     environment:
       PUBLISH: 'true'
     docker:
-      - image: node:boron
+      - image: node:carbon
     <<: *build
 
 workflows:
   version: 2
   default:
     jobs:
+      - node
+      - node-alpine
       - node-carbon
       - node-carbon-alpine
-      - node-boron
-      - node-boron-alpine
       - publish:
           filters:
             branches:
               only: /^(v[0-9]|master)/
           requires:
+            - node
+            - node-alpine
             - node-carbon
             - node-carbon-alpine
-            - node-boron
-            - node-boron-alpine
