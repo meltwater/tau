@@ -11,8 +11,7 @@ pkg_version=$(jq -r '.version' package.json)
 
 if [[ "$(git log -1 --pretty='%s')" == "${pkg_version}" ]]; then
   if [[ -z "$(npm view ${pkg_name}@${pkg_version})" ]]; then
-    pkg_files=(*.tgz)
-    npm publish $(echo $pkg_files)
+    npm publish
     echo
     echo "> Published ${pkg_name}@${pkg_version}."
     echo

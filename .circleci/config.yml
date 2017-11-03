@@ -43,9 +43,7 @@ references:
       - run:
           name: Build package
           command: |
-            if [[ "${PUBLISH}" == 'true' ]]; then
-              yarn run package
-            else
+            if [[ "${PUBLISH}" != 'true' ]]; then
               yarn run dist
             fi
       - run:
