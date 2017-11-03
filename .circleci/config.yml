@@ -41,13 +41,13 @@ references:
           key: module-cache-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
           paths: node_modules
       - run:
-          name: Build package
+          name: Test and build package
           command: |
             if [[ "${PUBLISH}" != 'true' ]]; then
               yarn run dist
             fi
       - run:
-          name: Codecov
+          name: Upload coverage to Codecov
           command: |
             if [[ "${COVERAGE}" == 'true' && -n "${CODECOV_TOKEN}" ]]; then
               yarn global add codecov
