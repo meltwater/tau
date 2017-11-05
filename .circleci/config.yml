@@ -43,7 +43,9 @@ references:
       - run:
           name: Test and build package
           command: |
-            if [[ "${PUBLISH}" != 'true' ]]; then
+            if [[ "${PUBLISH}" == 'true' ]]; then
+              yarn run prepack
+            else
               yarn run dist
             fi
       - run:
