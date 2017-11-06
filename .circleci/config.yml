@@ -44,7 +44,7 @@ references:
           name: Test and build package
           command: |
             if [[ "${PUBLISH}" == 'true' ]]; then
-              yarn run pack
+              yarn pack
             else
               yarn run dist
             fi
