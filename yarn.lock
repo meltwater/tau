@@ -44,9 +44,9 @@
   dependencies:
     arrify "^1.0.1"
 
-"@meltwater/examplr@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@meltwater/examplr/-/examplr-2.0.0.tgz#5f62df2e416ae8804f31c5ae10c0ba353e7fec4c"
+"@meltwater/examplr@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@meltwater/examplr/-/examplr-3.0.0.tgz#04b23b05d668eb916847369a43a95f5e0d8ec909"
   dependencies:
     bunyan "^1.8.12"
     bunyan-formatter "^1.0.0"

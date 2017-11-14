@@ -94,7 +94,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@meltwater/examplr": "^2.0.0",
+    "@meltwater/examplr": "^3.0.0",
     "ava": "^0.23.0",
     "babel-cli": "^6.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
