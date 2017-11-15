@@ -34,7 +34,6 @@
     "build:lib": "babel --source-maps --ignore='*.spec.js' --out-dir dist/lib lib",
     "dist": "yarn run build",
     "predist": "yarn test",
-    "prepack": "yarn run build",
     "preversion": "yarn run dist",
     "postversion": "git push && git push --tags",
     "example": "babel-node examples",
