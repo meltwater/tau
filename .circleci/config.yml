@@ -21,6 +21,7 @@ references:
             if [[ -f /sbin/apk ]]; then
               echo "alpine: $(cat /etc/alpine-release)" >> .versions
             fi
+            cat .versions
       - restore_cache:
           key: yarn-cache
       - restore_cache:
