@@ -109,7 +109,7 @@
     "gulp-watch": "^4.3.10",
     "gulplog": "^1.0.0",
     "nodemon": "^1.11.0",
-    "npm-run-all": "^4.0.0",
+    "npm-run-all": "^4.1.2",
     "nyc": "^11.0.2",
     "standard": "^10.0.2"
   }
