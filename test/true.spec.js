@@ -4,7 +4,7 @@ import { promisify } from 'util'
 
 import test from 'ava'
 
-import { isTrue } from '../'
+import { isTrue } from '../lib'
 
 const readFileAsync = promisify(fs.readFile)
 
