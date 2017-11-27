@@ -25,6 +25,9 @@ examples/local.json
 # Temporary development files
 tmp
 
+# npm lockfile (only yarn.lock supported)
+package-lock.json
+
 # Logs
 logs
 *.log
