@@ -65,7 +65,8 @@
   "ava": {
     "files": [
       "**/*.spec.js",
-      "!dist/**/*"
+      "!dist/**/*",
+      "!package/**/*"
     ],
     "require": [
       "babel-register"
@@ -79,6 +80,7 @@
     "exclude": [
       "**/index.js",
       "dist/**/*.js",
+      "package/**/*.js",
       "examples/**/*.js",
       "**/*.spec.js"
     ],
