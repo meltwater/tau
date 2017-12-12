@@ -23,7 +23,7 @@ references:
             fi
             cat .versions
       - restore_cache:
-          key: yarn-cache
+          key: yarn-cache-{{ arch }}-
       - restore_cache:
           key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
       - run:
@@ -36,7 +36,7 @@ references:
           name: Install dependencies
           command: yarn install --pure-lockfile
       - save_cache:
-          key: yarn-cache
+          key: yarn-cache-{{ arch }}-{{ epoch }}
           paths: $HOME/.yarn-cache
       - save_cache:
           key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
