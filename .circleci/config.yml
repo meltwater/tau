@@ -37,7 +37,7 @@ references:
           command: yarn install --pure-lockfile
       - save_cache:
           key: yarn-cache-{{ arch }}-{{ epoch }}
-          paths: $HOME/.yarn-cache
+          paths: ~/.yarn-cache
       - save_cache:
           key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
           paths: node_modules
