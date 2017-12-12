@@ -15,7 +15,6 @@ references:
       - run:
           name: Save build versions
           command: |
-          command: |
             echo "node: ${NODE_VERSION}" >> .versions
             echo "yarn: ${YARN_VERSION}" >> .versions
             if [[ -f /sbin/apk ]]; then
