@@ -103,7 +103,7 @@
     "babel-watch": "^2.0.7",
     "del-cli": "^1.0.0",
     "gulp": "^3.9.1",
-    "gulp-cli": "^1.2.2",
+    "gulp-cli": "^2.0.0",
     "gulp-jsonlint": "^1.1.2",
     "gulp-load-plugins": "^1.4.0",
     "gulp-plumber": "^1.1.0",
