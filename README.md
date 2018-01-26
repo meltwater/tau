@@ -23,6 +23,7 @@ Bootstrap a new [Node.js] [npm package] in five minutes or less.
 - Automatically lint on changes with [gulp].
 - Futuristic debuggable unit testing with [AVA].
 - Code coverage reporting with [Istanbul], [nyc], and [Codecov].
+- Automated dependency management with [Greenkeeper].
 - Continuous testing and automated package publishing with [CircleCI].
 - [Keep a CHANGELOG].
 - Consistent coding with [EditorConfig].
@@ -33,6 +34,7 @@ Bootstrap a new [Node.js] [npm package] in five minutes or less.
 [CircleCI]: https://circleci.com/
 [Codecov]: https://codecov.io/
 [EditorConfig]: http://editorconfig.org/
+[Greenkeeper]: https://greenkeeper.io/
 [gulp]: http://gulpjs.com/
 [Keep a CHANGELOG]: http://keepachangelog.com/
 [Istanbul]: https://istanbul.js.org/
@@ -233,6 +235,7 @@ The following environment variables must be set on [CircleCI]:
 - `NPM_TEAM`: npm team to grant read-only package access
   (format `org:team`, optional).
 - `CODECOV_TOKEN`: Codecov token for uploading coverage reports (optional).
+- `GREENKEEPER_TOKEN`: GitHub personal access token for Greenkeeper.
 
 These may be set manually or by running the script `./circleci/envvars.sh`.
 

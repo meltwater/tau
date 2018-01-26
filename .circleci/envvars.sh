@@ -42,6 +42,11 @@ help_codecov () {
        "https://codecov.io/gh/${circle_repo}/settings"
 }
 
+help_greenkeeper () {
+  echo
+  echo '> GitHub access token with push access to this repository'
+}
+
 command -v jq >/dev/null 2>&1 || \
   (echo 'jq required: https://stedolan.github.io/jq/' && exit 2)
 
@@ -91,9 +96,16 @@ main () {
     read -p '> Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
 
+  greenkeeper_token=${CI_GREENKEEPER_TOKEN:-}
+  [[ -n "${greenkeeper_token}" || $noninteractive == 'true' ]] || help_greenkeeper
+  if [[ -z $greenkeeper_token && $noninteractive != 'true' ]]; then
+    read -p '> Greenkeeper GitHub token (GREENKEEPER_TOKEN): ' greenkeeper_token
+  fi
+
   envvar 'NPM_TOKEN' "${npm_token}"
   envvar 'NPM_TEAM' "${npm_team}"
   envvar 'CODECOV_TOKEN' "${codecov_token}"
+  envvar 'GREENKEEPER_TOKEN' "${greenkeeper_token}"
 }
 
 noninteractive=${NONINTERACTIVE:-false}
