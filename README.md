@@ -1,5 +1,7 @@
 # Node.js npm Package Skeleton
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/meltwater/makenew-node-lib.svg?token=86ebddd3bc16fcb366c0f0500d4866a76ed1afd7b8d575f7de332858707afb85&ts=1517269577026)](https://greenkeeper.io/)
+
 [![npm](https://img.shields.io/badge/npm-%40meltwater%2Fmakenew--node--lib-blue.svg)](https://www.npmjs.com/package/@meltwater/makenew-node-lib)
 [![github](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/meltwater/makenew-node-lib)
 [![docs](https://img.shields.io/badge/docs-master-green.svg)](https://github.com/meltwater/makenew-node-lib/tree/master/docs)
