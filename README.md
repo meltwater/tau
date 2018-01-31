@@ -239,11 +239,14 @@ The following environment variables must be set on [CircleCI]:
 - `NPM_TEAM`: npm team to grant read-only package access
   (format `org:team`, optional).
 - `CODECOV_TOKEN`: Codecov token for uploading coverage reports (optional).
-- `GREENKEEPER_TOKEN`: GitHub personal access token for Greenkeeper (optional).
 
 These may be set manually or by running the script `./circleci/envvars.sh`.
 
+Greenkeeper requires a deployment key with write permission:
+see the [CircleCI documentation for adding one][CircleCI deployment key].
+
 [CircleCI]: https://circleci.com/
+[CircleCI deployment key]: https://circleci.com/docs/1.0/adding-read-write-deployment-key/
 
 ### Development tasks
 

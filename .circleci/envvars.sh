@@ -44,7 +44,9 @@ help_codecov () {
 
 help_greenkeeper () {
   echo
-  echo '> GitHub access token with push access to this repository'
+  echo '> Greenkeeper requires a deployment key with write permission:' \
+       'https://circleci.com/docs/1.0/adding-read-write-deployment-key/'
+  read -p '> Press enter to continue' greenkeeper
 }
 
 command -v jq >/dev/null 2>&1 || \
@@ -96,16 +98,11 @@ main () {
     read -p '> Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
 
-  greenkeeper_token=${CI_GREENKEEPER_TOKEN:-}
-  [[ -n "${greenkeeper_token}" || $noninteractive == 'true' ]] || help_greenkeeper
-  if [[ -z $greenkeeper_token && $noninteractive != 'true' ]]; then
-    read -p '> Greenkeeper GitHub token (GREENKEEPER_TOKEN): ' greenkeeper_token
-  fi
+  [[ $noninteractive == 'true' ]] || help_greenkeeper
 
   envvar 'NPM_TOKEN' "${npm_token}"
   envvar 'NPM_TEAM' "${npm_team}"
   envvar 'CODECOV_TOKEN' "${codecov_token}"
-  envvar 'GREENKEEPER_TOKEN' "${greenkeeper_token}"
 }
 
 noninteractive=${NONINTERACTIVE:-false}

@@ -11,6 +11,7 @@ references:
             if [[ -f /sbin/apk ]]; then
               apk add --no-cache ca-certificates git openssh-client
             fi
+      - add_ssh_keys
       - checkout
       - run:
           name: Save build versions
@@ -37,7 +38,7 @@ references:
       - run:
           name: Update lockfile with Greenkeeper
           command: |
-            if [[ "${GREENKEEPER}" == 'true' && -n "${GREENKEEPER_TOKEN}" ]]; then
+            if [[ "${GREENKEEPER}" == 'true' ]]; then
               yarn global add greenkeeper-lockfile@1
               greenkeeper-lockfile-update
             fi
@@ -60,8 +61,8 @@ references:
       - run:
           name: Upload lockfile with Greenkeeper
           command: |
-            if [[ "${GREENKEEPER}" == 'true' && -n "${GREENKEEPER_TOKEN}" ]]; then
-              GH_TOKEN=$GREENKEEPER_TOKEN greenkeeper-lockfile-upload > /dev/null 2>&1
+            if [[ "${GREENKEEPER}" == 'true' ]]; then
+              greenkeeper-lockfile-upload
             fi
       - run:
           name: Upload coverage to Codecov
