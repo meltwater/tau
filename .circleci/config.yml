@@ -61,7 +61,7 @@ references:
           name: Upload lockfile with Greenkeeper
           command: |
             if [[ "${GREENKEEPER}" == 'true' && -n "${GREENKEEPER_TOKEN}" ]]; then
-              GH_TOKEN=$GREENKEEPER_TOKEN greenkeeper-lockfile-upload
+              GH_TOKEN=$GREENKEEPER_TOKEN greenkeeper-lockfile-upload > /dev/null 2>&1
             fi
       - run:
           name: Upload coverage to Codecov
