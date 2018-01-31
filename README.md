@@ -102,6 +102,9 @@ Bootstrap a new [Node.js] [npm package] in five minutes or less.
    to require all status checks to pass.
    Disable the GitHub repository projects and wiki options (unless desired).
    Add any required GitHub teams or collaborators to the repository.
+   Enable GitHub data services for dependency analysis.
+   Enable Codecov.
+   Enable Greenkeeper and add the badge from the initial pull request.
 
 8. Search for all `TODO` comments to add your first module.
 
