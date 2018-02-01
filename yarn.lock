@@ -53,9 +53,9 @@
     pretty-ms "^0.2.1"
     text-table "^0.2.0"
 
-"@meltwater/examplr@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@meltwater/examplr/-/examplr-4.1.0.tgz#9879aad2554584d2619796365034def12e46aafb"
+"@meltwater/examplr@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@meltwater/examplr/-/examplr-4.1.1.tgz#257be51bcaf208f7d737d692eb026e12b03b4fe4"
   dependencies:
     bunyan-formatter "^1.0.0"
     change-case "^3.0.1"
