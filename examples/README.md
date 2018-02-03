@@ -143,17 +143,21 @@ $ yarn run example:inspect:watch is-true
    ```js
    /* examples/filters.js */
    // Only print logs with a foo property equal to bar.
-   export onlyFooBar = log => log.foo === 'bar'
+   const onlyFooBar = log => log.foo === 'bar'
+
+   export default {
+     onlyFooBar
+   }
    ```
 
 2. Import and add filters to `examples/index.js`, e.g.,
 
    ```js
    /* examples/index.js */
-   import { onlyFooBar } from './filters'
+   import filters from './filters'
 
    const { runExample } = createExamples({
-     filters: {onlyFooBar},
+     filters,
      ...
    })
    ```
