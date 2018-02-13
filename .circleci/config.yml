@@ -132,7 +132,7 @@ workflows:
       - publish:
           filters:
             branches:
-              only: /^(v(er)?\/?[0-9]|master)/
+              only: /^(v(er)?\/?[0-9].*|master)/
           requires:
             - node
             - node-alpine
