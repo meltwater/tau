@@ -49,14 +49,16 @@ references:
           key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
           paths: node_modules
       - run:
-          name: Test and build package
+          name: Test package
           command: |
-            if [[ "${PUBLISH}" == 'true' ]]; then
-              yarn run build
-            elif [[ "${GREENKEEPER}" == 'true' ]]; then
-              echo 'Skipping tests for Greenkeeper lockfile update'
-            else
-              yarn run dist
+            if [[ "${TEST_PACKAGE}" == 'true' ]]; then
+              yarn test
+            fi
+      - run:
+          name: Build package
+          command: |
+            if [[ "${BUILD_PACKAGE}" == 'true' ]]; then
+              yarn build
             fi
       - run:
           name: Upload lockfile with Greenkeeper
@@ -74,7 +76,7 @@ references:
       - deploy:
           name: Publish package
           command: |
-            if [[ "${PUBLISH}" == 'true' ]]; then
+            if [[ "${PUBLISH_PACKAGE}" == 'true' ]]; then
               .circleci/publish.sh
             fi
 
@@ -88,26 +90,35 @@ references:
 
 jobs:
   node:
+    environment:
+      TEST_PACKAGE: 'true'
     docker:
       - image: node
     <<: *build
   node-alpine:
+    environment:
+      TEST_PACKAGE: 'true'
     docker:
       - image: node:alpine
     <<: *build
   node-carbon:
     environment:
+      TEST_PACKAGE: 'true'
+      BUILD_PACKAGE: 'true'
       COVERAGE: 'true'
     docker:
       - image: node:carbon
     <<: *build
   node-carbon-alpine:
+    environment:
+      TEST_PACKAGE: 'true'
     docker:
       - image: node:carbon-alpine
     <<: *build
   publish:
     environment:
-      PUBLISH: 'true'
+      BUILD_PACKAGE: 'true'
+      PUBLISH_PACKAGE: 'true'
     docker:
       - image: node:carbon
     <<: *build
