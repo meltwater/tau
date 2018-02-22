@@ -1,0 +1,171 @@
+---
+version: 2
+
+references:
+  build: &build
+    working_directory: ~/build
+    steps:
+      - run:
+          name: Install Alpine Linux build dependencies
+          command: |
+            if [[ -f /sbin/apk ]]; then
+              apk add --no-cache ca-certificates git openssh-client
+            fi
+      - add_ssh_keys
+      - checkout
+      - run:
+          name: Save build versions
+          command: |
+            echo "node: ${NODE_VERSION}" >> .versions
+            echo "yarn: ${YARN_VERSION}" >> .versions
+            if [[ -f /sbin/apk ]]; then
+              echo "alpine: $(cat /etc/alpine-release)" >> .versions
+            fi
+            cat .versions
+      - restore_cache:
+          key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-
+      - restore_cache:
+          key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          key: gh-pages-{{ checksum ".versions" }}
+      - run:
+          name: Set yarn cache
+          command: yarn config set cache-folder $HOME/.yarn-cache
+      - run:
+          name: Add npm authentication token
+          command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+      - run:
+          name: Install dependencies
+          command: yarn install --pure-lockfile
+      - run:
+          name: Update lockfile with Greenkeeper
+          command: |
+            if [[ "${GREENKEEPER}" == 'true' ]]; then
+              yarn global add greenkeeper-lockfile@1
+              greenkeeper-lockfile-update
+            fi
+      - save_cache:
+          key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
+          paths: ~/.yarn-cache
+      - save_cache:
+          key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
+          paths: node_modules
+      - save_cache:
+          key: gh-pages-{{ checksum ".versions" }}-{{ epoch }}
+          paths: .gh-pages
+      - run:
+          name: Test package
+          command: |
+            if [[ "${TEST_PACKAGE}" == 'true' ]]; then
+              yarn test
+            fi
+      - run:
+          name: Build package
+          command: |
+            if [[ "${BUILD_PACKAGE}" == 'true' ]]; then
+              yarn build
+            fi
+      - run:
+          name: Upload lockfile with Greenkeeper
+          command: |
+            if [[ "${GREENKEEPER}" == 'true' ]]; then
+              greenkeeper-lockfile-upload
+            fi
+      - run:
+          name: Upload coverage to Codecov
+          command: |
+            if [[ "${COVERAGE}" == 'true' && -n "${CODECOV_TOKEN}" ]]; then
+              yarn global add codecov
+              codecov
+            fi
+      - deploy:
+          name: Publish package
+          command: |
+            if [[ "${PUBLISH_PACKAGE}" == 'true' ]]; then
+              .circleci/publish.sh
+            fi
+
+  filters: &filters
+    filters:
+      branches:
+        ignore: /^greenkeeper\/.*/
+  lockfile: &lockfile
+    requires:
+      - lockfile
+
+jobs:
+  node:
+    environment:
+      TEST_PACKAGE: 'true'
+    docker:
+      - image: node
+    <<: *build
+  node-alpine:
+    environment:
+      TEST_PACKAGE: 'true'
+    docker:
+      - image: node:alpine
+    <<: *build
+  node-carbon:
+    environment:
+      TEST_PACKAGE: 'true'
+      BUILD_PACKAGE: 'true'
+      COVERAGE: 'true'
+    docker:
+      - image: node:carbon
+    <<: *build
+  node-carbon-alpine:
+    environment:
+      TEST_PACKAGE: 'true'
+    docker:
+      - image: node:carbon-alpine
+    <<: *build
+  publish:
+    environment:
+      BUILD_PACKAGE: 'true'
+      PUBLISH_PACKAGE: 'true'
+    docker:
+      - image: node:carbon
+    <<: *build
+  lockfile:
+    environment:
+      GREENKEEPER: 'true'
+    docker:
+      - image: node:carbon
+    <<: *build
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - node:
+          <<: *filters
+      - node-alpine:
+          <<: *filters
+      - node-carbon:
+          <<: *filters
+      - node-carbon-alpine:
+          <<: *filters
+      - publish:
+          filters:
+            branches:
+              only: /^(v(er)?\/?[0-9].*|master)/
+          requires:
+            - node
+            - node-alpine
+            - node-carbon
+            - node-carbon-alpine
+  greenkeeper:
+    jobs:
+      - lockfile:
+          filters:
+            branches:
+              only: /^greenkeeper\/.*/
+      - node:
+          <<: *lockfile
+      - node-alpine:
+          <<: *lockfile
+      - node-carbon:
+          <<: *lockfile
+      - node-carbon-alpine:
+          <<: *lockfile

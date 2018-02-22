@@ -1,0 +1,130 @@
+{
+  "name": "@meltwater/tau",
+  "version": "0.0.2",
+  "description": "Functional time and date tools for JavaScript inspired by date-fns.",
+  "main": "dist/index.js",
+  "module": "index.js",
+  "keywords": [
+    "meltwater",
+    "date-fns",
+    "node"
+  ],
+  "homepage": "https://github.com/meltwater/tau",
+  "bugs": "https://github.com/meltwater/tau/issues",
+  "repository": "meltwater/tau",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "author": {
+    "name": "Evan Sosenko",
+    "email": "evan.sosenko@meltwater.com"
+  },
+  "files": [
+    "yarn.lock",
+    "index.js",
+    "lib",
+    "data",
+    "dist"
+  ],
+  "scripts": {
+    "test": "nyc ava",
+    "pretest": "npm-run-all lint",
+    "test:update": "ava --update-snapshots",
+    "lint": "gulp lint",
+    "clean": "del dist docs",
+    "build": "npm-run-all --parallel build:*",
+    "prebuild": "npm-run-all clean",
+    "build:index": "babel --source-maps --out-dir dist index.js",
+    "build:lib": "babel --source-maps --ignore='*.spec.js' --out-dir dist/lib lib",
+    "build:docs": "jsdoc -c jsdoc.json",
+    "dist": "npm-run-all build",
+    "predist": "npm-run-all test",
+    "preversion": "npm-run-all dist",
+    "postversion": "git push && git push --tags",
+    "publish:docs": "gulp publish-docs",
+    "example": "babel-node examples",
+    "example:watch": "babel-watch --watch examples/local.json examples",
+    "example:inspect": "babel-node --inspect examples",
+    "example:inspect:watch": "nodemon node_modules/.bin/babel-node --inspect examples",
+    "ava:inspect": "node --inspect node_modules/ava/profile",
+    "ava:inspect:watch": "nodemon --inspect node_modules/ava/profile",
+    "watch": "gulp watch",
+    "watch:test": "ava --watch",
+    "format": "standard --fix",
+    "report": "nyc report"
+  },
+  "babel": {
+    "plugins": [
+      "transform-object-rest-spread"
+    ],
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "files": [
+      "**/*.spec.js",
+      "!dist/**/*",
+      "!package/**/*"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": {
+      "babelrc": true,
+      "sourceMaps": "inline"
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "**/index.js",
+      "dist/**/*.js",
+      "docs/**/*.js",
+      "package/**/*.js",
+      "examples/**/*.js",
+      "**/*.spec.js"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ]
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "dependencies": {
+    "date-fns": "v2.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "@meltwater/examplr": "^4.1.2",
+    "ava": "^0.25.0",
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.1.4",
+    "babel-watch": "^2.0.7",
+    "del-cli": "^1.0.0",
+    "docdash": "^0.4.0",
+    "gh-pages": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.0",
+    "gulp-jsonlint": "^1.1.2",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-standard": "^10.0.0",
+    "gulp-watch": "^5.0.0",
+    "gulplog": "^1.0.0",
+    "jsdoc": "^3.5.5",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.1.2",
+    "nyc": "^11.0.2",
+    "standard": "^11.0.0"
+  }
+}
