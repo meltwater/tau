@@ -27,7 +27,7 @@
   "scripts": {
     "test": "nyc ava",
     "pretest": "npm-run-all lint",
-    "test:update": "ava --update",
+    "test:update": "ava --update-snapshots",
     "lint": "gulp lint",
     "clean": "del dist",
     "build": "npm-run-all --parallel build:*",
