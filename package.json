@@ -1,6 +1,6 @@
 {
   "name": "@meltwater/tau",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Functional time and date tools for JavaScript inspired by date-fns.",
   "main": "dist/index.js",
   "module": "index.js",
