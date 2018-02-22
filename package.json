@@ -1,16 +1,16 @@
 {
-  "name": "@meltwater/makenew-node-lib",
-  "version": "4.4.1",
-  "description": "npm package skeleton for Meltwater Node.js libraries.",
+  "name": "@meltwater/tau",
+  "version": "0.0.0",
+  "description": "Functional time and date library.",
   "main": "dist/index.js",
   "module": "index.js",
   "keywords": [
     "meltwater",
     "node"
   ],
-  "homepage": "https://github.com/meltwater/makenew-node-lib",
-  "bugs": "https://github.com/meltwater/makenew-node-lib/issues",
-  "repository": "meltwater/makenew-node-lib",
+  "homepage": "https://github.com/meltwater/tau",
+  "bugs": "https://github.com/meltwater/tau/issues",
+  "repository": "meltwater/tau",
   "license": "SEE LICENSE IN LICENSE.txt",
   "author": {
     "name": "Evan Sosenko",

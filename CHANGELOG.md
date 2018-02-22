@@ -7,4 +7,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/meltwater/makenew-node-lib/compare/v0.0.0...HEAD
+[Unreleased]: https://github.com/meltwater/tau/compare/v0.0.1...HEAD

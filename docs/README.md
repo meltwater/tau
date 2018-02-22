@@ -12,7 +12,7 @@ Every function described above is a top-level export.
 You can import any of them like this:
 
 ```js
-import { isTrue } from '@meltwater/makenew-node-lib'
+import { isTrue } from '@meltwater/tau'
 ```
 
 ---
