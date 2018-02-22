@@ -26,6 +26,8 @@ references:
           key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-
       - restore_cache:
           key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          key: gh-pages-{{ checksum ".versions" }}
       - run:
           name: Set yarn cache
           command: yarn config set cache-folder $HOME/.yarn-cache
@@ -48,6 +50,9 @@ references:
       - save_cache:
           key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
           paths: node_modules
+      - save_cache:
+          key: gh-pages-{{ checksum ".versions" }}-{{ epoch }}
+          paths: .gh-pages
       - run:
           name: Test package
           command: |

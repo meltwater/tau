@@ -1,14 +1,18 @@
-# Tau
+# τ
 
 [![npm](https://img.shields.io/badge/npm-%40meltwater%2Ftau-blue.svg)](https://www.npmjs.com/package/@meltwater/tau)
 [![github](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/meltwater/tau)
-[![docs](https://img.shields.io/badge/docs-master-green.svg)](https://github.com/meltwater/tau/tree/master/docs)
+[![docs](https://img.shields.io/badge/docs-master-green.svg)](https://tau.meltwaterlabs.com)
 [![Codecov](https://img.shields.io/codecov/c/token/6QCpyuHSMW/github/meltwater/tau.svg)](https://codecov.io/gh/meltwater/tau)
 [![CircleCI](https://circleci.com/gh/meltwater/tau.svg?style=shield&circle-token=465c0d014b4cb8b2869f4c7edda5965a302a130b)](https://circleci.com/gh/meltwater/tau)
 
 ## Description
 
-Functional time and date library.
+Functional time and date tools for JavaScript inspired by [date-fns].
+
+Exports all functional programming style [date-fns] functions along
+with the custom functions defined in this package
+so they all may be imported from the same place.
 
 ## Installation
 
@@ -24,6 +28,7 @@ or using [Yarn] with
 $ yarn add @meltwater/tau
 ```
 
+[date-fns]: https://date-fns.org/
 [npm]: https://www.npmjs.com/
 [Yarn]: https://yarnpkg.com/
 
@@ -46,6 +51,8 @@ const logTrue = async () => {
 logTrue().catch(err => { console.log(err) })
 // true
 ```
+
+[API documentation]: https://tau.meltwaterlabs.com
 
 ## Development Quickstart
 
@@ -120,6 +127,12 @@ These may be set manually or by running the script `./circleci/envvars.sh`.
 
 Greenkeeper requires a deployment key with write permission:
 see the [CircleCI documentation for adding one][CircleCI deployment key].
+
+##### Documentation
+
+For documentation publishing, CircleCI must have an SSH key for `github.com`
+added as a [deploy key][CircleCI deployment key]
+with write access on the GitHub repository.
 
 [CircleCI]: https://circleci.com/
 [CircleCI deployment key]: https://circleci.com/docs/1.0/adding-read-write-deployment-key/
