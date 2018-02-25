@@ -1,7 +1,5 @@
 # Examples
 
-<!--- TODO: Update all uses of is-true with added example. -->
-
 ## Running Examples Locally
 
 ### Local configuration
@@ -33,19 +31,19 @@ $ yarn run example
 Run provided examples with, e.g.,
 
 ```
-$ yarn run example is-true
+$ yarn run example iso
 ```
 
 Pass arguments to examples with
 
 ```
-$ yarn run example is-true false
+$ yarn run example iso 2016-05-25T09:08:34.123
 ```
 
 Automatically watch and rerun an example on changes with, e.g.,
 
 ```
-$ yarn run example:watch is-true
+$ yarn run example:watch iso
 ```
 
 #### Debugging examples
@@ -53,7 +51,7 @@ $ yarn run example:watch is-true
 Debug examples with, e.g.,
 
 ```
-$ yarn run example:inspect is-true
+$ yarn run example:inspect iso
 ```
 
 For examples which run a single process and then exit,
@@ -70,7 +68,7 @@ export default ({log}) => async () => {
 Automatically watch and rerun a debuggable example on changes with, e.g.,
 
 ```
-$ yarn run example:inspect:watch is-true
+$ yarn run example:inspect:watch iso
 ```
 
 ## Writing New Examples
