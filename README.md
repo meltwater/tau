@@ -8,10 +8,10 @@
 
 ## Description
 
-Functional time and date tools for JavaScript inspired by [date-fns].
+Functional time and date tools for JavaScript inspired by [Luxon].
 
-Exports all functional programming style [date-fns] functions along
-with the custom functions defined in this package
+Exports the Luxon API in a functional programming style
+along with the custom functions defined in this package
 so they all may be imported from the same place.
 
 ## Installation
@@ -28,7 +28,7 @@ or using [Yarn] with
 $ yarn add @meltwater/tau
 ```
 
-[date-fns]: https://date-fns.org/
+[Luxon]: https://moment.github.io/luxon/
 [npm]: https://www.npmjs.com/
 [Yarn]: https://yarnpkg.com/
 

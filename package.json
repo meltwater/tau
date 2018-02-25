@@ -1,12 +1,12 @@
 {
   "name": "@meltwater/tau",
   "version": "0.0.2",
-  "description": "Functional time and date tools for JavaScript inspired by date-fns.",
+  "description": "Functional time and date tools for JavaScript inspired by Luxon.",
   "main": "dist/index.js",
   "module": "index.js",
   "keywords": [
     "meltwater",
-    "date-fns",
+    "luxon",
     "node"
   ],
   "homepage": "https://github.com/meltwater/tau",
@@ -99,7 +99,7 @@
     "node": ">=8.9.0"
   },
   "dependencies": {
-    "date-fns": "v2.0.0-alpha.7"
+    "luxon": "^0.5.3"
   },
   "devDependencies": {
     "@meltwater/examplr": "^4.1.2",
