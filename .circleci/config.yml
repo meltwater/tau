@@ -11,7 +11,6 @@ references:
             if [[ -f /sbin/apk ]]; then
               apk add --no-cache ca-certificates git openssh-client
             fi
-      - add_ssh_keys
       - checkout
       - run:
           name: Save build versions
@@ -35,13 +34,6 @@ references:
       - run:
           name: Install dependencies
           command: yarn install --pure-lockfile
-      - run:
-          name: Update lockfile with Greenkeeper
-          command: |
-            if [[ "${GREENKEEPER}" == 'true' ]]; then
-              yarn global add greenkeeper-lockfile@1
-              greenkeeper-lockfile-update
-            fi
       - save_cache:
           key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
           paths: ~/.yarn-cache
@@ -61,12 +53,6 @@ references:
               yarn build
             fi
       - run:
-          name: Upload lockfile with Greenkeeper
-          command: |
-            if [[ "${GREENKEEPER}" == 'true' ]]; then
-              greenkeeper-lockfile-upload
-            fi
-      - run:
           name: Upload coverage to Codecov
           command: |
             if [[ "${COVERAGE}" == 'true' && -n "${CODECOV_TOKEN}" ]]; then
@@ -79,14 +65,6 @@ references:
             if [[ "${PUBLISH_PACKAGE}" == 'true' ]]; then
               .circleci/publish.sh
             fi
-
-  filters: &filters
-    filters:
-      branches:
-        ignore: /^greenkeeper\/.*/
-  lockfile: &lockfile
-    requires:
-      - lockfile
 
 jobs:
   node:
@@ -122,25 +100,15 @@ jobs:
     docker:
       - image: node:carbon
     <<: *build
-  lockfile:
-    environment:
-      GREENKEEPER: 'true'
-    docker:
-      - image: node:carbon
-    <<: *build
 
 workflows:
   version: 2
   default:
     jobs:
-      - node:
-          <<: *filters
-      - node-alpine:
-          <<: *filters
-      - node-carbon:
-          <<: *filters
-      - node-carbon-alpine:
-          <<: *filters
+      - node
+      - node-alpine
+      - node-carbon
+      - node-carbon-alpine
       - publish:
           filters:
             branches:
@@ -150,17 +118,3 @@ workflows:
             - node-alpine
             - node-carbon
             - node-carbon-alpine
-  greenkeeper:
-    jobs:
-      - lockfile:
-          filters:
-            branches:
-              only: /^greenkeeper\/.*/
-      - node:
-          <<: *lockfile
-      - node-alpine:
-          <<: *lockfile
-      - node-carbon:
-          <<: *lockfile
-      - node-carbon-alpine:
-          <<: *lockfile

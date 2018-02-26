@@ -3,7 +3,6 @@
 [![npm](https://img.shields.io/badge/npm-%40meltwater%2Fmakenew--node--lib-blue.svg)](https://www.npmjs.com/package/@meltwater/makenew-node-lib)
 [![github](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/meltwater/makenew-node-lib)
 [![docs](https://img.shields.io/badge/docs-master-green.svg)](https://github.com/meltwater/makenew-node-lib/tree/master/docs)
-[![Greenkeeper](https://badges.greenkeeper.io/meltwater/makenew-node-lib.svg?token=86ebddd3bc16fcb366c0f0500d4866a76ed1afd7b8d575f7de332858707afb85&ts=1517269577026)](https://greenkeeper.io/)
 [![Codecov](https://img.shields.io/codecov/c/token/eHEIOjPT5u/github/meltwater/makenew-node-lib.svg)](https://codecov.io/gh/meltwater/makenew-node-lib)
 [![CircleCI](https://circleci.com/gh/meltwater/makenew-node-lib.svg?style=shield&circle-token=30395fe910ca2b9f7553c6311e85bd8ebe1ee059)](https://circleci.com/gh/meltwater/makenew-node-lib)
 
@@ -24,7 +23,6 @@ Bootstrap a new [Node.js] [npm package] in five minutes or less.
 - Automatically lint on changes with [gulp].
 - Futuristic debuggable unit testing with [AVA].
 - Code coverage reporting with [Istanbul], [nyc], and [Codecov].
-- Automated dependency management with [Greenkeeper].
 - Continuous testing and automated package publishing with [CircleCI].
 - [Keep a CHANGELOG].
 - Consistent coding with [EditorConfig].
@@ -35,7 +33,6 @@ Bootstrap a new [Node.js] [npm package] in five minutes or less.
 [CircleCI]: https://circleci.com/
 [Codecov]: https://codecov.io/
 [EditorConfig]: http://editorconfig.org/
-[Greenkeeper]: https://greenkeeper.io/
 [gulp]: http://gulpjs.com/
 [Keep a CHANGELOG]: http://keepachangelog.com/
 [Istanbul]: https://istanbul.js.org/
@@ -104,7 +101,6 @@ Bootstrap a new [Node.js] [npm package] in five minutes or less.
    Add any required GitHub teams or collaborators to the repository.
    Enable GitHub data services for dependency analysis.
    Enable Codecov.
-   Enable Greenkeeper and add the badge from the initial pull request.
 
 8. Search for all `TODO` comments to add your first module.
 
@@ -242,11 +238,7 @@ The following environment variables must be set on [CircleCI]:
 
 These may be set manually or by running the script `./circleci/envvars.sh`.
 
-Greenkeeper requires a deployment key with write permission:
-see the [CircleCI documentation for adding one][CircleCI deployment key].
-
 [CircleCI]: https://circleci.com/
-[CircleCI deployment key]: https://circleci.com/docs/1.0/adding-read-write-deployment-key/
 
 ### Development tasks
 
