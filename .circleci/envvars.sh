@@ -42,13 +42,6 @@ help_codecov () {
        "https://codecov.io/gh/${circle_repo}/settings"
 }
 
-help_greenkeeper () {
-  echo
-  echo '> Greenkeeper requires a deployment key with write permission:' \
-       'https://circleci.com/docs/1.0/adding-read-write-deployment-key/'
-  read -p '> Press enter to continue' greenkeeper
-}
-
 command -v jq >/dev/null 2>&1 || \
   (echo 'jq required: https://stedolan.github.io/jq/' && exit 2)
 
@@ -97,8 +90,6 @@ main () {
   if [[ -z $codecov_token && $noninteractive != 'true' ]]; then
     read -p '> Codecov token (CODECOV_TOKEN): ' codecov_token
   fi
-
-  [[ $noninteractive == 'true' ]] || help_greenkeeper
 
   envvar 'NPM_TOKEN' "${npm_token}"
   envvar 'NPM_TEAM' "${npm_team}"
