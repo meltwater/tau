@@ -354,6 +354,8 @@ An HTML version will be saved in `coverage`.
 
 ##### Debugging tests
 
+<!--- TODO: Update all use true.spec.js with added spec. -->
+
 Create a breakpoint by adding the statement `debugger` to the test
 and start a debug session with, e.g.,
 
