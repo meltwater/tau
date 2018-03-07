@@ -248,17 +248,19 @@ An HTML version will be saved in `coverage`.
 
 ##### Debugging tests
 
+<!--- TODO: Update all use true.spec.js with added spec. -->
+
 Create a breakpoint by adding the statement `debugger` to the test
 and start a debug session with, e.g.,
 
 ```
-$ yarn run ava:inspect lib/true.spec.js
+$ yarn run test:inspect lib/true.spec.js
 ```
 
 Watch and restart the debugging session on changes with
 
 ```
-$ yarn run ava:inspect:watch lib/true.spec.js
+$ yarn run test:inspect:watch lib/true.spec.js
 ```
 
 [AVA]: https://github.com/avajs/ava
