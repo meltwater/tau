@@ -1,6 +1,6 @@
 {
   "name": "@meltwater/tau",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Functional time and date tools for JavaScript inspired by Luxon.",
   "main": "dist/index.js",
   "module": "index.js",
