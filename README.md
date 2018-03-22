@@ -54,6 +54,25 @@ logTrue().catch(err => { console.log(err) })
 
 [API documentation]: https://tau.meltwaterlabs.com
 
+### Luxon Functional API
+
+TODO: Convert notes to docs.
+
+- All arguments reversed.
+- Camelcase acronyms
+
+#### DateTime
+
+- `*withOptions`
+- `from*`, `from*WithOptions`, `from*Utc`
+    - `fromObject`, `invalid` is an exception
+- `local`, `utc` take a single argument as array of args (in original order).
+- `min`, `max` take only two arguments: use `findMin` and `findMax` (TODO: add these)
+- `diffMillis` and `diffNowMillis`
+- `setZone*`
+- `toUtcZero`
+- `toMillis` alias `valueOf`
+
 ## Development Quickstart
 
 ```
