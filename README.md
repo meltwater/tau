@@ -60,6 +60,9 @@ TODO: Convert notes to docs.
 
 - All arguments reversed.
 - Camelcase acronyms
+- `durationFrom*`, `intervalFrom*`
+  - `from*` is for DateTime (no prefix)
+  - `import { fromJsDate as dateTimeFromJsDate } from '@meltwater/tau'`
 
 #### DateTime
 
