@@ -76,6 +76,10 @@ TODO: Convert notes to docs.
 - `toUtcZero`
 - `toMillis` alias `valueOf`
 
+#### Duration
+
+- `shiftTo` takes two arguments (first is array of args)
+
 ## Development Quickstart
 
 ```
