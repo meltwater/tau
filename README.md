@@ -60,9 +60,11 @@ TODO: Convert notes to docs.
 
 - All arguments reversed.
 - Camelcase acronyms
-- `durationFrom*`, `intervalFrom*`
-  - `from*` is for DateTime (no prefix)
-  - `import { fromJsDate as dateTimeFromJsDate } from '@meltwater/tau'`
+- All Static methods are exported by the same name with the exception
+  that if there is a namespace conflict, the DateTime method has the expected namespace while the others will pre prefixed with either `duration` or `interval`
+    - `import { fromJsDate as dateTimeFromJsDate } from '@meltwater/tau'`
+    - `import { merge as mergeIntervals } from '@meltwater/tau'`
+    - ...provide list of recommended import names
 
 #### DateTime
 
@@ -79,6 +81,12 @@ TODO: Convert notes to docs.
 #### Duration
 
 - `shiftTo` takes two arguments (first is array of args)
+
+#### Interval
+
+- `fromDateTimes` takes array `[start, end]`.
+- `hasSame` renamed to `hasSameEndpoints`
+- `splitAt` and `difference` take a single argument as an array
 
 ## Development Quickstart
 
