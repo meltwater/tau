@@ -89,6 +89,18 @@ TODO: Convert notes to docs.
 - `hasSame` renamed to `hasSameEndpoints`
 - `splitAt` and `difference` take a single argument as an array
 
+#### Settings
+
+- All exports are functions
+- Setters are prefixed with `set`
+
+### Info
+
+- Add convenience functions `erasShort` and `erasLong`,
+  `hasDstLocal`, `isValidIanaZoneLocal`, `monthsFormatLong`
+  `weekdaysLong`, `weekdaysFormatLong`
+- `months` renamed to `calendarMonths`
+
 ## Development Quickstart
 
 ```
