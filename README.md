@@ -73,7 +73,8 @@ TODO: Convert notes to docs.
     - `fromObject`, `invalid` is an exception
 - `local`, `utc` take a single argument as array of args (in original order).
 - `min`, `max` take only two arguments: use `findMin` and `findMax` (TODO: add these)
-- `diffMillis` and `diffNowMillis`
+- `diff`, `diffWithOptions`, `diffMillis`: last argument is an array `[x, y]` and computes `x - y`
+- Note: `diffNow`, `diffNowWithOptions` and `diffNowMillis` always computes `last argument - now`
 - `setZone*`
 - `toUtcZero`
 - `toMillis` alias `valueOf`
