@@ -99,7 +99,7 @@
     "node": ">=8.9.0"
   },
   "dependencies": {
-    "luxon": "^0.5.3",
+    "luxon": "^1.0.0",
     "ramda": "^0.25.0"
   },
   "devDependencies": {
