@@ -34,22 +34,15 @@ $ yarn add @meltwater/tau
 
 ## Usage
 
-<!--- TODO: Update usage example for added module(s). -->
 
 **See the complete [API documentation](./docs) and [working examples](./examples).**
 
 This package provides an async function which checks if its argument is true.
 
 ```js
-import isTrue from '@meltwater/tau'
+import { toIso, fromNow } from '@meltwater/tau'
 
-const logTrue = async () => {
-  const trueValue = await isTrue(true)
-  console.log(trueValue)
-}
-
-logTrue().catch(err => { console.log(err) })
-// true
+toIso(fromNow())
 ```
 
 [API documentation]: https://tau.meltwaterlabs.com
@@ -295,19 +288,17 @@ An HTML version will be saved in `coverage`.
 
 ##### Debugging tests
 
-<!--- TODO: Update all use true.spec.js with added spec. -->
-
 Create a breakpoint by adding the statement `debugger` to the test
 and start a debug session with, e.g.,
 
 ```
-$ yarn run test:inspect lib/true.spec.js
+$ yarn run test:inspect lib/unix.spec.js
 ```
 
 Watch and restart the debugging session on changes with
 
 ```
-$ yarn run test:inspect:watch lib/true.spec.js
+$ yarn run test:inspect:watch lib/unix.spec.js
 ```
 
 [AVA]: https://github.com/avajs/ava
