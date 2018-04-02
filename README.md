@@ -76,56 +76,56 @@ Exceptions are documented below.
 
 ##### Renamed or added
 
-- DateTime.fromFormat -> fromFormatWithOptions
-    - fromFormat
-    - fromFormatUtc
-- DateTime.fromFormatExplain -> fromFormatExplainWithOptions
-    - fromFormatExplain
-    - fromFormatExplainUtc
-- DateTime.fromHTTP -> fromHttpWithOptions
-    - fromHttp
-    - fromHttpWithUtc
-- DateTime.fromISO -> fromIsoWithOptions
-    - fromIso
-    - fromIsoUtc
-- DateTime.fromJSDate -> fromJsDateWithOptions
-    - fromJsDate
-    - fromJsDateUtc
-- DateTime.fromMillis -> fromMillisWithOptions
-    - fromMillis
-    - fromMillisUtc
-- DateTime.fromRFC2822 -> fromRfc2822WithOptions
-    - fromRfc2822
-    - fromRfc2822Utc
-- DateTime.fromSQL -> fromSqlWithOptions
-    - fromSql
-    - fromSqlUtc
-- DateTime.diff -> diffWithOptions
-    - diff
-    - diffMillis
-- DateTime.diffNow -> diffNowWithOptions
-    - diffNow
-    - diffNowMillis
-- DateTime.resolvedLocaleOpts -> resolvedLocaleOptsWithOptions
-    - resolvedLocaleOpts
-- DateTime.setZone -> setZoneWithOptions
-    - setZone
-    - setZoneLocal
-    - setZoneUtc
-- DateTime.toISOTime -> toIsoTimeWithOptions
-    - toIsoTime
-- DateTime.toLocaleParts -> toLocalePartsWithOptions
-    - toLocaleParts
-- DateTime.toLocaleString -> toLocaleStringWithOptions
-    - toLocaleString
-- DateTime.toSQL -> toSqlWithOptions
-    - toSql
-- DateTime.toSQLTime -> toSqlTimeWithOptions
-    - toSqlTime
-- DateTime.toUTC -> toUtcWithOptions
-    - toUtc
-    - toUtcZero
-- DateTime.valueOf -> toMillis
+- `DateTime.fromFormat -> fromFormatWithOptions`
+    - `fromFormat`
+    - `fromFormatUtc`
+- `DateTime.fromFormatExplain -> fromFormatExplainWithOptions`
+    - `fromFormatExplain`
+    - `fromFormatExplainUtc`
+- `DateTime.fromHTTP -> fromHttpWithOptions`
+    - `fromHttp`
+    - `fromHttpWithUtc`
+- `DateTime.fromISO -> fromIsoWithOptions`
+    - `fromIso`
+    - `fromIsoUtc`
+- `DateTime.fromJSDate -> fromJsDateWithOptions`
+    - `fromJsDate`
+    - `fromJsDateUtc`
+- `DateTime.fromMillis -> fromMillisWithOptions`
+    - `fromMillis`
+    - `fromMillisUtc`
+- `DateTime.fromRFC2822 -> fromRfc2822WithOptions`
+    - `fromRfc2822`
+    - `fromRfc2822Utc`
+- `DateTime.fromSQL -> fromSqlWithOptions`
+    - `fromSql`
+    - `fromSqlUtc`
+- `DateTime.diff -> diffWithOptions`
+    - `diff`
+    - `diffMillis`
+- `DateTime.diffNow -> diffNowWithOptions`
+    - `diffNow`
+    - `diffNowMillis`
+- `DateTime.resolvedLocaleOpts -> resolvedLocaleOptsWithOptions`
+    - `resolvedLocaleOpts`
+- `DateTime.setZone -> setZoneWithOptions`
+    - `setZone`
+    - `setZoneLocal`
+    - `setZoneUtc`
+- `DateTime.toISOTime -> toIsoTimeWithOptions`
+    - `toIsoTime`
+- `DateTime.toLocaleParts -> toLocalePartsWithOptions`
+    - `toLocaleParts`
+- `DateTime.toLocaleString -> toLocaleStringWithOptions`
+    - `toLocaleString`
+- `DateTime.toSQL -> toSqlWithOptions`
+    - `toSql`
+- `DateTime.toSQLTime -> toSqlTimeWithOptions`
+    - `toSqlTime`
+- `DateTime.toUTC -> toUtcWithOptions`
+    - `toUtc`
+    - `toUtcZero`
+- `DateTime.valueOf -> toMillis`
 
 ##### Signature changed
 
@@ -136,12 +136,12 @@ Exceptions are documented below.
 
 #### Duration
 
-- Duration.fromISO -> durationFromIsoWithOptions
-    - durationFromIso
-- Duration.fromMillis -> durationFromMillisWithOptions
-    - durationFromMillis
-- Duration.fromObject -> durationFromObject
-- Duration.invalid -> durationInvalid
+- `Duration.fromISO -> durationFromIsoWithOptions`
+    - `durationFromIso`
+- `Duration.fromMillis -> durationFromMillisWithOptions`
+    - `durationFromMillis`
+- `Duration.fromObject -> durationFromObject`
+- `Duration.invalid -> durationInvalid`
 
 ##### Signature changed
 
@@ -151,13 +151,13 @@ Exceptions are documented below.
 
 ##### Renamed or Added
 
-- Interval.fromISO -> intervalFromIsoWithOptions
-    - intervalFromIso
-- Interval.invalid -> intervalInvalid
-- Interval.toDuration -> toDurationWithOptions
-    - toDuration
-    - toDurationMillis
-- Interval.hasSame -> hasSameEndpoints
+- `Interval.fromISO -> intervalFromIsoWithOptions`
+    - `intervalFromIso`
+- `Interval.invalid -> intervalInvalid`
+- `Interval.toDuration -> toDurationWithOptions`
+    - `toDuration`
+    - `toDurationMillis`
+- `Interval.hasSame -> hasSameEndpoints`
 
 ##### Signature changes
 
@@ -167,28 +167,28 @@ Exceptions are documented below.
 
 #### Info
 
-- Info.eras -> erasWithOptions
-    - eras
-    - erasShort
-    - erasLong
-- Info.hasDST -> hasDst
-    - hasDstLocal
-- Info.isValidIANAZone -> isValidIanaZone
-    - isValidIanaZoneLocal
-- Info.meridiems -> meridiemsWithOptions
-    - meridiems
-- Info.months -> calendarMonthsWithOptions
-    - calendarMonths
-    - calendarMonthsLong
-- Info.monthsFormat -> monthsFormatWithOptions
-    - monthsFormat
-    - monthsFormatLong
-- Info.weekdays -> weekdaysWithOptions
-    - weekdays
-    - weekdaysLong
-- Info.weekdaysFormat -> weekdaysFormatWithOptions
-    - weekdaysFormat
-    - weekdaysFormatLong
+- `Info.eras -> erasWithOptions`
+    - `eras`
+    - `erasShort`
+    - `erasLong`
+- `Info.hasDST -> hasDst`
+    - `hasDstLocal`
+- `Info.isValidIANAZone -> isValidIanaZone`
+    - `isValidIanaZoneLocal`
+- `Info.meridiems -> meridiemsWithOptions`
+    - `meridiems`
+- `Info.months -> calendarMonthsWithOptions`
+    - `calendarMonths`
+    - `calendarMonthsLong`
+- `Info.monthsFormat -> monthsFormatWithOptions`
+    - `monthsFormat`
+    - `monthsFormatLong`
+- `Info.weekdays -> weekdaysWithOptions`
+    - `weekdays`
+    - `weekdaysLong`
+- `Info.weekdaysFormat -> weekdaysFormatWithOptions`
+    - `weekdaysFormat`
+    - `weekdaysFormatLong`
 
 #### Settings
 
