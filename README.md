@@ -54,10 +54,10 @@ is exported at the top level with the same name.
 All functions are curried and the argument order is reversed.
 Exceptions are documented below.
 
-- Acronyms in all follow normal camelcase rules are not uppercase,
+- Acronyms follow normal camelcase rules are not uppercase,
   e.g., `DateTime.isInDST` is exported as `isInDst`.
   These exceptions are not explicitly listed below.
-- For instance methods, the last argument corresponds to the instance.
+- For instance methods, the last argument corresponds to the instance (`this`).
 - Some names are changed to avoid conflicts.
 - Some signatures are changed for compatibility with the functional style.
 - Any function which takes options has a `*withOptions` variant
@@ -71,7 +71,7 @@ Exceptions are documented below.
 
 - `diff`, `diffWithOptions`, `diffMillis`:
   the last argument is an array `[x, y]` and computes the difference `x - y`.
-- `diffNow`, `diffNowWithOptions` and `diffNowMillis` always compute
+- `diffNow`, `diffNowWithOptions` and `diffNowMillis` compute
   the difference `x - now` (where `x` is the last argument).
 
 ##### Renamed or added
@@ -129,8 +129,8 @@ Exceptions are documented below.
 
 ##### Signature changed
 
-- `DateTime.local(...) -> local([...])`
-- `DateTime.utc(...) -> utc([...])`
+- `DateTime.local(...) -> local([...])` (order preserved)
+- `DateTime.utc(...) -> utc([...])` (order preserved)
 - `DateTime.min(x, y, ...) -> min(x, y)` (exactly two arguments)
 - `DateTime.min(x, y, ...) -> max(x, y)` (exactly two arguments)
 
@@ -145,7 +145,7 @@ Exceptions are documented below.
 
 ##### Signature changed
 
-- `duration.shiftTo(...) -> shiftTo([...], duration)`
+- `duration.shiftTo(...) -> shiftTo([...], duration)` (order preserved)
 
 #### Interval
 
@@ -153,8 +153,8 @@ Exceptions are documented below.
 
 - `Interval.fromISO -> intervalFromIsoWithOptions`
     - `intervalFromIso`
-`Interval.invalid -> intervalInvalid`
-`Interval.toDuration -> toDurationWithOptions`
+- `Interval.invalid -> intervalInvalid`
+- `Interval.toDuration -> toDurationWithOptions`
     - `toDuration`
     - `toDurationMillis`
 - `Interval.hasSame -> hasSameEndpoints`
@@ -162,8 +162,8 @@ Exceptions are documented below.
 ##### Signature changes
 
 - `interval.fromDateTimes(start, end) -> fromDateTimes([start, end])`
-- `interval.splitAt(...) -> splitAt([...], interval)`
-- `interval.difference(...) -> difference([...], interval)`
+- `interval.splitAt(...) -> splitAt([...], interval)` (order preserved)
+- `interval.difference(...) -> difference([...], interval)` (order preserved)
 
 #### Info
 
