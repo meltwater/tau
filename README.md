@@ -49,50 +49,153 @@ toIso(fromNow())
 
 ### Luxon Functional API
 
-TODO: Convert notes to docs.
+In general, each pubic static method, member, and method in the Luxon API
+is exported at the top level with the same name.
+All functions are curried and the argument order is reversed.
+Exceptions are documented below.
 
-- All arguments reversed.
-- Camelcase acronyms
-- All Static methods are exported by the same name with the exception
-  that if there is a namespace conflict, the DateTime method has the expected namespace while the others will pre prefixed with either `duration` or `interval`
-    - `import { fromJsDate as dateTimeFromJsDate } from '@meltwater/tau'`
-    - `import { merge as mergeIntervals } from '@meltwater/tau'`
-    - ...provide list of recommended import names
+- Acronyms in all follow normal camelcase rules are not uppercase,
+  e.g., `DateTime.isInDST` is exported as `isInDst`.
+  These exceptions are not explicitly listed below.
+- For instance methods, the last argument corresponds to the instance.
+- Some names are changed to avoid conflicts.
+- Some signatures are changed for compatibility with the functional style.
+- Any function which takes options has a `*withOptions` variant
+  which takes options as its first argument, and a normal variant
+  with one less argument bound to the default options.
+- Some Luxon methods have arguments with default values.
+  In these cases, extra functions are provided corresponding to those defaults.
+- Functions with a `Utc` suffix have been wrapped with `setZone('utc')`.
 
 #### DateTime
 
-- `*withOptions`
-- `from*`, `from*WithOptions`, `from*Utc`
-    - `fromObject`, `invalid` is an exception
-- `local`, `utc` take a single argument as array of args (in original order).
-- `min`, `max` take only two arguments: use `findMin` and `findMax` (TODO: add these)
-- `diff`, `diffWithOptions`, `diffMillis`: last argument is an array `[x, y]` and computes `x - y`
-- Note: `diffNow`, `diffNowWithOptions` and `diffNowMillis` always computes `last argument - now`
-- `setZone*`
-- `toUtcZero`
-- `toMillis` alias `valueOf`
+- `diff`, `diffWithOptions`, `diffMillis`:
+  the last argument is an array `[x, y]` and computes the difference `x - y`.
+- `diffNow`, `diffNowWithOptions` and `diffNowMillis` always compute
+  the difference `x - now` (where `x` is the last argument).
+
+##### Renamed or added
+
+- `DateTime.fromFormat -> fromFormatWithOptions`
+    - `fromFormat`
+    - `fromFormatUtc`
+- `DateTime.fromFormatExplain -> fromFormatExplainWithOptions`
+    - `fromFormatExplain`
+    - `fromFormatExplainUtc`
+- `DateTime.fromHTTP -> fromHttpWithOptions`
+    - `fromHttp`
+    - `fromHttpWithUtc`
+- `DateTime.fromISO -> fromIsoWithOptions`
+    - `fromIso`
+    - `fromIsoUtc`
+- `DateTime.fromJSDate -> fromJsDateWithOptions`
+    - `fromJsDate`
+    - `fromJsDateUtc`
+- `DateTime.fromMillis -> fromMillisWithOptions`
+    - `fromMillis`
+    - `fromMillisUtc`
+- `DateTime.fromRFC2822 -> fromRfc2822WithOptions`
+    - `fromRfc2822`
+    - `fromRfc2822Utc`
+- `DateTime.fromSQL -> fromSqlWithOptions`
+    - `fromSql`
+    - `fromSqlUtc`
+- `DateTime.diff -> diffWithOptions`
+    - `diff`
+    - `diffMillis`
+- `DateTime.diffNow -> diffNowWithOptions`
+    - `diffNow`
+    - `diffNowMillis`
+- `DateTime.resolvedLocaleOpts -> resolvedLocaleOptsWithOptions`
+    - `resolvedLocaleOpts`
+- `DateTime.setZone -> setZoneWithOptions`
+    - `setZone`
+    - `setZoneLocal`
+    - `setZoneUtc`
+- `DateTime.toISOTime -> toIsoTimeWithOptions`
+    - `toIsoTime`
+- `DateTime.toLocaleParts -> toLocalePartsWithOptions`
+    - `toLocaleParts`
+- `DateTime.toLocaleString -> toLocaleStringWithOptions`
+    - `toLocaleString`
+- `DateTime.toSQL -> toSqlWithOptions`
+    - `toSql`
+- `DateTime.toSQLTime -> toSqlTimeWithOptions`
+    - `toSqlTime`
+- `DateTime.toUTC -> toUtcWithOptions`
+    - `toUtc`
+    - `toUtcZero`
+- `DateTime.valueOf -> toMillis`
+
+##### Signature changed
+
+- `DateTime.local(...) -> local([...])`
+- `DateTime.utc(...) -> utc([...])`
+- `DateTime.min(x, y, ...) -> min(x, y)` (exactly two arguments)
+- `DateTime.min(x, y, ...) -> max(x, y)` (exactly two arguments)
 
 #### Duration
 
-- `shiftTo` takes two arguments (first is array of args)
+- `Duration.fromISO -> durationFromIsoWithOptions`
+    - `durationFromIso`
+- `Duration.fromMillis -> durationFromMillisWithOptions`
+    - `durationFromMillis`
+- `Duration.fromObject -> durationFromObject`
+- `Duration.invalid -> durationInvalid`
+
+##### Signature changed
+
+- `duration.shiftTo(...) -> shiftTo([...], duration)`
 
 #### Interval
 
-- `fromDateTimes` takes array `[start, end]`.
-- `hasSame` renamed to `hasSameEndpoints`
-- `splitAt` and `difference` take a single argument as an array
+##### Renamed or Added
+
+- `Interval.fromISO -> intervalFromIsoWithOptions`
+    - `intervalFromIso`
+`Interval.invalid -> intervalInvalid`
+`Interval.toDuration -> toDurationWithOptions`
+    - `toDuration`
+    - `toDurationMillis`
+- `Interval.hasSame -> hasSameEndpoints`
+
+##### Signature changes
+
+- `interval.fromDateTimes(start, end) -> fromDateTimes([start, end])`
+- `interval.splitAt(...) -> splitAt([...], interval)`
+- `interval.difference(...) -> difference([...], interval)`
+
+#### Info
+
+- `Info.eras -> erasWithOptions`
+    - `eras`
+    - `erasShort`
+    - `erasLong`
+- `Info.hasDST -> hasDst`
+    - `hasDstLocal`
+- `Info.isValidIANAZone -> isValidIanaZone`
+    - `isValidIanaZoneLocal`
+- `Info.meridiems -> meridiemsWithOptions`
+    - `meridiems`
+- `Info.months -> calendarMonthsWithOptions`
+    - `calendarMonths`
+    - `calendarMonthsLong`
+- `Info.monthsFormat -> monthsFormatWithOptions`
+    - `monthsFormat`
+    - `monthsFormatLong`
+- `Info.weekdays -> weekdaysWithOptions`
+    - `weekdays`
+    - `weekdaysLong`
+- `Info.weekdaysFormat -> weekdaysFormatWithOptions`
+    - `weekdaysFormat`
+    - `weekdaysFormatLong`
 
 #### Settings
 
-- All exports are functions
-- Setters are prefixed with `set`
-
-### Info
-
-- Add convenience functions `erasShort` and `erasLong`,
-  `hasDstLocal`, `isValidIanaZoneLocal`, `monthsFormatLong`
-  `weekdaysLong`, `weekdaysFormatLong`
-- `months` renamed to `calendarMonths`
+- Getters are exported as functions with the corresponding Luxon name,
+  e.g., `defaultLocale()`.
+- Setters are prefixed with `set`,
+  e.g., `setDefaultLocale('utc')`.
 
 ## Development Quickstart
 
