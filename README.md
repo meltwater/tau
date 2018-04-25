@@ -49,7 +49,7 @@ toIso(fromNow())
 
 ### Luxon Functional API
 
-In general, each pubic static method, member, and method in the Luxon API
+In general, each public static method, member, and method in the Luxon API
 is exported at the top level with the same name.
 All functions are curried and the argument order is reversed.
 Exceptions are documented below.
