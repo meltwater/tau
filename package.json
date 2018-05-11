@@ -92,6 +92,13 @@
       "text"
     ]
   },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.spec.js",
+      "test/",
+      "tmp/"
+    ]
+  },
   "engines": {
     "node": ">=8.9.0"
   },
