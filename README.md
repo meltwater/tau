@@ -32,16 +32,16 @@ Bootstrap a new [Node.js] [npm package] in five minutes or less.
 [Babel]: https://babeljs.io/
 [CircleCI]: https://circleci.com/
 [Codecov]: https://codecov.io/
-[EditorConfig]: http://editorconfig.org/
-[gulp]: http://gulpjs.com/
-[Keep a CHANGELOG]: http://keepachangelog.com/
+[EditorConfig]: https://editorconfig.org/
+[gulp]: https://gulpjs.com/
+[Keep a CHANGELOG]: https://keepachangelog.com/
 [Istanbul]: https://istanbul.js.org/
-[JavaScript Standard Style]: http://standardjs.com/
+[JavaScript Standard Style]: https://standardjs.com/
 [JSON Lint]: https://github.com/zaach/jsonlint
 [Node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
 [nyc]: https://github.com/istanbuljs/nyc
-[Shields.io]: http://shields.io/
+[Shields.io]: https://shields.io/
 [Yarn]: https://yarnpkg.com/
 
 ### Bootstrapping a new project
@@ -318,8 +318,8 @@ Automatically fix most JavaScript formatting errors with
 $ yarn run format
 ```
 
-[gulp]: http://gulpjs.com/
-[JavaScript Standard Style]: http://standardjs.com/
+[gulp]: https://gulpjs.com/
+[JavaScript Standard Style]: https://standardjs.com/
 [JSON Lint]: https://github.com/zaach/jsonlint
 
 #### Tests
