@@ -50,7 +50,7 @@ references:
           name: Build package
           command: |
             if [[ "${BUILD_PACKAGE}" == 'true' ]]; then
-              yarn build
+              yarn run build
             fi
       - run:
           name: Upload coverage to Codecov
