@@ -111,12 +111,12 @@
     "gulp-jsonlint": "^1.1.2",
     "gulp-load-plugins": "^1.4.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-standard": "^11.0.0",
+    "gulp-standard": "^12.0.0",
     "gulp-watch": "^5.0.0",
     "gulplog": "^1.0.0",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.1.2",
     "nyc": "^13.0.1",
-    "standard": "^11.0.0"
+    "standard": "^12.0.1"
   }
 }
