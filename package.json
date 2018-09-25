@@ -29,6 +29,7 @@
     "test": "nyc ava",
     "pretest": "npm-run-all lint",
     "test:update": "ava --update-snapshots",
+    "test:watch": "ava --watch",
     "test:inspect": "node --inspect node_modules/ava/profile",
     "test:inspect:watch": "nodemon --inspect node_modules/ava/profile",
     "lint": "gulp lint",
@@ -46,7 +47,6 @@
     "example:inspect": "babel-node --inspect examples",
     "example:inspect:watch": "nodemon --exec babel-node --inspect examples",
     "watch": "gulp watch",
-    "watch:test": "ava --watch",
     "format": "standard --fix",
     "report": "nyc report"
   },
