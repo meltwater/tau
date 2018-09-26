@@ -19,21 +19,6 @@ const paths = {
   ]
 }
 
-gulp.task('default', [
-  'lint',
-  'watch'
-])
-
-gulp.task('lint', [
-  'jsonlint',
-  'standard'
-])
-
-gulp.task('watch', [
-  'watch:json',
-  'watch:scripts'
-])
-
 gulp.task('standard', () => (
   gulp.src(paths.scripts)
     .pipe($.standard())
@@ -71,4 +56,19 @@ gulp.task('watch:json', () => (
     .pipe($.plumber())
     .pipe($.jsonlint())
     .pipe($.jsonlint.reporter())
+))
+
+gulp.task('lint', gulp.parallel(
+  'jsonlint',
+  'standard'
+))
+
+gulp.task('watch', gulp.parallel(
+  'watch:json',
+  'watch:scripts'
+))
+
+gulp.task('default', gulp.series(
+  'lint',
+  'watch'
 ))

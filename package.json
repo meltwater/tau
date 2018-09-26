@@ -106,7 +106,7 @@
     "@meltwater/examplr": "^4.1.4",
     "ava": "^1.0.0-beta.8",
     "del-cli": "^1.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-cli": "^2.0.0",
     "gulp-jsonlint": "^1.1.2",
     "gulp-load-plugins": "^1.4.0",
