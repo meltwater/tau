@@ -1,7 +1,6 @@
 import gulp from 'gulp'
 import gulplog from 'gulplog'
 import gulpJsonlint from 'gulp-jsonlint'
-import gulpPlumber from 'gulp-plumber'
 import gulpStandard from 'gulp-standard'
 import gulpWatch from 'gulp-watch'
 
@@ -42,7 +41,6 @@ export const watchScripts = () => (
         gulplog.info(`Linted ${vinyl.relative}`)
       }
     }))
-    .pipe(gulpPlumber())
     .pipe(gulpStandard())
     .pipe(gulpStandard.reporter('default', {}))
 )
@@ -54,7 +52,6 @@ export const watchJson = () => (
         gulplog.info(`Linted ${vinyl.relative}`)
       }
     }))
-    .pipe(gulpPlumber())
     .pipe(gulpJsonlint())
     .pipe(gulpJsonlint.reporter())
 )
