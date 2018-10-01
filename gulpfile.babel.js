@@ -26,8 +26,8 @@ const paths = {
   ]
 }
 
-export const docVersion = async () => {
-  const data = await fs.readFileSync(
+export const docVersion = () => {
+  const data = fs.readFileSync(
     path.resolve(__dirname, 'package.json')
   )
   const pkg = JSON.parse(data)
