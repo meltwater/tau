@@ -125,7 +125,8 @@ Exceptions are documented below.
 - `DateTime.toUTC -> toUtcWithOptions`
     - `toUtc`
     - `toUtcZero`
-- `DateTime.valueOf -> toMillis`
+- `DateTime.toJSON -> toJson`
+- `DateTime.toBSON -> toBson`
 
 ##### Signature changed
 
