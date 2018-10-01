@@ -127,6 +127,9 @@ Exceptions are documented below.
     - `toUtcZero`
 - `DateTime.toJSON -> toJson`
 - `DateTime.toBSON -> toBson`
+- `Zone.offset -> offsetAt`
+- `Zone.offsetName -> offsetNameAtWithOptions`
+    - `offsetName`
 
 ##### Signature changed
 
