@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 
 - Update Luxon to v1.4.2.
+- Update to [makenew-node-lib] v5.0.0.
+  (Includes building with Babel 7.)
 
 ## [1.1.0] / 2018-08-01
 
@@ -39,6 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## 1.0.0 / 2018-04-02
 
 - Initial release.
+
+[makenew-node-lib]: https://github.com/meltwater/makenew-node-lib
 
 [Unreleased]: https://github.com/meltwater/tau/compare/v1.2.0...HEAD
 [1.2.0]: https://github.com/meltwater/tau/compare/v1.1.0...v1.2.0
