@@ -115,7 +115,6 @@ jobs:
     <<: *build
 
 workflows:
-  version: 2
   default:
     jobs:
       - node
