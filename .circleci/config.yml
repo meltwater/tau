@@ -1,9 +1,18 @@
 ---
-version: 2
+version: 2.1
+
+executors:
+  node:
+    parameters:
+      tag:
+        type: string
+        default: latest
+    working_directory: ~/build
+    docker:
+      - image: node:<< parameters.tag >>
 
 references:
   build: &build
-    working_directory: ~/build
     steps:
       - run:
           name: Install Alpine Linux build dependencies
@@ -68,37 +77,41 @@ references:
 
 jobs:
   node:
+    executor:
+      name: node
     environment:
       TEST_PACKAGE: 'true'
-    docker:
-      - image: node
     <<: *build
   node-alpine:
+    executor:
+      name: node
+      tag: alpine
     environment:
       TEST_PACKAGE: 'true'
-    docker:
-      - image: node:alpine
     <<: *build
   node-carbon:
+    executor:
+      name: node
+      tag: carbon
     environment:
       TEST_PACKAGE: 'true'
       BUILD_PACKAGE: 'true'
       COVERAGE: 'true'
-    docker:
-      - image: node:carbon
     <<: *build
   node-carbon-alpine:
+    executor:
+      name: node
+      tag: carbon-alpine
     environment:
       TEST_PACKAGE: 'true'
-    docker:
-      - image: node:carbon-alpine
     <<: *build
   publish:
+    executor:
+      name: node
+      tag: carbon
     environment:
       BUILD_PACKAGE: 'true'
       PUBLISH_PACKAGE: 'true'
-    docker:
-      - image: node:carbon
     <<: *build
 
 workflows:
