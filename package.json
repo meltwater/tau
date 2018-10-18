@@ -104,7 +104,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@meltwater/examplr": "^4.2.0",
-    "ava": "^1.0.0-beta.8",
+    "ava": "1.0.0-rc.1",
     "del-cli": "^1.0.0",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.0",
