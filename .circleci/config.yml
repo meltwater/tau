@@ -42,7 +42,7 @@ references:
           command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
       - run:
           name: Install dependencies
-          command: yarn install --frozen-lockfile
+          command: yarn install --frozen-lockfile --non-interactive
       - save_cache:
           key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
           paths: ~/.yarn-cache
