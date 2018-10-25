@@ -11,25 +11,41 @@ executors:
     docker:
       - image: node:<< parameters.tag >>
 
-references:
-  build: &build
+commands:
+  setup:
+    description: Setup environment
+    parameters:
+      is_alpine:
+        type: boolean
+        default: false
     steps:
-      - run:
-          name: Install Alpine Linux build dependencies
-          command: |
-            if [[ -f /sbin/apk ]]; then
-              apk add --no-cache ca-certificates git openssh-client
-            fi
+      - when:
+          condition: << parameters.is_alpine >>
+          steps:
+            - run:
+                name: Install Alpine Linux build dependencies
+                command: apk add --no-cache ca-certificates git openssh-client
       - checkout
+      - when:
+          condition: << parameters.is_alpine >>
+          steps:
+            - run:
+                name: Save Alpine Linux version
+                command: |
+                  echo "alpine: $(cat /etc/alpine-release)" >> .versions
       - run:
-          name: Save build versions
+          name: Save Node.js and Yarn versions
           command: |
             echo "node: ${NODE_VERSION}" >> .versions
             echo "yarn: ${YARN_VERSION}" >> .versions
-            if [[ -f /sbin/apk ]]; then
-              echo "alpine: $(cat /etc/alpine-release)" >> .versions
-            fi
             cat .versions
+  install:
+    description: Install dependencies
+    parameters:
+      save_cache:
+        type: boolean
+        default: true
+    steps:
       - restore_cache:
           key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-
       - restore_cache:
@@ -43,90 +59,89 @@ references:
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile --non-interactive
-      - save_cache:
-          key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
-          paths: ~/.yarn-cache
-      - save_cache:
-          key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
-          paths: node_modules
+      - when:
+          condition: << parameters.save_cache >>
+          steps:
+            - save_cache:
+                key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
+                paths: ~/.yarn-cache
+            - save_cache:
+                key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
+                paths: node_modules
+jobs:
+  test:
+    description: Test Node.js package
+    parameters:
+      tag:
+        type: string
+        default: latest
+      is_alpine:
+        type: boolean
+        default: false
+      upload_coverage:
+        type: boolean
+        default: false
+    executor:
+      name: node
+      tag: << parameters.tag >>
+    steps:
+      - setup:
+          is_alpine: << parameters.is_alpine >>
+      - install
       - run:
           name: Test package
-          command: |
-            if [[ "${TEST_PACKAGE}" == 'true' ]]; then
-              yarn test
-            fi
+          command: yarn test
       - run:
           name: Build package
-          command: |
-            if [[ "${BUILD_PACKAGE}" == 'true' ]]; then
-              yarn run build
-            fi
+          command: yarn run build
+      - when:
+          condition: << parameters.upload_coverage >>
+          steps:
+            - run:
+                name: Upload coverage to Codecov
+                command: |
+                  if [[ -n "${CODECOV_TOKEN}" ]]; then
+                    yarn global add codecov
+                    codecov
+                  fi
+  publish:
+    description: Publish Node.js package
+    executor:
+      name: node
+      tag: carbon
+    steps:
+      - setup
+      - install
       - run:
-          name: Upload coverage to Codecov
-          command: |
-            if [[ "${COVERAGE}" == 'true' && -n "${CODECOV_TOKEN}" ]]; then
-              yarn global add codecov
-              codecov
-            fi
+          name: Build package
+          command: yarn run build
       - deploy:
           name: Publish package
-          command: |
-            if [[ "${PUBLISH_PACKAGE}" == 'true' ]]; then
-              .circleci/publish.sh
-            fi
-
-jobs:
-  node:
-    executor:
-      name: node
-    environment:
-      TEST_PACKAGE: 'true'
-    <<: *build
-  node-alpine:
-    executor:
-      name: node
-      tag: alpine
-    environment:
-      TEST_PACKAGE: 'true'
-    <<: *build
-  node-carbon:
-    executor:
-      name: node
-      tag: carbon
-    environment:
-      TEST_PACKAGE: 'true'
-      BUILD_PACKAGE: 'true'
-      COVERAGE: 'true'
-    <<: *build
-  node-carbon-alpine:
-    executor:
-      name: node
-      tag: carbon-alpine
-    environment:
-      TEST_PACKAGE: 'true'
-    <<: *build
-  publish:
-    executor:
-      name: node
-      tag: carbon
-    environment:
-      BUILD_PACKAGE: 'true'
-      PUBLISH_PACKAGE: 'true'
-    <<: *build
+          command: .circleci/publish.sh
 
 workflows:
   default:
     jobs:
-      - node
-      - node-alpine
-      - node-carbon
-      - node-carbon-alpine
+      - test:
+          name: test-latest
+      - test:
+          name: test-latest-alpine
+          tag: alpine
+          is_alpine: true
+      - test:
+          name: test-carbon
+          tag: carbon
+          upload_coverage: true
+      - test:
+          name: test-carbon-alpine
+          tag: carbon-alpine
+          is_alpine: true
       - publish:
           filters:
             branches:
               only: /^(v(er)?\/?[0-9].*|master)/
           requires:
-            - node
-            - node-alpine
-            - node-carbon
-            - node-carbon-alpine
+            - test-latest
+            - test-latest-alpine
+            - test-carbon
+            - test-carbon-alpine
