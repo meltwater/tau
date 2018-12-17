@@ -150,5 +150,7 @@ workflows:
           requires:
             - test-latest
             - test-latest-alpine
+            - test-dubnium
+            - test-dubnium-alpine
             - test-carbon
             - test-carbon-alpine
