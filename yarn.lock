@@ -675,9 +675,9 @@
     arrify "^1.0.1"
 
 "@meltwater/examplr@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@meltwater/examplr/-/examplr-4.2.0.tgz#3d2db18f275499735febd077f3121cfabd9df9e8"
-  integrity sha512-lYp72iIrNB/h4+aXGw56p1OLcAaAnKoQCnAb/zKruC7o6RTXeM8Oq5NqjOSsWy57ojNQGCdOW6OOf8h1qXYg7w==
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@meltwater/examplr/-/examplr-4.2.1.tgz#dc3750c24af3c09c45af6491ff6b0b43935684c3"
+  integrity sha512-xizA4IR8rjl9VHXJW32q+ScavdymOtbqurypy18l7eZmiwrkMjy0RV7sOZbKBn1qwCnyIAczPqRuFs/bRpE+xg==
   dependencies:
     bunyan-formatter "^1.0.0"
     change-case "^3.0.1"
