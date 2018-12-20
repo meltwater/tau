@@ -94,6 +94,9 @@ Exceptions are documented below.
 - `DateTime.fromMillis -> fromMillisWithOptions`
     - `fromMillis`
     - `fromMillisUtc`
+- `DateTime.fromSeconds -> fromSecondsWithOptions`
+    - `fromSeconds`
+    - `fromSecondsUtc`
 - `DateTime.fromRFC2822 -> fromRfc2822WithOptions`
     - `fromRfc2822`
     - `fromRfc2822Utc`
