@@ -1,33 +1,56 @@
 ---
-version: 2
+version: 2.1
 
-references:
-  build: &build
+executors:
+  node:
+    parameters:
+      tag:
+        type: string
+        default: latest
     working_directory: ~/build
+    docker:
+      - image: node:<< parameters.tag >>
+
+commands:
+  setup:
+    description: Setup environment
+    parameters:
+      is_alpine:
+        type: boolean
+        default: false
     steps:
-      - run:
-          name: Install Alpine Linux build dependencies
-          command: |
-            if [[ -f /sbin/apk ]]; then
-              apk add --no-cache ca-certificates git openssh-client
-            fi
+      - when:
+          condition: << parameters.is_alpine >>
+          steps:
+            - run:
+                name: Install Alpine Linux build dependencies
+                command: apk add --no-cache ca-certificates git openssh-client
       - add_ssh_keys
       - checkout
+      - when:
+          condition: << parameters.is_alpine >>
+          steps:
+            - run:
+                name: Save Alpine Linux version
+                command: |
+                  echo "alpine: $(cat /etc/alpine-release)" >> .versions
       - run:
-          name: Save build versions
+          name: Save Node.js and Yarn versions
           command: |
             echo "node: ${NODE_VERSION}" >> .versions
             echo "yarn: ${YARN_VERSION}" >> .versions
-            if [[ -f /sbin/apk ]]; then
-              echo "alpine: $(cat /etc/alpine-release)" >> .versions
-            fi
             cat .versions
+  install:
+    description: Install dependencies
+    parameters:
+      save_cache:
+        type: boolean
+        default: true
+    steps:
       - restore_cache:
           key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-
       - restore_cache:
           key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
-      - restore_cache:
-          key: gh-pages-{{ checksum ".versions" }}
       - run:
           name: Set yarn cache
           command: yarn config set cache-folder $HOME/.yarn-cache
@@ -36,91 +59,104 @@ references:
           command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
       - run:
           name: Install dependencies
-          command: yarn install --pure-lockfile
-      - save_cache:
-          key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
-          paths: ~/.yarn-cache
-      - save_cache:
-          key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
-          paths: node_modules
+          command: yarn install --frozen-lockfile --non-interactive
+      - when:
+          condition: << parameters.save_cache >>
+          steps:
+            - save_cache:
+                key: yarn-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
+                paths: ~/.yarn-cache
+            - save_cache:
+                key: node-modules-{{ arch }}-{{ checksum ".versions" }}-{{ checksum "yarn.lock" }}
+                paths: node_modules
+jobs:
+  test:
+    description: Test Node.js package
+    parameters:
+      tag:
+        type: string
+        default: latest
+      is_alpine:
+        type: boolean
+        default: false
+      upload_coverage:
+        type: boolean
+        default: false
+    executor:
+      name: node
+      tag: << parameters.tag >>
+    steps:
+      - setup:
+          is_alpine: << parameters.is_alpine >>
+      - install
+      - run:
+          name: Test package
+          command: yarn test
+      - run:
+          name: Build package
+          command: yarn run build
+      - when:
+          condition: << parameters.upload_coverage >>
+          steps:
+            - run:
+                name: Upload coverage to Codecov
+                command: |
+                  if [[ -n "${CODECOV_TOKEN}" ]]; then
+                    yarn global add codecov
+                    codecov
+                  fi
+  publish:
+    description: Publish Node.js package
+    executor:
+      name: node
+      tag: carbon
+    steps:
+      - setup
+      - install
+      - restore_cache:
+          key: gh-pages-{{ checksum ".versions" }}
+      - run:
+          name: Build package
+          command: yarn run build
+      - deploy:
+          name: Publish package
+          command: .circleci/publish.sh
       - save_cache:
           key: gh-pages-{{ checksum ".versions" }}-{{ epoch }}
           paths: .gh-pages
-      - run:
-          name: Test package
-          command: |
-            if [[ "${TEST_PACKAGE}" == 'true' ]]; then
-              yarn test
-            fi
-      - run:
-          name: Build package
-          command: |
-            if [[ "${BUILD_PACKAGE}" == 'true' ]]; then
-              yarn run build
-            fi
-      - run:
-          name: Upload coverage to Codecov
-          command: |
-            if [[ "${COVERAGE}" == 'true' && -n "${CODECOV_TOKEN}" ]]; then
-              yarn global add codecov
-              codecov
-            fi
-      - deploy:
-          name: Publish package
-          command: |
-            if [[ "${PUBLISH_PACKAGE}" == 'true' ]]; then
-              .circleci/publish.sh
-            fi
-
-jobs:
-  node:
-    environment:
-      TEST_PACKAGE: 'true'
-    docker:
-      - image: node
-    <<: *build
-  node-alpine:
-    environment:
-      TEST_PACKAGE: 'true'
-    docker:
-      - image: node:alpine
-    <<: *build
-  node-carbon:
-    environment:
-      TEST_PACKAGE: 'true'
-      BUILD_PACKAGE: 'true'
-      COVERAGE: 'true'
-    docker:
-      - image: node:carbon
-    <<: *build
-  node-carbon-alpine:
-    environment:
-      TEST_PACKAGE: 'true'
-    docker:
-      - image: node:carbon-alpine
-    <<: *build
-  publish:
-    environment:
-      BUILD_PACKAGE: 'true'
-      PUBLISH_PACKAGE: 'true'
-    docker:
-      - image: node:carbon
-    <<: *build
 
 workflows:
-  version: 2
   default:
     jobs:
-      - node
-      - node-alpine
-      - node-carbon
-      - node-carbon-alpine
+      - test:
+          name: test-latest
+      - test:
+          name: test-latest-alpine
+          tag: alpine
+          is_alpine: true
+      - test:
+          name: test-dubnium
+          tag: dubnium
+      - test:
+          name: test-dubnium-alpine
+          tag: dubnium-alpine
+          is_alpine: true
+      - test:
+          name: test-carbon
+          tag: carbon
+          upload_coverage: true
+      - test:
+          name: test-carbon-alpine
+          tag: carbon-alpine
+          is_alpine: true
       - publish:
           filters:
             branches:
               only: /^(v(er)?\/?[0-9].*|master)/
           requires:
-            - node
-            - node-alpine
-            - node-carbon
-            - node-carbon-alpine
+            - test-latest
+            - test-latest-alpine
+            - test-dubnium
+            - test-dubnium-alpine
+            - test-carbon
+            - test-carbon-alpine
