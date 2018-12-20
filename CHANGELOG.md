@@ -9,17 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- `fromMillisToIso`, `fromUnixToIso`, `fromIsoToUnix`, and `fromIsoToMillis`.
+- `fromMillisToIso` and `fromIsoToMillis`.
+- `fromUnixToIso` and `fromIsoToUnix`.
 - New in Luxon 1.8
   - `isDateTime`, `isInterval`, `isDuration`, and `invalidExplanation`.
   - `fromSeconds`, `fromSecondsWithOptions`, `fromSecondsUtc` and `toSeconds`.
   - The difference between the Unix and Seconds functions is that
     the Unix functions always round down to the nearest second,
-    while the Seconds functions accept and return millisecond accurate floats.
+    while the Seconds functions accept and return millisecond accurate values.
 
 ### Changed
 
-- Update Luxon to v1.5.2.
+- Update Luxon to v1.8.2.
+- Update to [makenew-node-lib] v5.3.1.
 
 ### Fixed
 
