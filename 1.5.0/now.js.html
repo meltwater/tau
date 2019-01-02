@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>now.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="TAU.html">TAU</a><ul class='methods'><li data-type='method'><a href="TAU.html#.fromIsoToMillis">fromIsoToMillis</a></li><li data-type='method'><a href="TAU.html#.fromIsoToUnix">fromIsoToUnix</a></li><li data-type='method'><a href="TAU.html#.fromMillisToIso">fromMillisToIso</a></li><li data-type='method'><a href="TAU.html#.fromMillisToUnix">fromMillisToUnix</a></li><li data-type='method'><a href="TAU.html#.fromNow">fromNow</a></li><li data-type='method'><a href="TAU.html#.fromNowToIso">fromNowToIso</a></li><li data-type='method'><a href="TAU.html#.fromNowToMillis">fromNowToMillis</a></li><li data-type='method'><a href="TAU.html#.fromNowToUnix">fromNowToUnix</a></li><li data-type='method'><a href="TAU.html#.fromNowUtc">fromNowUtc</a></li><li data-type='method'><a href="TAU.html#.fromNowWithOptions">fromNowWithOptions</a></li><li data-type='method'><a href="TAU.html#.fromUnix">fromUnix</a></li><li data-type='method'><a href="TAU.html#.fromUnixToIso">fromUnixToIso</a></li><li data-type='method'><a href="TAU.html#.fromUnixToMillis">fromUnixToMillis</a></li><li data-type='method'><a href="TAU.html#.fromUnixUtc">fromUnixUtc</a></li><li data-type='method'><a href="TAU.html#.fromUnixWithOptions">fromUnixWithOptions</a></li><li data-type='method'><a href="TAU.html#.toUnix">toUnix</a></li><li data-type='method'><a href="TAU.html#.withOptions">withOptions</a></li><li data-type='method'><a href="TAU.html#.withUtc">withUtc</a></li><li data-type='method'><a href="TAU.html#.withZone">withZone</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">now.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { DateTime } from 'luxon'
+import { compose } from 'ramda'
+
+import {
+  fromMillisWithOptions,
+  now,
+  toIso,
+  toMillis
+} from './fluxon'
+
+import {
+  toUnix
+} from './unix'
+
+/**
+ * Creates a DateTime from the current moment in time in the default zone.
+ *
+ * @func fromNow
+ * @memberOf TAU
+ * @since {@link https://tau.meltwaterlabs.com/1.0.0|v1.0.0}
+ * @category DateTime
+ * @sig ... -> DateTime
+ * @return {!DateTime} The DateTime
+ * @see TAU.fromNowWithOptions, TAU.fromNowUtc
+ * @example
+ *
+ * TAU.fromNow() //=> DateTime
+ */
+export const fromNow = () => DateTime.local()
+
+/**
+ * Creates a DateTime with custom options from the current moment in time.
+ *
+ * @func fromNowWithOptions
+ * @memberOf TAU
+ * @since {@link https://tau.meltwaterlabs.com/1.0.0|v1.0.0}
+ * @category DateTime
+ * @sig Options -> DateTime
+ * @param {!Options} options Options for DateTime
+ * @return {!DateTime} The DateTime
+ * @see TAU.fromNow, TAU.fromNowUtc
+ * @example
+ *
+ * TAU.fromNowWithOptions({zone: 'utc'}) //=> DateTime
+ */
+export const fromNowWithOptions = options => (
+  fromMillisWithOptions(options, now()())
+)
+
+/**
+ * Creates a UTC DateTime from the current moment in time.
+ *
+ * @func fromNowUtc
+ * @memberOf TAU
+ * @since {@link https://tau.meltwaterlabs.com/1.0.0|v1.0.0}
+ * @category DateTime
+ * @sig ... -> DateTime
+ * @return {!DateTime} The DateTime with zone set to UTC
+ * @see TAU.fromNowWithOptions, TAU.fromNow
+ * @example
+ *
+ * TAU.fromNowUtc() //=> DateTime
+ */
+export const fromNowUtc = () => DateTime.utc()
+
+/**
+ * Returns the current number of milliseconds since the Unix epoch.
+ *
+ * @func fromNowToMillis
+ * @memberOf TAU
+ * @since {@link https://tau.meltwaterlabs.com/1.5.0|v1.5.0}
+ * @category DateTime
+ * @sig ... -> Number
+ * @return {!number} Number of milliseconds since the Unix epoch
+ * @see TAU.fromNowToUnix, TAU.fromNowToIso
+ * @example
+ *
+ * TAU.fromNowToMillis() //=> 12345678
+ */
+export const fromNowToMillis = compose(toMillis, fromNowUtc)
+
+/**
+ * Returns the current number of seconds since the Unix epoch.
+ *
+ * @func fromNowToUnix
+ * @memberOf TAU
+ * @since {@link https://tau.meltwaterlabs.com/1.5.0|v1.5.0}
+ * @category DateTime
+ * @sig ... -> Number
+ * @return {!number} Number of seconds since the Unix epoch
+ * @see TAU.fromNowToMillis, TAU.fromNowToIso
+ * @example
+ *
+ * TAU.fromNowToUnix() //=> 12345
+ */
+export const fromNowToUnix = compose(toUnix, fromNowUtc)
+
+/**
+ * Returns the current time as ISO 8601-compliant string representation.
+ *
+ * @func fromNowToIso
+ * @memberOf TAU
+ * @since {@link https://tau.meltwaterlabs.com/1.5.0|v1.5.0}
+ * @category DateTime
+ * @sig ... -> String
+ * @return {!string} ISO 8601-compliant representation
+ * @see TAU.fromNowToMillis, TAU.fromNowToUnix
+ * @example
+ *
+ * TAU.fromNowToIso() //=> 2019-01-02T21:11:51.631Z
+ */
+export const fromNowToIso = compose(toIso, fromNowUtc)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Jan 02 2019 21:23:25 GMT+0000 (UTC) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+
+
+</body>
+</html>
