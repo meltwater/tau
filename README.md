@@ -7,6 +7,10 @@
 [![CircleCI](https://img.shields.io/circleci/project/github/meltwater/tau.svg)](https://circleci.com/gh/meltwater/tau)
 
 Functional time and date tools for JavaScript inspired by [Luxon].
+Plays well with [φ][Phi].
+
+[Luxon]: https://moment.github.io/luxon/
+[Phi]: https://phi.meltwaterlabs.com/
 
 ## Description
 
@@ -28,7 +32,6 @@ or using [Yarn] with
 $ yarn add @meltwater/tau
 ```
 
-[Luxon]: https://moment.github.io/luxon/
 [npm]: https://www.npmjs.com/
 [Yarn]: https://yarnpkg.com/
 
