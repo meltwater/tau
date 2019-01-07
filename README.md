@@ -58,13 +58,14 @@ is exported at the top level with the same name.
 All functions are curried and the argument order is reversed.
 Exceptions are documented below.
 
-- Acronyms follow normal camelcase rules are not uppercase,
+- Acronyms follow normal camelcase rules are and not uppercase,
   e.g., `DateTime.isInDST` is exported as `isInDst`.
-  These exceptions are not explicitly listed below.
-- For instance methods, the last argument corresponds to the instance (`this`).
+  These exceptions are not all explicitly listed below.
+- For instance methods, the last argument corresponds to the instance (`this`),
+  e.g., `DateTime.fromMillis(0).toIso()` becomes `toIso(fromMillis(0))`.
 - Some names are changed to avoid conflicts.
 - Some signatures are changed for compatibility with the functional style.
-- Any function which takes options has a `*withOptions` variant
+- Any function which takes options has both a `*withOptions` variant
   which takes options as its first argument, and a normal variant
   with one less argument bound to the default options.
 - Some Luxon methods have arguments with default values.
@@ -88,7 +89,7 @@ Exceptions are documented below.
     - `fromFormatExplainUtc`
 - `DateTime.fromHTTP -> fromHttpWithOptions`
     - `fromHttp`
-    - `fromHttpWithUtc`
+    - `fromHttpUtc`
 - `DateTime.fromISO -> fromIsoWithOptions`
     - `fromIso`
     - `fromIsoUtc`
