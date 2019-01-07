@@ -6,9 +6,9 @@
 [![Codecov](https://img.shields.io/codecov/c/token/6QCpyuHSMW/github/meltwater/tau.svg)](https://codecov.io/gh/meltwater/tau)
 [![CircleCI](https://circleci.com/gh/meltwater/tau.svg?style=shield&circle-token=465c0d014b4cb8b2869f4c7edda5965a302a130b)](https://circleci.com/gh/meltwater/tau)
 
-## Description
-
 Functional time and date tools for JavaScript inspired by [Luxon].
+
+## Description
 
 Exports the Luxon API in a functional programming style
 along with the custom functions defined in this package
@@ -34,15 +34,19 @@ $ yarn add @meltwater/tau
 
 ## Usage
 
-
 **See the complete [API documentation](./docs) and [working examples](./examples).**
 
-This package provides an async function which checks if its argument is true.
-
 ```js
+import { compose } from '@meltwater/phi' // standard compose function
 import { toIso, fromNow } from '@meltwater/tau'
 
-toIso(fromNow())
+const sinceStartOfToday = compose(
+  toRelative,
+  startOf('day'),
+  fromNow
+)
+
+sinceStartOfToday() //=> '12 hours ago'
 ```
 
 [API documentation]: https://tau.meltwaterlabs.com
