@@ -1,10 +1,10 @@
 # τ
 
-[![npm](https://img.shields.io/badge/npm-%40meltwater%2Ftau-blue.svg)](https://www.npmjs.com/package/@meltwater/tau)
+[![npm](https://img.shields.io/npm/v/@meltwater/tau.svg)](https://www.npmjs.com/package/@meltwater/tau)
 [![github](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/meltwater/tau)
-[![docs](https://img.shields.io/badge/docs-master-green.svg)](https://tau.meltwaterlabs.com)
-[![Codecov](https://img.shields.io/codecov/c/token/6QCpyuHSMW/github/meltwater/tau.svg)](https://codecov.io/gh/meltwater/tau)
-[![CircleCI](https://circleci.com/gh/meltwater/tau.svg?style=shield&circle-token=465c0d014b4cb8b2869f4c7edda5965a302a130b)](https://circleci.com/gh/meltwater/tau)
+[![docs](https://img.shields.io/badge/docs-latest-green.svg)](https://tau.meltwaterlabs.com)
+[![Codecov](https://img.shields.io/codecov/c/github/meltwater/tau.svg)](https://codecov.io/gh/meltwater/tau)
+[![CircleCI](https://img.shields.io/circleci/project/github/meltwater/tau.svg)](https://circleci.com/gh/meltwater/tau)
 
 Functional time and date tools for JavaScript inspired by [Luxon].
 
@@ -445,7 +445,18 @@ To submit a patch:
 
 ## License
 
-This npm package is Copyright (c) 2016-2018 Meltwater Group.
+The source code for this npm package is
+licensed under the Apache License, Version 2.0 (the "License");
+you may not use this source code except in compliance with the License.
+You may obtain a copy of the License at
+
+   https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 ## Warranty
 
