@@ -121,6 +121,10 @@ Exceptions are documented below.
     - `toLocaleParts`
 - `DateTime.toLocaleString -> toLocaleStringWithOptions`
     - `toLocaleString`
+- `DateTime.toRelative -> toRelativeWithOptions`
+    - `toRelative`
+- `DateTime.toRelativeCalendar -> toRelativeCalendarWithOptions`
+    - `toRelativeCalendar`
 - `DateTime.toSQL -> toSqlWithOptions`
     - `toSql`
 - `DateTime.toSQLTime -> toSqlTimeWithOptions`
