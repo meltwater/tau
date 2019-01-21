@@ -9,18 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Open source under the Apache License, Version 2.0!
 - Update Luxon to v1.10.0.
 
 ## Added
 
 - New in Luxon 1.10.0:
   - `normalizeZone`, `zone`, and `mapEndpoints`.
-
-## [1.6.1] / 2019-01-07
-
-### Changed
-
-- Open source under the Apache License, Version 2.0.
 
 ## [1.6.0] / 2019-01-07
 
