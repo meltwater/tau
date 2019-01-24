@@ -53,20 +53,19 @@ sinceStartOfToday() //=> '12 hours ago'
 ```
 
 ```js
-import { compose, lt } from '@meltwater/phi'
+import { compose, gt } from '@meltwater/phi'
 import { fromIso, diffNow, days } from '@meltwater/tau'
 
-const isIsoLessThanNDaysOld = n => compose(
-  lt(-n),
-  Math.floor,
+const isIsoMoreThanNDaysOld = n => compose(
+  gt(-n),
   days,
   diffNow('days'),
   fromIso
 )
 
-const isIsoLessThan3DaysOld = isIsoLessThanNDaysOld(3)
+const isIsoMoreThan3DaysOld = isIsoMoreThanNDaysOld(3)
 
-isIsoLessThan3DaysOld('2018-01-24T20:27:49.288Z') //=> false
+isIsoMoreThan3DaysOld('2018-01-24T20:27:49.288Z') //=> true
 ```
 
 [API documentation]: https://tau.meltwaterlabs.com
