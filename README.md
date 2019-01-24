@@ -52,6 +52,23 @@ const sinceStartOfToday = compose(
 sinceStartOfToday() //=> '12 hours ago'
 ```
 
+```js
+import { compose, lt } from '@meltwater/phi'
+import { fromIso, diffNow, days } from '@meltwater/tau'
+
+const isIsoLessThanNDaysOld = n => compose(
+  lt(-n),
+  Math.floor,
+  days,
+  diffNow('days'),
+  fromIso
+)
+
+const isIsoLessThan3DaysOld = isIsoLessThanNDaysOld(3)
+
+isIsoLessThan3DaysOld('2018-01-24T20:27:49.288Z') //=> false
+```
+
 [API documentation]: https://tau.meltwaterlabs.com
 
 ### Luxon Functional API
