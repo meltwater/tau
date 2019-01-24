@@ -61,13 +61,15 @@ is exported at the top level with the same name.
 All functions are curried and the argument order is reversed.
 Exceptions are documented below.
 
+#### Naming conventions
+
 - Acronyms follow normal camelcase rules are and not uppercase,
   e.g., `DateTime.isInDST` is exported as `isInDst`.
-  These exceptions are not all explicitly listed below.
 - For instance methods, the last argument corresponds to the instance (`this`),
   e.g., `DateTime.fromMillis(0).toIso()` becomes `toIso(fromMillis(0))`.
 - Some names are changed to avoid conflicts.
-- Some signatures are changed for compatibility with the functional style.
+- Some signatures are changed for compatibility with the functional style
+  e.g., all variadic methods.
 - Any function which takes options has both a `*withOptions` variant
   which takes options as its first argument, and a normal variant
   with one less argument bound to the default options.
