@@ -37,7 +37,7 @@ $ yarn add @meltwater/tau
 
 ## Usage
 
-**See the complete [API documentation](./docs) and [working examples](./examples).**
+**See the complete [API documentation] and [working examples](./examples).**
 
 ```js
 import { compose } from '@meltwater/phi' // standard compose function
