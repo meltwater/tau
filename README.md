@@ -198,9 +198,9 @@ Exceptions are documented below.
 
 ##### Signature changes
 
-- `interval.fromDateTimes(start, end) -> fromDateTimes([start, end])`
-- `interval.splitAt(...) -> splitAt([...], interval)` (order preserved)
-- `interval.difference(...) -> difference([...], interval)` (order preserved)
+- `Interval.fromDateTimes(start, end) -> fromDateTimes([start, end])`
+- `Interval.splitAt(...) -> splitAt([...], interval)` (order preserved)
+- `Interval.difference(...) -> difference([...], interval)` (order preserved)
 
 #### Info
 
