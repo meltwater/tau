@@ -100,7 +100,7 @@
     "node": ">=8.9.0"
   },
   "dependencies": {
-    "luxon": "~1.11.1",
+    "luxon": "~1.12.0",
     "ramda": "^0.26.1"
   },
   "devDependencies": {
