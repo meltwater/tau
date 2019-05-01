@@ -44,6 +44,18 @@ Bootstrap a new [Node.js] [npm package] in five minutes or less.
 [Shields.io]: https://shields.io/
 [Yarn]: https://yarnpkg.com/
 
+### License
+
+This repository is released into the public domain through [CC0].
+The other copyright notices for this project
+are for the purpose of demonstrating the licensing of derived projects.
+
+To the extent possible under law, the person who associated CC0
+with this work has waived all copyright and related
+or neighboring rights to this work.
+
+[CC0]: https://creativecommons.org/share-your-work/public-domain/cc0/
+
 ### Bootstrapping a new project
 
 1. Clone the master branch of this repository with
