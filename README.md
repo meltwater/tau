@@ -6,8 +6,6 @@
 [![Codecov](https://img.shields.io/codecov/c/token/eHEIOjPT5u/github/meltwater/makenew-node-lib.svg)](https://codecov.io/gh/meltwater/makenew-node-lib)
 [![CircleCI](https://circleci.com/gh/meltwater/makenew-node-lib.svg?style=shield&circle-token=30395fe910ca2b9f7553c6311e85bd8ebe1ee059)](https://circleci.com/gh/meltwater/makenew-node-lib)
 
-## Description
-
 Bootstrap a new [Node.js] [npm package] in five minutes or less.
 
 [Node.js]: https://nodejs.org/
@@ -141,6 +139,10 @@ The actual changes for this project are documented in the commit history
 and summarized under [Releases].
 
 [Releases]: https://github.com/meltwater/makenew-node-lib/releases
+
+## Description
+
+TODO
 
 ## Installation
 
