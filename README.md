@@ -250,7 +250,7 @@ The following environment variables must be set on [CircleCI]:
   (format `org:team`, optional).
 - `CODECOV_TOKEN`: Codecov token for uploading coverage reports (optional).
 
-These may be set manually or by running the script `./circleci/envvars.sh`.
+These may be set manually or by running the script `./.circleci/envvars.sh`.
 
 [CircleCI]: https://circleci.com/
 
