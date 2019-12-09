@@ -49,7 +49,7 @@
     "watch": "gulp watch",
     "pretty": "prettier --write **/*.js **/*.json **/*.graphql",
     "format": "npm-run-all --serial pretty format:*",
-    "format:js": "npm-run-all --serial",
+    "format:js": "standard --fix",
     "report": "nyc report"
   },
   "babel": {
