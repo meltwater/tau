@@ -47,7 +47,7 @@
     "example:inspect": "babel-node --inspect examples",
     "example:inspect:watch": "nodemon --exec babel-node --inspect examples",
     "watch": "gulp watch",
-    "pretty": "prettier --write '**/*.js' '**/*.json' '**/*.graphql'",
+    "pretty": "prettier --ignore-path .gitignore --write '**/*.js' '**/*.json' '**/*.graphql'",
     "format": "npm-run-all --serial pretty format:*",
     "format:js": "standard --fix",
     "report": "nyc report"
