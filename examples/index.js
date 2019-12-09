@@ -8,6 +8,7 @@ export const examples = {
   isTrue // TODO: Replace this with added example.
 }
 
+// prettier-ignore
 const envVars = [
   'LOG_LEVEL',
   'LOG_FILTER',
