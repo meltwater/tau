@@ -2,15 +2,10 @@
   "title": "Tau",
   "tags": {
     "allowUnknownTags": true,
-    "dictionaries": [
-      "jsdoc",
-      "closure"
-    ]
+    "dictionaries": ["jsdoc", "closure"]
   },
   "source": {
-    "include": [
-      "./lib"
-    ],
+    "include": ["./lib"],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "\\.spec\\.js$"
   },
@@ -22,10 +17,7 @@
     "recurse": true,
     "template": "./node_modules/docdash"
   },
-  "plugins": [
-    "plugins/markdown",
-    "./jsdoc.js"
-  ],
+  "plugins": ["plugins/markdown", "./jsdoc.js"],
   "templates": {
     "cleverLinks": true,
     "monospaceLinks": true
