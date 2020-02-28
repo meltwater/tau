@@ -8,6 +8,7 @@ export const examples = {
   iso
 }
 
+// prettier-ignore
 const envVars = [
   'LOG_LEVEL',
   'LOG_FILTER',

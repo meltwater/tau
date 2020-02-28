@@ -18,107 +18,97 @@ const paths = {
     'examples/**/*.json',
     'fixtures/**/*.json'
   ],
-  scripts: [
-    '*.js',
-    'examples/**/*.js',
-    'lib/**/*.js',
-    'test/**/*.js'
-  ]
+  scripts: ['*.js', 'examples/**/*.js', 'lib/**/*.js', 'test/**/*.js']
 }
 
 export const docVersion = () => {
-  const data = fs.readFileSync(
-    path.resolve(__dirname, 'package.json')
-  )
+  const data = fs.readFileSync(path.resolve(__dirname, 'package.json'))
   const pkg = JSON.parse(data)
 
-  return gulp.src(['.doc.index.html'])
+  return gulp
+    .src(['.doc.index.html'])
     .pipe(gulpReplace('--version--', pkg.version))
     .pipe(gulpRename('index.html'))
     .pipe(gulp.dest(`${paths.docs}/${pkg.name}`))
 }
 
-export const publishDocs = (done) => {
-  const publish = (docs, pkg, done) => ghPagesPublish(docs, {
-    repo: `git@github.com:${pkg.repository}.git`,
-    branch: 'gh-pages',
-    add: true,
-    clone: '.gh-pages',
-    depth: 2,
-    message: `Publish docs for v${pkg.version} [ci skip]`,
-    user: {
-      name: pkg.author.name,
-      email: pkg.author.email
-    }
-  }, done)
+export const publishDocs = done => {
+  const publish = (docs, pkg, done) =>
+    ghPagesPublish(
+      docs,
+      {
+        repo: `git@github.com:${pkg.repository}.git`,
+        branch: 'gh-pages',
+        add: true,
+        clone: '.gh-pages',
+        depth: 2,
+        message: `Publish docs for v${pkg.version} [ci skip]`,
+        user: {
+          name: pkg.author.name,
+          email: pkg.author.email
+        }
+      },
+      done
+    )
 
-  fs.readFile(
-    path.resolve(__dirname, 'package.json'),
-    (err, data) => {
-      if (err) {
-        done(err)
-        return
-      }
-      const pkg = JSON.parse(data)
-      const docs = path.resolve(__dirname, paths.docs, pkg.name)
-      publish(docs, pkg, done)
+  fs.readFile(path.resolve(__dirname, 'package.json'), (err, data) => {
+    if (err) {
+      done(err)
+      return
     }
-  )
+    const pkg = JSON.parse(data)
+    const docs = path.resolve(__dirname, paths.docs, pkg.name)
+    publish(docs, pkg, done)
+  })
 }
 
-export const standard = () => (
-  gulp.src(paths.scripts)
+export const standard = () =>
+  gulp
+    .src(paths.scripts)
     .pipe(gulpStandard())
-    .pipe(gulpStandard.reporter('default', {
-      breakOnError: true
-    }))
-)
+    .pipe(
+      gulpStandard.reporter('default', {
+        breakOnError: true
+      })
+    )
 
-export const jsonlint = () => (
-  gulp.src(paths.json)
+export const jsonlint = () =>
+  gulp
+    .src(paths.json)
     .pipe(gulpJsonlint())
     .pipe(gulpJsonlint.failAfterError())
     .pipe(gulpJsonlint.reporter())
-)
 
-export const watchScripts = () => (
-  gulp.src(paths.scripts)
-    .pipe(gulpWatch(paths.scripts, vinyl => {
-      if (vinyl.event === 'change') {
-        gulplog.info(`Linted ${vinyl.relative}`)
-      }
-    }))
+export const watchScripts = () =>
+  gulp
+    .src(paths.scripts)
+    .pipe(
+      gulpWatch(paths.scripts, vinyl => {
+        if (vinyl.event === 'change') {
+          gulplog.info(`Linted ${vinyl.relative}`)
+        }
+      })
+    )
     .pipe(gulpStandard())
     .pipe(gulpStandard.reporter('default', {}))
-)
 
-export const watchJson = () => (
-  gulp.src(paths.json)
-    .pipe(gulpWatch(paths.json, vinyl => {
-      if (vinyl.event === 'change') {
-        gulplog.info(`Linted ${vinyl.relative}`)
-      }
-    }))
+export const watchJson = () =>
+  gulp
+    .src(paths.json)
+    .pipe(
+      gulpWatch(paths.json, vinyl => {
+        if (vinyl.event === 'change') {
+          gulplog.info(`Linted ${vinyl.relative}`)
+        }
+      })
+    )
     .pipe(gulpJsonlint())
     .pipe(gulpJsonlint.reporter())
-)
 
-export const lint = gulp.parallel(
-  jsonlint,
-  standard
-)
+export const lint = gulp.parallel(jsonlint, standard)
 
-export const watch = gulp.parallel(
-  watchJson,
-  watchScripts
-)
+export const watch = gulp.parallel(watchJson, watchScripts)
 
-export const docs = gulp.series(
-  docVersion,
-  publishDocs
-)
+export const docs = gulp.series(docVersion, publishDocs)
 
-export default gulp.series(
-  lint,
-  watch
-)
+export default gulp.series(lint, watch)
