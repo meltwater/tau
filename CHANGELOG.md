@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.14.0] / 2020-02-28
+
+### Changed
+
+- Update Luxon to v1.22.0.
+- Update Ramda to v0.27.0.
+
 ## [1.13.0] / 2019-10-04
 
 ### Changed
@@ -148,7 +155,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 [makenew-node-lib]: https://github.com/meltwater/makenew-node-lib
 
-[Unreleased]: https://github.com/meltwater/tau/compare/v1.13.0...HEAD
+[Unreleased]: https://github.com/meltwater/tau/compare/v1.14.0...HEAD
+[1.14.0]: https://github.com/meltwater/tau/compare/v1.13.0...v1.14.0
 [1.13.0]: https://github.com/meltwater/tau/compare/v1.12.0...v1.13.0
 [1.12.0]: https://github.com/meltwater/tau/compare/v1.11.0...v1.12.0
 [1.11.0]: https://github.com/meltwater/tau/compare/v1.10.0...v1.11.0
