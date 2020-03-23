@@ -8,7 +8,7 @@ import { isTrue } from '../lib'
 
 const readFileAsync = promisify(fs.readFile)
 
-test('checks if true', async t => {
+test('checks if true', async (t) => {
   const fixture = await readFileAsync(path.resolve('fixtures', 'true.json'))
   const { trueValue, falseValue } = JSON.parse(fixture)
   t.true(await isTrue(trueValue), 'returns true when true')

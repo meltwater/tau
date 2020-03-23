@@ -35,7 +35,7 @@ export const watchScripts = () =>
   gulp
     .src(paths.scripts)
     .pipe(
-      gulpWatch(paths.scripts, vinyl => {
+      gulpWatch(paths.scripts, (vinyl) => {
         if (vinyl.event === 'change') {
           gulplog.info(`Linted ${vinyl.relative}`)
         }
@@ -48,7 +48,7 @@ export const watchJson = () =>
   gulp
     .src(paths.json)
     .pipe(
-      gulpWatch(paths.json, vinyl => {
+      gulpWatch(paths.json, (vinyl) => {
         if (vinyl.event === 'change') {
           gulplog.info(`Linted ${vinyl.relative}`)
         }
