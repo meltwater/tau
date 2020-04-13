@@ -408,7 +408,7 @@ To submit a patch:
 
 ## License
 
-This npm package is Copyright (c) 2016-2019 Meltwater Group.
+This npm package is Copyright (c) 2016-2020 Meltwater Group.
 
 ## Warranty
 
