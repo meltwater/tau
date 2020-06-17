@@ -4436,10 +4436,10 @@ lowercase-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-2.0.0.tgz#2603e78b7b4b0006cbca2fbcc8a3202558ac9479"
   integrity sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==
 
-luxon@~1.22.0:
-  version "1.22.2"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.22.2.tgz#799d65cc1ed0ba85b4cb3f7dd38fc08a8d1a6750"
-  integrity sha512-vq6eSaOOw1fKob+JXwfu0e3/UFUT4G4HTFRJab7dch8J1OdOGW/vXqCiJsY7rm2In+5gKNYx0EtnYT0Tc5V4Qw==
+luxon@~1.24.1:
+  version "1.24.1"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.24.1.tgz#a8383266131ed4eaed4b5f430f96f3695403a52a"
+  integrity sha512-CgnIMKAWT0ghcuWFfCWBnWGOddM0zu6c4wZAWmD0NN7MZTnro0+833DF6tJep+xlxRPg4KtsYEHYLfTMBQKwYg==
 
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
