@@ -1,6 +1,6 @@
 'use strict'
 
-exports.defineTags = dictionary => {
+exports.defineTags = (dictionary) => {
   dictionary.defineTag('sig', {
     mustHaveValue: true,
     canHaveType: false,

@@ -32,7 +32,7 @@ export const docVersion = () => {
     .pipe(gulp.dest(`${paths.docs}/${pkg.name}`))
 }
 
-export const publishDocs = done => {
+export const publishDocs = (done) => {
   const publish = (docs, pkg, done) =>
     ghPagesPublish(
       docs,
