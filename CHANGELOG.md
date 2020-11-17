@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 
 - Update Luxon to v1.25.0.
+- License to MIT.
 
 ## [1.15.1] / 2020-06-17
 

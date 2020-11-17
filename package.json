@@ -13,7 +13,7 @@
   "homepage": "https://github.com/meltwater/tau",
   "bugs": "https://github.com/meltwater/tau/issues",
   "repository": "meltwater/tau",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "author": {
     "name": "Evan Sosenko",
     "email": "evan.sosenko@meltwater.com"
