@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.16.0] / 2020-11-16
+
+### Changed
+
+- Update Luxon to v1.25.0.
+
 ## [1.15.1] / 2020-06-17
 
 ### Changed
@@ -167,7 +173,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 [makenew-node-lib]: https://github.com/meltwater/makenew-node-lib
 
-[Unreleased]: https://github.com/meltwater/tau/compare/v1.15.1...HEAD
+[Unreleased]: https://github.com/meltwater/tau/compare/v1.16.0...HEAD
+[1.16.0]: https://github.com/meltwater/tau/compare/v1.15.1...v1.16.0
 [1.15.1]: https://github.com/meltwater/tau/compare/v1.15.0...v1.15.1
 [1.15.0]: https://github.com/meltwater/tau/compare/v1.14.0...v1.15.0
 [1.14.0]: https://github.com/meltwater/tau/compare/v1.13.0...v1.14.0
