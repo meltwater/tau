@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="TAU.html">TAU</a><ul class='methods'><li data-type='method'><a href="TAU.html#.fromIsoToMillis">fromIsoToMillis</a></li><li data-type='method'><a href="TAU.html#.fromIsoToUnix">fromIsoToUnix</a></li><li data-type='method'><a href="TAU.html#.fromMillisToIso">fromMillisToIso</a></li><li data-type='method'><a href="TAU.html#.fromMillisToUnix">fromMillisToUnix</a></li><li data-type='method'><a href="TAU.html#.fromNow">fromNow</a></li><li data-type='method'><a href="TAU.html#.fromNowToIso">fromNowToIso</a></li><li data-type='method'><a href="TAU.html#.fromNowToMillis">fromNowToMillis</a></li><li data-type='method'><a href="TAU.html#.fromNowToUnix">fromNowToUnix</a></li><li data-type='method'><a href="TAU.html#.fromNowUtc">fromNowUtc</a></li><li data-type='method'><a href="TAU.html#.fromNowWithOptions">fromNowWithOptions</a></li><li data-type='method'><a href="TAU.html#.fromUnix">fromUnix</a></li><li data-type='method'><a href="TAU.html#.fromUnixToIso">fromUnixToIso</a></li><li data-type='method'><a href="TAU.html#.fromUnixToMillis">fromUnixToMillis</a></li><li data-type='method'><a href="TAU.html#.fromUnixUtc">fromUnixUtc</a></li><li data-type='method'><a href="TAU.html#.fromUnixWithOptions">fromUnixWithOptions</a></li><li data-type='method'><a href="TAU.html#.toUnix">toUnix</a></li><li data-type='method'><a href="TAU.html#.withOptions">withOptions</a></li><li data-type='method'><a href="TAU.html#.withUtc">withUtc</a></li><li data-type='method'><a href="TAU.html#.withZone">withZone</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3>@meltwater/tau 1.16.1</h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1>τ</h1>
+<p><a href="https://www.npmjs.com/package/@meltwater/tau"><img src="https://img.shields.io/npm/v/@meltwater/tau.svg" alt="npm"></a>
+<a href="https://github.com/meltwater/tau"><img src="https://img.shields.io/badge/github-repo-blue.svg" alt="github"></a>
+<a href="https://tau.meltwaterlabs.com"><img src="https://img.shields.io/badge/docs-latest-green.svg" alt="docs"></a>
+<a href="https://codecov.io/gh/meltwater/tau"><img src="https://img.shields.io/codecov/c/github/meltwater/tau.svg" alt="Codecov"></a>
+<a href="https://circleci.com/gh/meltwater/tau"><img src="https://img.shields.io/circleci/project/github/meltwater/tau.svg" alt="CircleCI"></a></p>
+<p>Functional time and date tools for JavaScript inspired by <a href="https://moment.github.io/luxon/">Luxon</a>.
+Plays well with <a href="https://phi.meltwaterlabs.com/">φ</a>.</p>
+<h2>Description</h2>
+<p>Exports the Luxon API in a functional programming style
+along with the custom functions defined in this package
+so they all may be imported from the same place.</p>
+<h2>Installation</h2>
+<p>Add this as a dependency to your project using <a href="https://www.npmjs.com/">npm</a> with</p>
+<pre class="prettyprint source"><code>$ npm install @meltwater/tau
+</code></pre>
+<p>or using <a href="https://yarnpkg.com/">Yarn</a> with</p>
+<pre class="prettyprint source"><code>$ yarn add @meltwater/tau
+</code></pre>
+<h2>Usage</h2>
+<p><strong>See the complete <a href="https://tau.meltwaterlabs.com">API documentation</a> and <a href="./examples">working examples</a>.</strong></p>
+<pre class="prettyprint source lang-js"><code>import { compose } from '@meltwater/phi' // standard compose function
+import { toIso, fromNow } from '@meltwater/tau'
+
+const sinceStartOfToday = compose(
+  toRelative,
+  startOf('day'),
+  fromNow
+)
+
+sinceStartOfToday() //=> '12 hours ago'
+</code></pre>
+<pre class="prettyprint source lang-js"><code>import { compose, gt } from '@meltwater/phi'
+import { fromIso, diffNow, days } from '@meltwater/tau'
+
+const isIsoMoreThanNDaysOld = n => compose(
+  gt(-n),
+  days,
+  diffNow('days'),
+  fromIso
+)
+
+const isIsoMoreThan3DaysOld = isIsoMoreThanNDaysOld(3)
+
+isIsoMoreThan3DaysOld('2018-01-24T20:27:49.288Z') //=> true
+</code></pre>
+<h3>Luxon Functional API</h3>
+<p>In general, each public static method, member, and method in the Luxon API
+is exported at the top level with the same name.
+All functions are curried and the argument order is reversed.
+Exceptions are documented below.</p>
+<h4>Naming conventions</h4>
+<ul>
+<li>Acronyms follow normal camelcase rules are and not uppercase,
+e.g., <code>DateTime.isInDST</code> is exported as <code>isInDst</code>.</li>
+<li>For instance methods, the last argument corresponds to the instance (<code>this</code>),
+e.g., <code>DateTime.fromMillis(0).toIso()</code> becomes <code>toIso(fromMillis(0))</code>.</li>
+<li>Some names are changed to avoid conflicts.</li>
+<li>Some signatures are changed for compatibility with the functional style
+e.g., all variadic methods.</li>
+<li>Any function which takes options has both a <code>*withOptions</code> variant
+which takes options as its first argument, and a normal variant
+with one less argument bound to the default options.</li>
+<li>Some Luxon methods have arguments with default values.
+In these cases, extra functions are provided corresponding to those defaults.</li>
+<li>Functions with a <code>Utc</code> suffix have been wrapped with <code>setZone('utc')</code>.</li>
+</ul>
+<h4>DateTime</h4>
+<ul>
+<li><code>diff</code>, <code>diffWithOptions</code>, <code>diffMillis</code>:
+the last argument is an array <code>[x, y]</code> and computes the difference <code>x - y</code>.</li>
+<li><code>diffNow</code>, <code>diffNowWithOptions</code> and <code>diffNowMillis</code> compute
+the difference <code>x - now</code> (where <code>x</code> is the last argument).</li>
+</ul>
+<h5>Renamed or added</h5>
+<ul>
+<li><code>DateTime.fromFormat -&gt; fromFormatWithOptions</code>
+<ul>
+<li><code>fromFormat</code></li>
+<li><code>fromFormatUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.fromFormatExplain -&gt; fromFormatExplainWithOptions</code>
+<ul>
+<li><code>fromFormatExplain</code></li>
+<li><code>fromFormatExplainUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.fromHTTP -&gt; fromHttpWithOptions</code>
+<ul>
+<li><code>fromHttp</code></li>
+<li><code>fromHttpUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.fromISO -&gt; fromIsoWithOptions</code>
+<ul>
+<li><code>fromIso</code></li>
+<li><code>fromIsoUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.fromJSDate -&gt; fromJsDateWithOptions</code>
+<ul>
+<li><code>fromJsDate</code></li>
+<li><code>fromJsDateUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.fromMillis -&gt; fromMillisWithOptions</code>
+<ul>
+<li><code>fromMillis</code></li>
+<li><code>fromMillisUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.fromSeconds -&gt; fromSecondsWithOptions</code>
+<ul>
+<li><code>fromSeconds</code></li>
+<li><code>fromSecondsUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.fromRFC2822 -&gt; fromRfc2822WithOptions</code>
+<ul>
+<li><code>fromRfc2822</code></li>
+<li><code>fromRfc2822Utc</code></li>
+</ul>
+</li>
+<li><code>DateTime.fromSQL -&gt; fromSqlWithOptions</code>
+<ul>
+<li><code>fromSql</code></li>
+<li><code>fromSqlUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.diff -&gt; diffWithOptions</code>
+<ul>
+<li><code>diff</code></li>
+<li><code>diffMillis</code></li>
+</ul>
+</li>
+<li><code>DateTime.diffNow -&gt; diffNowWithOptions</code>
+<ul>
+<li><code>diffNow</code></li>
+<li><code>diffNowMillis</code></li>
+</ul>
+</li>
+<li><code>DateTime.resolvedLocaleOpts -&gt; resolvedLocaleOptsWithOptions</code>
+<ul>
+<li><code>resolvedLocaleOpts</code></li>
+</ul>
+</li>
+<li><code>DateTime.setZone -&gt; setZoneWithOptions</code>
+<ul>
+<li><code>setZone</code></li>
+<li><code>setZoneLocal</code></li>
+<li><code>setZoneUtc</code></li>
+</ul>
+</li>
+<li><code>DateTime.toISOTime -&gt; toIsoTimeWithOptions</code>
+<ul>
+<li><code>toIsoTime</code></li>
+</ul>
+</li>
+<li><code>DateTime.toLocaleParts -&gt; toLocalePartsWithOptions</code>
+<ul>
+<li><code>toLocaleParts</code></li>
+</ul>
+</li>
+<li><code>DateTime.toLocaleString -&gt; toLocaleStringWithOptions</code>
+<ul>
+<li><code>toLocaleString</code></li>
+</ul>
+</li>
+<li><code>DateTime.toRelative -&gt; toRelativeWithOptions</code>
+<ul>
+<li><code>toRelative</code></li>
+</ul>
+</li>
+<li><code>DateTime.toRelativeCalendar -&gt; toRelativeCalendarWithOptions</code>
+<ul>
+<li><code>toRelativeCalendar</code></li>
+</ul>
+</li>
+<li><code>DateTime.toSQL -&gt; toSqlWithOptions</code>
+<ul>
+<li><code>toSql</code></li>
+</ul>
+</li>
+<li><code>DateTime.toSQLTime -&gt; toSqlTimeWithOptions</code>
+<ul>
+<li><code>toSqlTime</code></li>
+</ul>
+</li>
+<li><code>DateTime.toUTC -&gt; toUtcWithOptions</code>
+<ul>
+<li><code>toUtc</code></li>
+<li><code>toUtcZero</code></li>
+</ul>
+</li>
+<li><code>DateTime.toJSON -&gt; toJson</code></li>
+<li><code>DateTime.toBSON -&gt; toBson</code></li>
+<li><code>Zone.offset -&gt; offsetAt</code></li>
+<li><code>Zone.offsetName -&gt; offsetNameAtWithOptions</code>
+<ul>
+<li><code>offsetName</code></li>
+</ul>
+</li>
+</ul>
+<h5>Signature changed</h5>
+<ul>
+<li><code>DateTime.local(...) -&gt; local([...])</code> (order preserved)</li>
+<li><code>DateTime.utc(...) -&gt; utc([...])</code> (order preserved)</li>
+<li><code>DateTime.min(x, y, ...) -&gt; min(x, y)</code> (exactly two arguments)</li>
+<li><code>DateTime.min(x, y, ...) -&gt; max(x, y)</code> (exactly two arguments)</li>
+</ul>
+<h4>Duration</h4>
+<ul>
+<li><code>Duration.fromISO -&gt; durationFromIsoWithOptions</code>
+<ul>
+<li><code>durationFromIso</code></li>
+</ul>
+</li>
+<li><code>Duration.fromMillis -&gt; durationFromMillisWithOptions</code>
+<ul>
+<li><code>durationFromMillis</code></li>
+</ul>
+</li>
+<li><code>Duration.fromObject -&gt; durationFromObject</code></li>
+<li><code>Duration.invalid -&gt; durationInvalid</code></li>
+</ul>
+<h5>Signature changed</h5>
+<ul>
+<li><code>duration.shiftTo(...) -&gt; shiftTo([...], duration)</code> (order preserved)</li>
+</ul>
+<h4>Interval</h4>
+<h5>Renamed or Added</h5>
+<ul>
+<li><code>Interval.fromISO -&gt; intervalFromIsoWithOptions</code>
+<ul>
+<li><code>intervalFromIso</code></li>
+</ul>
+</li>
+<li><code>Interval.invalid -&gt; intervalInvalid</code></li>
+<li><code>Interval.toDuration -&gt; toDurationWithOptions</code>
+<ul>
+<li><code>toDuration</code></li>
+<li><code>toDurationMillis</code></li>
+</ul>
+</li>
+<li><code>Interval.hasSame -&gt; hasSameEndpoints</code></li>
+</ul>
+<h5>Signature changes</h5>
+<ul>
+<li><code>Interval.fromDateTimes(start, end) -&gt; fromDateTimes([start, end])</code></li>
+<li><code>Interval.splitAt(...) -&gt; splitAt([...], interval)</code> (order preserved)</li>
+<li><code>Interval.difference(...) -&gt; difference([...], interval)</code> (order preserved)</li>
+</ul>
+<h4>Info</h4>
+<ul>
+<li><code>Info.eras -&gt; erasWithOptions</code>
+<ul>
+<li><code>eras</code></li>
+<li><code>erasShort</code></li>
+<li><code>erasLong</code></li>
+</ul>
+</li>
+<li><code>Info.hasDST -&gt; hasDst</code>
+<ul>
+<li><code>hasDstLocal</code></li>
+</ul>
+</li>
+<li><code>Info.isValidIANAZone -&gt; isValidIanaZone</code>
+<ul>
+<li><code>isValidIanaZoneLocal</code></li>
+</ul>
+</li>
+<li><code>Info.meridiems -&gt; meridiemsWithOptions</code>
+<ul>
+<li><code>meridiems</code></li>
+</ul>
+</li>
+<li><code>Info.months -&gt; calendarMonthsWithOptions</code>
+<ul>
+<li><code>calendarMonths</code></li>
+<li><code>calendarMonthsLong</code></li>
+</ul>
+</li>
+<li><code>Info.monthsFormat -&gt; monthsFormatWithOptions</code>
+<ul>
+<li><code>monthsFormat</code></li>
+<li><code>monthsFormatLong</code></li>
+</ul>
+</li>
+<li><code>Info.weekdays -&gt; weekdaysWithOptions</code>
+<ul>
+<li><code>weekdays</code></li>
+<li><code>weekdaysLong</code></li>
+</ul>
+</li>
+<li><code>Info.weekdaysFormat -&gt; weekdaysFormatWithOptions</code>
+<ul>
+<li><code>weekdaysFormat</code></li>
+<li><code>weekdaysFormatLong</code></li>
+</ul>
+</li>
+</ul>
+<h4>Settings</h4>
+<ul>
+<li>Getters are exported as functions with the corresponding Luxon name,
+e.g., <code>defaultLocale()</code>.</li>
+<li>Setters are prefixed with <code>set</code>,
+e.g., <code>setDefaultLocale('utc')</code>.</li>
+</ul>
+<h2>Development Quickstart</h2>
+<pre class="prettyprint source"><code>$ git clone https://github.com/meltwater/tau.git
+$ cd tau
+$ nvm install
+$ yarn
+</code></pre>
+<p>Run each command below in a separate terminal window:</p>
+<pre class="prettyprint source"><code>$ yarn run watch
+$ yarn run test:watch
+</code></pre>
+<h2>Development and Testing</h2>
+<h3>Source code</h3>
+<p>The <a href="https://github.com/meltwater/tau">tau source</a> is hosted on GitHub.
+Clone the project with</p>
+<pre class="prettyprint source"><code>$ git clone git@github.com:meltwater/tau.git
+</code></pre>
+<h3>Requirements</h3>
+<p>You will need <a href="https://nodejs.org/">Node.js</a> with <a href="https://www.npmjs.com/">npm</a>, <a href="https://yarnpkg.com/">Yarn</a>,
+and a <a href="https://nodejs.org/en/docs/guides/debugging-getting-started/">Node.js debugging</a> client.</p>
+<p>Be sure that all commands run under the correct Node version, e.g.,
+if using <a href="https://github.com/creationix/nvm">nvm</a>, install the correct version with</p>
+<pre class="prettyprint source"><code>$ nvm install
+</code></pre>
+<p>Set the active version for each shell session with</p>
+<pre class="prettyprint source"><code>$ nvm use
+</code></pre>
+<p>Install the development dependencies with</p>
+<pre class="prettyprint source"><code>$ yarn
+</code></pre>
+<h4>CircleCI</h4>
+<p><em>CircleCI should already be configured: this section is for reference only.</em></p>
+<p>The following environment variables must be set on <a href="https://circleci.com/">CircleCI</a>:</p>
+<ul>
+<li><code>NPM_TOKEN</code>: npm token for installing and publishing packages.</li>
+<li><code>NPM_TEAM</code>: npm team to grant read-only package access
+(format <code>org:team</code>, optional).</li>
+<li><code>CODECOV_TOKEN</code>: Codecov token for uploading coverage reports (optional).</li>
+</ul>
+<p>These may be set manually or by running the script <code>./.circleci/envvars.sh</code>.</p>
+<h5>Documentation</h5>
+<p>For documentation publishing, CircleCI must have an SSH key for <code>github.com</code>
+added as a <a href="https://circleci.com/docs/1.0/adding-read-write-deployment-key/">deploy key</a>
+with write access on the GitHub repository.</p>
+<h3>Development tasks</h3>
+<p>Primary development tasks are defined under <code>scripts</code> in <code>package.json</code>
+and available via <code>yarn run</code>.
+View them with</p>
+<pre class="prettyprint source"><code>$ yarn run
+</code></pre>
+<h4>Production build</h4>
+<p>Lint, test, and transpile the production build to <code>dist</code> with</p>
+<pre class="prettyprint source"><code>$ yarn run dist
+</code></pre>
+<h5>Publishing a new release</h5>
+<p>Release a new version using <a href="https://docs.npmjs.com/cli/version"><code>npm version</code></a>.
+This will run all tests, update the version number,
+create and push a tagged commit,
+and trigger CircleCI to publish the new version to npm.</p>
+<ul>
+<li><strong>Update the CHANGELOG before each new release after version 1.</strong></li>
+<li>New versions are released when the commit message is a valid version number.</li>
+<li>Versions are only published on release branches:
+<code>master</code> branch or any branch matching <code>ver/*</code>.</li>
+<li>If branch protection options are enabled,
+you must first run <code>npm version</code> on a separate branch,
+wait for the commit to pass any required checks,
+then merge and push the changes to a release branch.</li>
+<li><strong>Do not use the GitHub pull request button to merge version commits</strong>
+as the commit tagged with the new version number will not match after merging.</li>
+</ul>
+<h4>Examples</h4>
+<p><strong>See the <a href="./examples">full documentation on using examples</a>.</strong></p>
+<p>View all examples with</p>
+<pre class="prettyprint source"><code>$ yarn run example
+</code></pre>
+<h4>Linting</h4>
+<p>Linting against the <a href="https://standardjs.com/">JavaScript Standard Style</a> and <a href="https://github.com/zaach/jsonlint">JSON Lint</a>
+is handled by <a href="https://gulpjs.com/">gulp</a>.</p>
+<p>View available commands with</p>
+<pre class="prettyprint source"><code>$ yarn run gulp --tasks
+</code></pre>
+<p>Run all linters with</p>
+<pre class="prettyprint source"><code>$ yarn run lint
+</code></pre>
+<p>In a separate window, use gulp to watch for changes
+and lint JavaScript and JSON files with</p>
+<pre class="prettyprint source"><code>$ yarn run watch
+</code></pre>
+<p>Automatically fix most JavaScript formatting errors with</p>
+<pre class="prettyprint source"><code>$ yarn run format
+</code></pre>
+<h4>Tests</h4>
+<p>Unit and integration testing is handled by <a href="https://github.com/avajs/ava">AVA</a>
+and coverage is reported by <a href="https://istanbul.js.org/">Istanbul</a> and uploaded to <a href="https://codecov.io/">Codecov</a>.</p>
+<ul>
+<li>Test files end in <code>.spec.js</code>.</li>
+<li>Unit tests are placed under <code>lib</code> alongside the tested module.</li>
+<li>Integration tests are placed in <code>test</code>.</li>
+<li>Static files used in tests are placed in <code>fixtures</code>.</li>
+</ul>
+<p>Watch and run tests on changes with</p>
+<pre class="prettyprint source"><code>$ yarn run test:watch
+</code></pre>
+<p>If using <a href="https://github.com/avajs/ava#snapshot-testing">AVA snapshot testing</a>, update snapshots with</p>
+<pre class="prettyprint source"><code>$ yarn run test:update
+</code></pre>
+<p>Generate a coverage report with</p>
+<pre class="prettyprint source"><code>$ yarn run report
+</code></pre>
+<p>An HTML version will be saved in <code>coverage</code>.</p>
+<h5>Debugging tests</h5>
+<p>Create a breakpoint by adding the statement <code>debugger</code> to the test
+and start a debug session with, e.g.,</p>
+<pre class="prettyprint source"><code>$ yarn run test:inspect lib/unix.spec.js
+</code></pre>
+<p>Watch and restart the debugging session on changes with</p>
+<pre class="prettyprint source"><code>$ yarn run test:inspect:watch lib/unix.spec.js
+</code></pre>
+<h2>Contributing</h2>
+<p>The author and active contributors may be found in <code>package.json</code>,</p>
+<pre class="prettyprint source"><code>$ jq .author &lt; package.json
+$ jq .contributors &lt; package.json
+</code></pre>
+<p>To submit a patch:</p>
+<ol>
+<li>Request repository access by submitting a new issue.</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>).</li>
+<li>Make changes and write tests.</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>).</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>).</li>
+<li>Create a new Pull Request.</li>
+</ol>
+<h2>License</h2>
+<p>This npm package is licensed under the MIT license.</p>
+<h2>Warranty</h2>
+<p>This software is provided by the copyright holders and contributors &quot;as is&quot; and
+any express or implied warranties, including, but not limited to, the implied
+warranties of merchantability and fitness for a particular purpose are
+disclaimed. In no event shall the copyright holder or contributors be liable for
+any direct, indirect, incidental, special, exemplary, or consequential damages
+(including, but not limited to, procurement of substitute goods or services;
+loss of use, data, or profits; or business interruption) however caused and on
+any theory of liability, whether in contract, strict liability, or tort
+(including negligence or otherwise) arising in any way out of the use of this
+software, even if advised of the possibility of such damage.</p></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Nov 18 2020 02:45:23 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
