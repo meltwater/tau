@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - (**Breaking**) Use Conditional Exports to provide ES or CommonJS module.
   Cannot import or require internal paths.
+- (**Breaking**) Drop support for Node.js versions before 12.13.0.
 
 ### Removed
 
