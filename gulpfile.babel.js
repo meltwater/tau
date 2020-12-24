@@ -22,7 +22,7 @@ const paths = {
 }
 
 export const docVersion = () => {
-  const data = fs.readFileSync(path.resolve(__dirname, 'package.json'))
+  const data = fs.readFileSync(path.resolve('package.json'))
   const pkg = JSON.parse(data)
 
   return gulp
@@ -51,13 +51,13 @@ export const publishDocs = (done) => {
       done
     )
 
-  fs.readFile(path.resolve(__dirname, 'package.json'), (err, data) => {
+  fs.readFile(path.resolve('package.json'), (err, data) => {
     if (err) {
       done(err)
       return
     }
     const pkg = JSON.parse(data)
-    const docs = path.resolve(__dirname, paths.docs, pkg.name)
+    const docs = path.resolve(paths.docs, pkg.name)
     publish(docs, pkg, done)
   })
 }
