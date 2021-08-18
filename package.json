@@ -124,7 +124,7 @@
     "standard": "^16.0.2"
   },
   "dependencies": {
-    "luxon": "~1.28.0",
+    "luxon": "~2.0.2",
     "ramda": "^0.27.0"
   },
   "devDependencies": {
