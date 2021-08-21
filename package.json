@@ -124,7 +124,7 @@
     "standard": "^16.0.2"
   },
   "dependencies": {
-    "luxon": "~1.25.0",
+    "luxon": "~1.28.0",
     "ramda": "^0.27.0"
   },
   "devDependencies": {
@@ -135,7 +135,7 @@
     "@meltwater/examplr": "^6.0.0",
     "ava": "^3.3.0",
     "babel-plugin-add-import-extension": "^1.4.3",
-    "del-cli": "^3.0.0",
+    "del-cli": "^4.0.1",
     "docdash": "^1.0.0",
     "eslint": "^7.12.1",
     "gh-pages": "^3.0.0",
