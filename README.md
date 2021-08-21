@@ -123,6 +123,8 @@ Exceptions are documented below.
 - `DateTime.fromSeconds -> fromSecondsWithOptions`
     - `fromSeconds`
     - `fromSecondsUtc`
+- `DateTime.fromObject -> fromObjectWithOptions`
+    - `fromObject`
 - `DateTime.fromRFC2822 -> fromRfc2822WithOptions`
     - `fromRfc2822`
     - `fromRfc2822Utc`
@@ -140,6 +142,7 @@ Exceptions are documented below.
 - `DateTime.setZone -> setZoneWithOptions`
     - `setZone`
     - `setZoneLocal`
+    - `setZoneSystem`
     - `setZoneUtc`
 - `DateTime.toISOTime -> toIsoTimeWithOptions`
     - `toIsoTime`
@@ -147,6 +150,7 @@ Exceptions are documented below.
     - `toLocaleParts`
 - `DateTime.toLocaleString -> toLocaleStringWithOptions`
     - `toLocaleString`
+    - `toLocaleStringShort`
 - `DateTime.toRelative -> toRelativeWithOptions`
     - `toRelative`
 - `DateTime.toRelativeCalendar -> toRelativeCalendarWithOptions`
@@ -177,7 +181,8 @@ Exceptions are documented below.
     - `durationFromIso`
 - `Duration.fromMillis -> durationFromMillisWithOptions`
     - `durationFromMillis`
-- `Duration.fromObject -> durationFromObject`
+- `Duration.fromObject -> durationFromObjectWithOptions`
+    - `durationFromObject`
 - `Duration.invalid -> durationInvalid`
 
 ##### Signature changed
@@ -210,8 +215,10 @@ Exceptions are documented below.
     - `erasLong`
 - `Info.hasDST -> hasDst`
     - `hasDstLocal`
+    - `hasDstSystem`
 - `Info.isValidIANAZone -> isValidIanaZone`
     - `isValidIanaZoneLocal`
+    - `isValidIanaZoneSystem`
 - `Info.meridiems -> meridiemsWithOptions`
     - `meridiems`
 - `Info.months -> calendarMonthsWithOptions`
