@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [3.0.0] / 2021-08-20
+
+### Changed
+
+- (**Breaking**) Update to [Luxon v2](https://moment.github.io/luxon/#upgrading).
+- (**Breaking**) Renamed `universal` to `isUniversal`.
+- (**Breaking**) Renamed `resolvedLocaleOpts` to `resolvedLocaleOptions`
+  and `resolvedLocaleOptsWithOptions` to `resolvedLocaleOptionsWithOptions`.
+- (**Breaking**) `toLocaleStringWithOptions` is now a binary method
+  and `toLocaleString` is now an unary method.
+  Use `toLocaleStringShort` to mimic the old behavior.
+
+### Added
+
+- `fromObjectWithOptions`.
+- `durationFromObjectWithOptions`.
+- `toLocaleStringShort`.
+- `setZoneSystem`.
+- `hasDstSystem`.
+- `isValidIanaZoneSystem`.
+- `setDefaultZone`.
+
+### Removed
+
+- `defaultZoneName` and `setDefaultZoneName`.
+
 ## [2.1.0] / 2021-08-20
 
 ### Changed
@@ -202,7 +228,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 [makenew-node-lib]: https://github.com/meltwater/makenew-node-lib
 
-[Unreleased]: https://github.com/meltwater/tau/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/meltwater/tau/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/meltwater/tau/compare/v2.1.0...v3.0.0
 [2.1.0]: https://github.com/meltwater/tau/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/meltwater/tau/compare/v1.16.1...v2.0.0
 [1.16.1]: https://github.com/meltwater/tau/compare/v1.16.0...v1.16.1

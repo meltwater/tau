@@ -1,6 +1,6 @@
 {
   "name": "@meltwater/tau",
-  "version": "2.1.0",
+  "version": "3.0.0-rc.0",
   "description": "Functional time and date tools for JavaScript inspired by Luxon.",
   "type": "module",
   "main": "dist/index.cjs",
@@ -124,7 +124,7 @@
     "standard": "^16.0.2"
   },
   "dependencies": {
-    "luxon": "~1.28.0",
+    "luxon": "~2.0.2",
     "ramda": "^0.27.0"
   },
   "devDependencies": {
