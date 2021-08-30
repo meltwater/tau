@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 - (**Breaking**) Update to [Luxon v2](https://moment.github.io/luxon/#upgrading).
 - (**Breaking**) Renamed `universal` to `isUniversal`.
+- (**Breaking**) Renamed `resolvedLocaleOpts` to `resolvedLocaleOptions`
+  and `resolvedLocaleOptsWithOptions` to `resolvedLocaleOptionsWithOptions`.
 - (**Breaking**) `toLocaleStringWithOptions` is now a binary method
   and `toLocaleString` is now an unary method.
   Use `toLocaleStringShort` to mimic the old behavior.
