@@ -137,8 +137,8 @@ Exceptions are documented below.
 - `DateTime.diffNow -> diffNowWithOptions`
     - `diffNow`
     - `diffNowMillis`
-- `DateTime.resolvedLocaleOpts -> resolvedLocaleOptsWithOptions`
-    - `resolvedLocaleOpts`
+- `DateTime.resolvedLocaleOptions -> resolvedLocaleOptionsWithOptions`
+    - `resolvedLocaleOptions`
 - `DateTime.setZone -> setZoneWithOptions`
     - `setZone`
     - `setZoneLocal`
