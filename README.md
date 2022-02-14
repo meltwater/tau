@@ -182,8 +182,12 @@ Exceptions are documented below.
     - `durationFromMillis`
 - `Duration.fromObject -> durationFromObjectWithOptions`
     - `durationFromObject`
+- `Duration.fromDurationLike -> fromDurationLikeWithOptions`
+    - `fromDurationLike`
 - `Duration.invalid -> durationInvalidWithExplanation`
     - `durationInvalid`
+- `Duration.toHuman -> toHumanWithOptions`
+    - `toHuman`
 
 ##### Signature changed
 
