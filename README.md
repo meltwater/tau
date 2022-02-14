@@ -245,7 +245,7 @@ Exceptions are documented below.
 
 - `Zone.offset -> offsetAt`
 - `Zone.offsetName -> offsetNameAtWithOptions`
-    - `offsetName`
+    - `offsetNameAt`
 
 #### Settings
 
