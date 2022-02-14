@@ -164,9 +164,8 @@ Exceptions are documented below.
     - `toUtcZero`
 - `DateTime.toJSON -> toJson`
 - `DateTime.toBSON -> toBson`
-- `Zone.offset -> offsetAt`
-- `Zone.offsetName -> offsetNameAtWithOptions`
-    - `offsetName`
+- `DateTime.invalid -> invalidWithExplanation`
+    - `invalid`
 
 ##### Signature changed
 
@@ -183,7 +182,8 @@ Exceptions are documented below.
     - `durationFromMillis`
 - `Duration.fromObject -> durationFromObjectWithOptions`
     - `durationFromObject`
-- `Duration.invalid -> durationInvalid`
+- `Duration.invalid -> durationInvalidWithExplanation`
+    - `durationInvalid`
 
 ##### Signature changed
 
@@ -195,7 +195,8 @@ Exceptions are documented below.
 
 - `Interval.fromISO -> intervalFromIsoWithOptions`
     - `intervalFromIso`
-- `Interval.invalid -> intervalInvalid`
+- `Interval.invalid -> intervalInvalidWithExplanation`
+    - `intervalInvalid`
 - `Interval.toDuration -> toDurationWithOptions`
     - `toDuration`
     - `toDurationMillis`
@@ -233,6 +234,14 @@ Exceptions are documented below.
 - `Info.weekdaysFormat -> weekdaysFormatWithOptions`
     - `weekdaysFormat`
     - `weekdaysFormatLong`
+
+#### Zone
+
+##### Renamed or added
+
+- `Zone.offset -> offsetAt`
+- `Zone.offsetName -> offsetNameAtWithOptions`
+    - `offsetName`
 
 #### Settings
 
